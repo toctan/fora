@@ -17,7 +17,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'slim-rails'
 
 group :test do
-  gem 'cucumber-rails', require: false
+  gem 'turnip'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
 end
@@ -29,7 +30,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'guard-rspec'
-  gem 'guard-cucumber'
   gem 'spork-rails'
   gem 'guard-spork'
   gem 'foreman'
