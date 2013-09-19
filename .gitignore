@@ -23,3 +23,8 @@
 /public/stylesheet-cache/*
 
 config/database.yml
+
+
+# vagrant
+.vagrant/
+Vagrantfile
