@@ -1,8 +1,17 @@
 require 'spec_helper'
 
 describe User do
-	before { @user = User.new(username:"test",email:"test@gmail.com",password:"password") }
-	subject{ @user }
+	subject(:user) { FactoryGirl.build(:user) }
 
 	it { should respond_to(:username) }
+	it { should validate_presence_of(:username) }
+	it { should validate_uniqueness_of(:username) }
+	it { should ensure_length_of(:username).is_at_most(17) }
+
+	describe "when username's format is invalid" do
+		before { user.username = "@#123" }
+
+		it { should_not be_valid }
+	end
+
 end

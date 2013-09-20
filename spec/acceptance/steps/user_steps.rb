@@ -12,12 +12,7 @@ module UserSteps
     fill_in 'Username', with: visitor[:username]
     fill_in 'Email',    with: visitor[:email]
     fill_in 'Password', with: visitor[:password]
-    fill_in 'Confirmation', with: visitor[:password]
     click_button "Sign up"
-  end
-
-  step "The new user should have username" do
-    expect(User.last.username).not_to be_nil
   end
 
   step "I should see confirmation email message" do
@@ -25,7 +20,7 @@ module UserSteps
   end
 
   step "I click the confirmation link" do
-    user = User.find_by_email(@visitor[:email])
+      user = User.find_by_email(@visitor[:email])
     visit('/users/confirmation?confirmation_token=' + user.confirmation_token)
   end
 

@@ -9,7 +9,6 @@ Feature: Sign up
 
   Scenario: User signs up with valid data
     When I sign up with valid data
-    Then The new user should have username
     And  I should see confirmation email message
     When I click the confirmation link
     Then I should see account confirmed message
