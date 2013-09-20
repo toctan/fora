@@ -20,14 +20,13 @@ module UserSteps
   end
 
   step "I click the confirmation link" do
-      user = User.find_by_email(@visitor[:email])
+    user = User.find(email: @visitor[:email])
     visit('/users/confirmation?confirmation_token=' + user.confirmation_token)
   end
 
   step "I should see account confirmed message" do
     expect(page).to have_selector('.alert', text: 'successfully confirmed')
   end
-  
 end
 
 RSpec.configure { |c| c.include UserSteps }
