@@ -10,8 +10,6 @@ Spork.prefork do
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-  Dir.glob("spec/acceptance/steps/**/*steps.rb") { |f| load f, true }
-
   ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
   RSpec.configure do |config|
@@ -48,5 +46,7 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  Dir.glob("spec/acceptance/steps/**/*steps.rb") { |f| load f, true }
+
   FactoryGirl.reload
 end

@@ -9,10 +9,15 @@ module UserSteps
 
   step "I sign up with valid data" do
     visit '/users/sign_up'
-    fill_in 'user_username', with: visitor[:username]
-    fill_in 'user_email',    with: visitor[:email]
-    fill_in 'user_password', with: visitor[:password]
-    click_button 'Sign up'
+    fill_in 'Username', with: visitor[:username]
+    fill_in 'Email',    with: visitor[:email]
+    fill_in 'Password', with: visitor[:password]
+    fill_in 'Confirmation', with: visitor[:password]
+    click_button "Sign up"
+  end
+
+  step "The new user should have username" do
+    expect(User.last.username).not_to be_nil
   end
 
   step "I should see confirmation email message" do
@@ -20,13 +25,14 @@ module UserSteps
   end
 
   step "I click the confirmation link" do
-    user = User.find(email: @visitor[:email])
+    user = User.find_by_email(@visitor[:email])
     visit('/users/confirmation?confirmation_token=' + user.confirmation_token)
   end
 
   step "I should see account confirmed message" do
     expect(page).to have_selector('.alert', text: 'successfully confirmed')
   end
+  
 end
 
 RSpec.configure { |c| c.include UserSteps }
