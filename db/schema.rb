@@ -13,6 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20130920074220) do
 
+  create_table "topics", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false

@@ -20,6 +20,7 @@ gem 'devise'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'bootstrap'
 gem 'bootstrap_helper'
+gem 'will_paginate'
 
 group :test do
   gem 'turnip'
