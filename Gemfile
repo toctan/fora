@@ -16,6 +16,11 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'slim-rails'
 
+gem 'devise'
+gem 'simple_form', '~> 3.0.0.rc'
+gem 'bootstrap'
+gem 'bootstrap_helper'
+
 group :test do
   gem 'turnip'
   gem 'capybara'
