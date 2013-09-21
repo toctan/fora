@@ -3,6 +3,10 @@ module UserSteps
     @visitor ||= FactoryGirl.attributes_for(:user)
   end
 
+  step "I am signed in" do
+    login_as FactoryGirl.create(:confirmed_user), scope: :user
+  end
+
   step "I am not signed in" do
     visit '/users/sign_out'
   end
