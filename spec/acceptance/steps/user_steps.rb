@@ -20,7 +20,7 @@ module UserSteps
   end
 
   step "I click the confirmation link" do
-    user = User.find(email: @visitor[:email])
+    user = User.find_by email: @visitor[:email]
     visit('/users/confirmation?confirmation_token=' + user.confirmation_token)
   end
 
