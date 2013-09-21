@@ -13,9 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20130920074220) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "topics", force: true do |t|
     t.string   "title"
     t.text     "body"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
