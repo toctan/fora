@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessor :login
+  attr_accessor :login, :avatar
+  has_attached_file :avatar, :styles => { medium: "300x300>", thumb: "20x20>"},
+                    :path => ":rails_root/public/assets/users/:id/:style/:filename",
+                    :url => "/assets/users/:id/:style/:filename"
 
   devise :database_authenticatable,
          :registerable,

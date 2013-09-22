@@ -48,5 +48,7 @@ end
 Spork.each_run do
   Dir.glob("spec/acceptance/steps/**/*steps.rb") { |f| load f, true }
 
+  # Support for Paperclip factories (add this before you load your factory definitions)
+  include ActionDispatch::TestProcess
   FactoryGirl.reload
 end
