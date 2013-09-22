@@ -33,7 +33,7 @@ module TopicSteps
   end
 
   step "I should see the topic created" do
-    expect(page).to have_selector('.topic-detail .title', text: @topic[:title])
+    expect(page).to have_selector('.topic-detail .title', text: topic[:title])
   end
 end
 
