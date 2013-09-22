@@ -1,14 +1,12 @@
 header#header
   .navbar
     .navbar-inner
-      a.brand
-        | Fora
-      ul.nav.pull-right
-        - if user_signed_in?
+      .container
+        = link_to t('site.name'), root_path, class: 'brand'
+        ul.nav.pull-right
+          - if user_signed_in?
             li = link_to current_user.username, edit_user_registration_path
-            li
-              = link_to "Sign out", destroy_user_session_path, method: :delete unless Rails.env.test?
-              = link_to "Sign out", destroy_user_session_path if Rails.env.test?
-        - else
+            li = link_to "Sign out", destroy_user_session_path, method: :delete
+          - else
             li = link_to "Sign up", new_user_registration_path
             li = link_to "Sign in", new_user_session_path
