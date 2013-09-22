@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   before_filter :configure_devise_params, if: :devise_controller?
 
   def configure_devise_params
-    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:sign_up) << :username << :email
   end
 end
