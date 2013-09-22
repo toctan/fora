@@ -7,6 +7,15 @@ module UserSteps
     visit '/users/sign_out'
   end
 
+  step "I am signed in" do
+    @user = FactoryGirl.create(:user)
+
+    visit '/users/sign_in'
+    fill_in "Email", with: @user.email
+    fill_in "Password", with: @user.password
+    click_button "Sign in"
+  end
+
   step "I sign up with valid data" do
     visit '/users/sign_up'
     fill_in 'Username', with: visitor[:username]

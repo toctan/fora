@@ -28,9 +28,6 @@ module StaticPagesSteps
     click_link "Sign out"
   end
 
-
-
-
 end
 
 RSpec.configure { |c| c.include StaticPagesSteps }

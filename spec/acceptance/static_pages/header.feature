@@ -7,8 +7,6 @@ Feature: Header
     When I visit the homepage
     Then I should see sign_up sign_in links
 
-
-
   Scenario: User visit /
     Given I am signed in
     When I visit the homepage
