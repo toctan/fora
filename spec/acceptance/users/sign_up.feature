@@ -9,6 +9,6 @@ Feature: Sign up
 
   Scenario: User signs up with valid data
     When I sign up with valid data
-    Then I should see confirmation email message
+    Then I should see 'A message with a confirmation' message
     When I click the confirmation link
-    Then I should see account confirmed message
+    Then I should see 'successfully confirmed' message
