@@ -19,7 +19,6 @@
 
 /public/uploads
 /public/stylesheet-cache/*
-/public/assets/*
 
 config/database.yml
 
