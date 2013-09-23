@@ -19,6 +19,11 @@ class User < ActiveRecord::Base
                        format: { with: /\A[A-Za-z\d]+\Z/ },
                        length: { maximum: 17 }
 
+  validates_attachment_content_type :avatar, content_type: ['image/png', 'image/jpeg']
+  validates_attachment_size :avatar,
+                            less_than: 500.kilobytes,
+                            message: 'must less than 500KB'
+
   protected
 
   def self.find_first_by_auth_conditions(warden_conditions)

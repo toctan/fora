@@ -6,7 +6,7 @@ h2
   .form-inputs
     = f.input :username, :required => true
     = f.input :email, :required => true
-    = f.file_field :avatar
+    = f.input :avatar, as: :file
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       p
         | Currently waiting confirmation for:
