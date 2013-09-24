@@ -1,8 +1,5 @@
 class User < ActiveRecord::Base
   attr_accessor :login, :avatar
-  has_attached_file :avatar, :styles => { medium: "300x300>", thumb: "20x20>"},
-                    :path => ":rails_root/public/uploads/assets/users/:id/:style/:filename",
-                    :url => "/uploads/assets/users/:id/:style/:filename"
 
   devise :database_authenticatable,
          :registerable,
@@ -14,6 +11,10 @@ class User < ActiveRecord::Base
 
   has_many :topics, dependent: :destroy
 
+  has_attached_file :avatar, :styles => { medium: "300x300>", thumb: "20x20>"},
+                    :path => ":rails_root/public/uploads/assets/users/:id/:style/:filename",
+                    :url => "/uploads/assets/users/:id/:style/:filename"
+
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
                        format: { with: /\A[A-Za-z\d]+\Z/ },
@@ -23,6 +24,16 @@ class User < ActiveRecord::Base
   validates_attachment_size :avatar,
                             less_than: 500.kilobytes,
                             message: 'must less than 500KB'
+
+  def update_with_password(params={})
+    if !params[:current_password].blank? or !params[:password].blank? or
+        !params[:password_confirmation].blank?
+      super
+    else
+      params.delete(:current_password)
+      self.update_without_password(params)
+    end
+  end
 
   protected
 
