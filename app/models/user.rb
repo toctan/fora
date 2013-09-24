@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
          :confirmable
 
   has_many :topics, dependent: :destroy
+  has_many :replies
 
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
