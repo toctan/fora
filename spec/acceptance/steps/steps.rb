@@ -9,3 +9,7 @@ end
 step "I should see :msg helper hint" do |msg|
   expect(page).to have_selector('span.help-inline', text: msg)
 end
+
+step "I should see :msg helper block" do |msg|
+  expect(page).to have_selector('p.help-block', text: msg)
+end
