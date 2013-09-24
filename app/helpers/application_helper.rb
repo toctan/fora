@@ -3,7 +3,7 @@ module ApplicationHelper
     if user.avatar?
       user.avatar.url(type)
     else
-      gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+      gravatar_id = Digest::MD5.hexdigest(user.email)
       "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}&f=y&d=mm"
     end
   end
