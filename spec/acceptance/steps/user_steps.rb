@@ -51,6 +51,33 @@ module UserSteps
   step 'I am not signed in' do
     visit '/users/sign_out'
   end
+
+  step "I am on update page" do
+    visit edit_user_registration_path
+  end
+
+  step "I update username without password" do
+    fill_in "Username", with: @user.username + "update"
+    click_button "Update"
+  end
+
+  step "I update password without password" do
+    fill_in "Password", with: @user.password + "update"
+    fill_in "Password confirmation", with: @user.password + "update"
+    click_button "Update"
+  end
+
+  step "I update email without password" do
+    fill_in "Email", with: @user.email + "update"
+    click_button "Update"
+  end
+
+  step "I update password with password" do
+    fill_in "Password", with: @user.password + "update"
+    fill_in "Password confirmation", with: @user.password + "update"
+    fill_in "Current password", with: @user.password
+    click_button "Update"
+  end
 end
 
 RSpec.configure { |c| c.include UserSteps }
