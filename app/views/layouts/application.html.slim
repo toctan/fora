@@ -7,5 +7,6 @@ html
     = csrf_meta_tags
   body
     = render "layouts/header"
-  	= notice_message
-    = yield
+    .container
+      = notice_message
+      = yield

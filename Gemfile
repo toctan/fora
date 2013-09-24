@@ -21,6 +21,7 @@ gem 'simple_form', '~> 3.0.0.rc'
 gem 'bootstrap-sass'
 gem 'bootstrap_helper'
 gem 'will_paginate'
+gem 'paperclip', '~> 3.0'
 
 group :test do
   gem 'turnip'
