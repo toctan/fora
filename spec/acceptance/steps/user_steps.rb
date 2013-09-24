@@ -9,6 +9,18 @@ module UserSteps
     click_button 'Sign in'
   end
 
+  def fill_edit_form(valid)
+
+    if valid == "illegal"
+      attach_file "Avatar", "spec/assets/#{valid}.txt"
+    else
+      attach_file "Avatar", "spec/assets/#{valid}.jpg"
+    end
+
+    fill_in "Current password", with: @user.password
+    click_button "Update"
+  end
+
   step 'I sign up with valid data' do
     visit '/users/sign_up'
 
@@ -31,6 +43,10 @@ module UserSteps
     visit new_user_session_path
   end
 
+  step 'I am on edit page' do
+    visit edit_user_registration_path
+  end
+
   step 'I sign in with invalid data' do
     click_button 'Sign in'
   end
@@ -50,6 +66,10 @@ module UserSteps
 
   step 'I am not signed in' do
     visit '/users/sign_out'
+  end
+
+  step 'I upload with :type image' do |type|
+    fill_edit_form(type)
   end
 end
 
