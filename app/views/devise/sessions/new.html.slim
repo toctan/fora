@@ -4,7 +4,10 @@ h2
   .form-inputs
     = f.input :login, :required => false, :autofocus => true
     = f.input :password, :required => false
-    = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+    = f.input :remember_me, :as => :boolean, \
+              input_html: { checked: true }, \
+              wrapper_html: { class: 'hide' } \
+              if devise_mapping.rememberable?
   .form-actions
     = f.button :submit, "Sign in"
 = render "devise/shared/links"
