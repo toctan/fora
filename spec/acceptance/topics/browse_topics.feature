@@ -7,6 +7,6 @@ Feature: Browse Topics
   Scenario: Browse topics on homepage
     Given there exists a bunch of topics
     When I visit the homepage
-    Then I should see these topics paginated
+    Then I should only see the first 20 topics
     When I click on one topic's title
     Then I should see the topic's content

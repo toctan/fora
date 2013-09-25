@@ -1,3 +1,7 @@
 .topic-detail
   h1.title  = @topic.title
   p.content =  @topic.body
+
+#replies = render @replies
+
+= will_paginate @replies

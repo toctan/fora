@@ -8,6 +8,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @replies = @topic.replies.paginate(page: params[:page])
   end
 
   def new

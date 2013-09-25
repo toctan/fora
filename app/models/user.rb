@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
          :confirmable
 
   has_many :topics, dependent: :destroy
+  has_many :replies
 
   has_attached_file :avatar, :styles => { medium: "300x300>", thumb: "20x20>"},
                     :path => ":rails_root/public/uploads/assets/users/:id/:style/:filename",
