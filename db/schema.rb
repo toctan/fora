@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20130924111634) do
     t.datetime "updated_at"
   end
 
+  add_index "replies", ["topic_id"], name: "index_replies_on_topic_id", using: :btree
+  add_index "replies", ["user_id"], name: "index_replies_on_user_id", using: :btree
+
   create_table "topics", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -31,6 +34,8 @@ ActiveRecord::Schema.define(version: 20130924111634) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",               default: "", null: false

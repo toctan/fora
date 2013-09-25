@@ -3,7 +3,7 @@ class CreateTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.string :title
       t.text :body
-      t.references :user
+      t.references :user, index: true
 
       t.timestamps
     end
