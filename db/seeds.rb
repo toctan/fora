@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = FactoryGirl.create(:confirmed_user)
+
+topic = FactoryGirl.create(:topic_with_body, user: user)
