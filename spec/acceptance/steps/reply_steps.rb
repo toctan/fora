@@ -10,7 +10,7 @@ module ReplySteps
     visit topic_path @topic
   end
 
-  step "I should see :num :items paginated" do |num, items|
+  step "I should only see the first :num :items" do |num, items|
     expect(page).to have_selector("##{items} p.#{items.singularize}", count: num.to_i)
     expect(page).to have_selector('div.pagination')
   end
