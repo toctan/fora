@@ -25,7 +25,6 @@ class User < ActiveRecord::Base
                             less_than: 500.kilobytes,
                             message: 'must less than 500KB'
 
-  before_save :email_nomarlization
 
   def update_with_password(params={})
     if !params[:current_password].blank? or !params[:password].blank? or
@@ -49,11 +48,5 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
-  end
-
-  private
-
-  def email_nomarlization
-    self.email = email.strip.downcase
   end
 end
