@@ -1,8 +1,8 @@
-header#header
-  .navbar
-    .navbar-inner
-      .container
-        = link_to t('site.name'), root_path, class: 'brand'
+header.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      = link_to t('site.name'), root_path, class: 'brand'
+      .nav-collapse.collapse
         ul.nav.pull-right
           - if user_signed_in?
             li = link_to \

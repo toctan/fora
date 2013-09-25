@@ -1,12 +1,17 @@
-doctype
+doctype html
 html
   head
-    title Whatever
+    title = t('site.name')
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   body
     = render "layouts/header"
-    .container
-      = notice_message
-      = yield
+    .container-fluid.container
+      .row-fluid
+        .span9.left
+          .container-box.mt20
+            = notice_message
+            = yield
+        .span3.right
+          = yield :sidebar
