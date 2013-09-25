@@ -1,5 +1,38 @@
 @import "bootstrap";
-@import "bootstrap-responsive";
 
 @import "global";
 @import "header";
+
+.mt20 {
+  margin-top: 20px;
+}
+
+body {
+  padding-top: $navbarHeight;
+  background: #e3e3e3;
+  background: transparent url("/assets/background.png") repeat scroll 0 0;
+}
+
+.container-box {
+  background: #fff;
+  list-style-position: inside;
+  padding: 10px;
+  -webkit-border-radius: first-value-of(3px) first-value-of(3px);
+  -moz-border-radius: 3px / 3px;
+  border-radius: 3px / 3px;
+  -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+  border-bottom: 2px solid rgba(150, 150, 150, 0.6);
+
+  .ui-header .title {
+    display: block;
+    border-bottom: 1px solid #eeeeee;
+    padding: 0 0 8px;
+    margin: 0 0 -1px 0;
+  }
+
+  a {
+    color: #999;
+  }
+}
