@@ -1,15 +1,13 @@
-header.navbar.navbar-fixed-top
+header.navbar.navbar-fixed-top.top-navbar
   .navbar-inner
     .container
       = link_to t('site.name'), root_path, class: 'brand'
       .nav-collapse.collapse
-        ul.nav.pull-right
+        ul.nav.pull-right#user-links
           - if user_signed_in?
-            li = link_to \
-                 image_tag(avatar_url(current_user)) + current_user.username, \
-                 edit_user_registration_path, \
-                 class: "name"
-            li = link_to "Sign out", destroy_user_session_path, method: :delete
+            li = avatar_tag current_user, :thumb
+            li = link_to font_icon('wrench'), edit_user_registration_path
+            li = link_to font_icon('signout'), destroy_user_session_path, method: :delete
           - else
-            li = link_to "Sign up", new_user_registration_path
-            li = link_to "Sign in", new_user_session_path
+            li = link_to 'Sign up', new_user_registration_path
+            li = link_to font_icon('signin'), new_user_session_path
