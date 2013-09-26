@@ -14,9 +14,11 @@ Fora::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :topics do
+    resources :replies
+
     member do
-      patch "star"
-      patch "unstar"
+      patch 'star'
+      patch 'unstar'
     end
   end
 
