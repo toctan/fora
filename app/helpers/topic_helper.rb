@@ -1,5 +1,5 @@
 module TopicHelper
-  def star?
+  def stared?
     current_user.stars.include?(params[:id].to_i)
   end
 end

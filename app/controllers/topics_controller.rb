@@ -26,21 +26,15 @@ class TopicsController < ApplicationController
   end
 
   def star
-    @topic = Topic.find(params[:id])
-    current_user.stars << @topic.id
-    current_user.stars_will_change!
-    current_user.save
+    current_user.star_topic(params[:id].to_i)
 
-    redirect_to @topic
+    redirect_to :back
   end
 
   def unstar
-    @topic = Topic.find(params[:id])
-    current_user.stars.delete(@topic.id)
-    current_user.stars_will_change!
-    current_user.save
+    current_user.unstar_topic(params[:id].to_i)
 
-    redirect_to @topic
+    redirect_to :back
   end
 
   private

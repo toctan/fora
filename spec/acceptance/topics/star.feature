@@ -12,7 +12,6 @@ Feature: Star a topic
     Then I should see star
     When I click star
     Then I should see unstar
-
     When I click unstar
     Then I should see star
 
@@ -20,4 +19,3 @@ Feature: Star a topic
     Given I am not signed in
     When I visit an existed topic
     Then I should not see star
-

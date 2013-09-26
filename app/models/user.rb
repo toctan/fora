@@ -26,6 +26,17 @@ class User < ActiveRecord::Base
                             less_than: 500.kilobytes,
                             message: 'must less than 500KB'
 
+  def star_topic(topic_id)
+    return if stars.include?(topic_id)
+    stars_will_change!
+    update_attributes(stars: stars << topic_id)
+  end
+
+  def unstar_topic(topic_id)
+    return unless stars.include?(topic_id)
+    stars_will_change!
+    update_attributes(stars: stars - [topic_id])
+  end
 
   def update_with_password(params={})
     if !params[:current_password].blank? or !params[:password].blank? or
