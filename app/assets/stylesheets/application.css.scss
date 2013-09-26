@@ -1,4 +1,8 @@
-@import "bootstrap";
+$navbarLinkColor: #333333;
+$navbarLinkColorHover: #4183C4;
+
+@import 'bootstrap';
+@import 'font-awesome';
 
 // Mixin
 @mixin box-shadow($top: 0px, $right: 2px, $bottom: 5px, $left: 0px){
@@ -13,6 +17,7 @@
   border-radius: #{$size} / #{$size};
 }
 
+
 // Helper
 .mt20 {
   margin-top: 20px;
@@ -25,13 +30,31 @@ body {
   background: transparent url("/assets/background.png") repeat scroll 0 0;
 }
 
-// Header
-header{
-  .name{
-    font-weight:bold;
+.top-navbar .navbar-inner .brand {
+  font-weight: bold;
+  color: #333333;
+}
 
-    img{
-      margin-right:5px;
+#user-links {
+  margin: 6px 0 0;
+
+  li {
+    margin: 0 1px 0 0;
+
+    a {
+      padding: 5px;
+    }
+  }
+  .name {
+    font-weight: bold;
+    line-height: 16px;
+    white-space: nowrap;
+
+    img {
+      float: left;
+      margin: -2px 5px 0 0;
+      border-radius: 3px;
+      box-shadow: 0 1px 0 #FFF;
     }
   }
 }
