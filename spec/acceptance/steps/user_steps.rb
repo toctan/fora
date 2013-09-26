@@ -96,6 +96,29 @@ module UserSteps
   step "I update :update_item with password" do |update_item|
     fill_in_update_form(update_item, true)
   end
+
+  step "I visit an existed topic" do
+    @user ||= FactoryGirl.create(:user)
+    @topic = FactoryGirl.create(:topic, user:@user)
+
+    visit topic_path @topic
+  end
+
+  step "I click :link" do |link|
+    click_link link
+  end
+
+  step "I should see star" do
+    expect(page).to have_link("star", href: star_topic_path(@topic))
+  end
+
+  step "I should not see star" do
+    expect(page).not_to have_link("star", href: star_topic_path(@topic))
+  end
+
+  step "I should see unstar" do
+    expect(page).to have_link("unstar", href: unstar_topic_path(@topic))
+  end
 end
 
 RSpec.configure { |c| c.include UserSteps }

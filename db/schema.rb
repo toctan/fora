@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130924111634) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "replies", force: true do |t|
     t.text     "body"
     t.integer  "user_id"
@@ -41,6 +38,7 @@ ActiveRecord::Schema.define(version: 20130924111634) do
     t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.integer  "stars",                  default: [],              array: true
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
