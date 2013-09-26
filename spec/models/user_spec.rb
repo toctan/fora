@@ -5,6 +5,7 @@ describe User do
 
   it { should respond_to(:topics) }
   it { should respond_to(:replies) }
+  it { should respond_to(:stars) }
 
   it { should respond_to(:username) }
   it { should validate_presence_of(:username) }

@@ -2,6 +2,11 @@
   h1.title  = @topic.title
   p.content =  @topic.body
 
+  #tools
+    - if user_signed_in?
+      = link_to "star", star_topic_path(@topic), method: :patch unless star?
+      = link_to "unstar", unstar_topic_path(@topic), method: :patch if star?
+
 #replies = render @replies
 
 = will_paginate @replies
