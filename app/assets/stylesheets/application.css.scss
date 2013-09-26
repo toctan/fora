@@ -5,10 +5,11 @@ $navbarLinkColorHover: #4183C4;
 @import 'font-awesome';
 
 // Mixin
-@mixin box-shadow($top: 0px, $right: 2px, $bottom: 5px, $left: 0px){
-  -webkit-box-shadow: $top $right $bottom rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: $top $right $bottom rgba(0, 0, 0, 0.15);
-  box-shadow: $top $right $bottom rgba(0, 0, 0, 0.15);
+@mixin box-shadow($top: 0px, $right: 2px, $bottom: 5px, $left: 0px,
+                  $color: rgba(0, 0, 0, 0.15)){
+  -webkit-box-shadow: $top $right $bottom $color;
+  -moz-box-shadow: $top $right $bottom $color;
+  box-shadow: $top $right $bottom $color;
 }
 
 @mixin radius($size: 3px){
@@ -53,8 +54,8 @@ body {
     img {
       float: left;
       margin: -2px 5px 0 0;
-      border-radius: 3px;
-      box-shadow: 0 1px 0 #FFF;
+      @include radius;
+      @include box-shadow(0px, 1px, 0px, 0px, rgba(255,255,255,1))
     }
   }
 }

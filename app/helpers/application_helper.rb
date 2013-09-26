@@ -9,7 +9,7 @@ module ApplicationHelper
     if link
       link_to img, '',  class: "name"
     else
-      raw img
+      img
     end
   end
 
