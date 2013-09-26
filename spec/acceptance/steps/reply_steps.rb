@@ -1,4 +1,8 @@
 module ReplySteps
+  def reply
+    @reply ||= FactoryGirl.create(:reply)
+  end
+
   step "there exists a bunch of replies of a topic" do
     user = FactoryGirl.create(:user)
     @topic = FactoryGirl.create(:topic, user: user)
@@ -11,8 +15,22 @@ module ReplySteps
   end
 
   step "I should only see the first :num :items" do |num, items|
-    expect(page).to have_selector("##{items} p.#{items.singularize}", count: num.to_i)
+    expect(page).to have_selector("##{items} p.#{items.singularize}", count: num)
     expect(page).to have_selector('div.pagination')
+  end
+
+  step 'I should see a reply form' do
+    expect(page).to have_selector('form#new_reply')
+  end
+
+  step 'I submit the form with my reply' do
+    fill_in 'reply_body', with: reply[:body]
+
+    click_button 'Create Reply'
+  end
+
+  step 'I should see my reply on the bottom' do
+    expect(page).to have_selector('#replies .reply:last-child', text: reply[:body])
   end
 end
 
