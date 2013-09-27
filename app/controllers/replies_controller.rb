@@ -1,4 +1,6 @@
 class RepliesController < ApplicationController
+  before_filter :authenticate_user!, :only => [:create]
+
   def create
     @topic = Topic.find(params[:topic_id])
     @reply = @topic.replies.build(reply_params)
