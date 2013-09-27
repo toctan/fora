@@ -1,5 +1,5 @@
 .container-box.p10
-  = simple_form_for @topic do |f|
+  = simple_form_for [@node, @topic] do |f|
     fieldset
       legend Create new topic
     = f.input   :title, required: false, input_html: {style:"width: 660px"}

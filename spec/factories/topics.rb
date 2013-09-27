@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :topic do
+    node
     user
     title { Faker::Lorem.sentence }
 

@@ -14,7 +14,7 @@ module NodeSteps
   end
 
   step 'I should see all these topics' do
-    expect(page).to have_selector('.topic a', text: @topic.title)
+    expect(page).to have_selector('.span10 > a', text: @topic.title)
   end
 
 end
