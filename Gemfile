@@ -45,8 +45,10 @@ group :development do
 end
 
 group :development, :test do
+  gem 'ffaker'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'guard-livereload'
 end
 
 group :production do

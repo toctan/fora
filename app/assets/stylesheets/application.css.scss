@@ -1,27 +1,33 @@
 $navbarLinkColor: #333333;
 $navbarLinkColorHover: #4183C4;
+$textarea: 660px;
 
 @import 'bootstrap';
 @import 'font-awesome';
 
 // Mixin
-@mixin box-shadow($top: 0px, $right: 2px, $bottom: 5px, $left: 0px,
-                  $color: rgba(0, 0, 0, 0.15)){
-  -webkit-box-shadow: $top $right $bottom $color;
-  -moz-box-shadow: $top $right $bottom $color;
-  box-shadow: $top $right $bottom $color;
+@mixin box-shadow($top, $right, $bottom, $left, $color){
+  -webkit-box-shadow: $top $right $bottom $left $color;
+  -moz-box-shadow: $top $right $bottom $left $color;
+  box-shadow: $top $right $bottom $left $color;
 }
 
-@mixin radius($size: 3px){
-  -webkit-border-radius: first-value-of($size) first-value-of($size);
-  -moz-border-radius: #{$size} / #{$size};
-  border-radius: #{$size} / #{$size};
+@mixin radius($top, $bottom){
+  -webkit-border-radius: $top $top $bottom $bottom;
+  -moz-border-radius: $top $top $bottom $bottom;
+  border-radius: $top $top $bottom $bottom;
 }
 
 
 // Helper
-.mt20 {
-  margin-top: 20px;
+.ml10 {
+  margin-left: 10px;
+}
+.ml0 {
+  margin-left: 0px;
+}
+.p10{
+  padding:10px;
 }
 
 // Global
@@ -31,52 +37,41 @@ body {
   background: transparent url("/assets/background.png") repeat scroll 0 0;
 }
 
-.top-navbar .navbar-inner .brand {
-  font-weight: bold;
-  color: #333333;
+a, h3{
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 
-#user-links {
-  margin: 6px 0 0;
-
-  li {
-    margin: 0 1px 0 0;
-
-    a {
-      padding: 5px;
-    }
-  }
-  .name {
-    font-weight: bold;
-    line-height: 16px;
-    white-space: nowrap;
-
-    img {
-      float: left;
-      margin: -2px 5px 0 0;
-      @include radius;
-      @include box-shadow(0px, 1px, 0px, 0px, rgba(255,255,255,1))
-    }
-  }
-}
-
-// Body
 .container-box {
+  margin-top: 20px;
   background: #fff;
-  list-style-position: inside;
-  padding: 10px;
-  @include radius;
-  @include box-shadow;
-  border-bottom: 2px solid rgba(150, 150, 150, 0.6);
-
-  .ui-header .title {
-    display: block;
-    border-bottom: 1px solid #eeeeee;
-    padding: 0 0 8px;
-    margin: 0 0 -1px 0;
-  }
+  @include radius(3px, 3px);
+  @include box-shadow(0px, 2px, 5px, 0px, rgba(0, 0, 0, 0.15));
+  border: 1px solid rgba(150, 150, 150, 0.6);
 
   a {
-    color: #999;
+    color: #666;
   }
 }
+
+span.time{
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.textarea{
+  height:230px;
+  min-height: 230px;
+  max-height: 230px;
+
+  width: $textarea;
+  min-width: $textarea;
+  max-width: $textarea;
+}
+
+@import 'header';
+@import 'topic';
+

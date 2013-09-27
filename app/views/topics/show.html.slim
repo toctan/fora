@@ -1,16 +1,31 @@
-.topic-detail
-  h1.title  = @topic.title
-  p.content =  @topic.body
-
-  #tools
+#topic-detail.container-box
+  .topic-header.p10
+    = avatar_tag(@topic.user, name: false, class: "avatar")
+    .main
+      h3 = @topic.title
+      .meta
+        span.time = @topic.created_at
+        = link_to @topic.user.username
+  .topic-content.p10 = @topic.body
+  .topic-footer
     - if user_signed_in?
       - if stared?
-        = link_to "unstar", unstar_topic_path(@topic), method: :patch
+        = link_to font_icon("star"), unstar_topic_path(@topic), id: "unstar", method: :patch
       - else
-        = link_to "star", star_topic_path(@topic), method: :patch
+        = link_to font_icon("star-empty"), star_topic_path(@topic), id: "star", method: :patch
 
-#replies = render @replies
 
-= render 'replies/form'
+- if @topic.replies.empty?
+    #no-reply  there is no reply currently
+- else
+    #replies.container-box
+        .replies-header = pluralize(@topic.replies.count, "reply")
+        = render @replies
 
 = will_paginate @replies
+
+#reply.container-box.p10
+  -if user_signed_in?
+    = render 'replies/form'
+  -else
+    p = link_to "sign in to reply", new_user_session_path

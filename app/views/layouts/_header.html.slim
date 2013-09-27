@@ -1,13 +1,12 @@
 header.navbar.navbar-fixed-top.top-navbar
   .navbar-inner
     .container
-      = link_to t('site.name'), root_path, class: 'brand'
-      .nav-collapse.collapse
-        ul.nav.pull-right#user-links
-          - if user_signed_in?
-            li = avatar_tag current_user, :thumb
-            li = link_to font_icon('wrench'), edit_user_registration_path
-            li = link_to font_icon('signout'), destroy_user_session_path, method: :delete
-          - else
-            li = link_to 'Sign up', new_user_registration_path
-            li = link_to font_icon('signin'), new_user_session_path
+      = link_to t('site.name'), root_path, class: 'brand', id: "brand"
+      ul.nav.pull-right#user-links
+        - if user_signed_in?
+          li = avatar_tag current_user, size: :thumb
+          li = link_to font_icon('wrench', "large"), edit_user_registration_path
+          li = link_to font_icon('signout', "large"), destroy_user_session_path, method: :delete
+        - else
+          li = link_to 'sign up', new_user_registration_path
+          li = link_to font_icon('signin', "large"), new_user_session_path

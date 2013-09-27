@@ -1,13 +1,14 @@
-= simple_form_for(resource, as: resource_name,
-                            url: session_path(resource_name),
-                            html: { class: 'form-horizontal'}) do |f|
-  fieldset
-    legend Sign in
-    = f.error_notification
-    .form-inputs
-      = f.input :login, :required => false, :autofocus => true
-      = f.input :password, :required => false
-      - if devise_mapping.rememberable?
-        .hide= f.check_box :remember_me, checked: true
-    .form-actions
-      = f.button :submit, "Sign in", class: 'btn-success'
+.container-box.p10
+  = simple_form_for(resource, as: resource_name,
+                              url: session_path(resource_name),
+                              html: { class: 'form-horizontal'}) do |f|
+    fieldset
+      legend Sign in
+      = f.error_notification
+      .form-inputs
+        = f.input :login, :required => false, :autofocus => true
+        = f.input :password, :required => false
+        - if devise_mapping.rememberable?
+          .hide= f.check_box :remember_me, checked: true
+      .form-actions
+        = f.button :submit, "Sign in", class: 'btn-success'

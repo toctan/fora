@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :reply do
     user
     topic
-    sequence(:body) { |n| "Lorem ipsum dolor sit amet (#{n})" }
+
+    body { Faker::Lorem.sentence }
   end
 end

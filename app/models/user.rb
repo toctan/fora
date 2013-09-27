@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :topics,  dependent: :destroy
   has_many :replies, dependent: :destroy
 
-  has_attached_file :avatar, :styles => { medium: "300x300>", thumb: "20x20>"},
+  has_attached_file :avatar, :styles => { normal: "40x40>", thumb: "22x22>"},
                     :path => ":rails_root/public/uploads/assets/users/:id/:style/:filename",
                     :url => "/uploads/assets/users/:id/:style/:filename"
 

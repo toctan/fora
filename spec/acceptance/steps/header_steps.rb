@@ -1,6 +1,6 @@
 module StaticPagesSteps
   step 'I should see sign_up sign_in links' do
-    expect(page).to have_link('Sign up', href: new_user_registration_path)
+    expect(page).to have_link('sign up', href: new_user_registration_path)
     expect(page).to have_selector('#user-links .icon-signin')
   end
 
