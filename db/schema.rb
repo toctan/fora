@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130924111634) do
+ActiveRecord::Schema.define(version: 20130925080931) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "nodes", force: true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.string   "description"
+    t.integer  "topics_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "replies", force: true do |t|
     t.text     "body"
@@ -27,18 +39,23 @@ ActiveRecord::Schema.define(version: 20130924111634) do
   create_table "topics", force: true do |t|
     t.string   "title"
     t.text     "body"
+    t.integer  "replies_count", default: 0
     t.integer  "user_id"
+    t.integer  "node_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "topics", ["node_id"], name: "index_topics_on_node_id", using: :btree
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
+    t.integer  "replies_count",          default: 0
+    t.integer  "topics_count",           default: 0
+    t.integer  "stars",                  default: [],              array: true
     t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
-    t.integer  "stars",                  default: [],              array: true
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
