@@ -1,5 +1,6 @@
-= simple_form_for [@topic, @topic.replies.build] do |f|
-  fieldset
-    legend make a new reply
-  = f.input :body, label: false, input_html: {class: "textarea"}
-  = f.button :submit
+.header
+  span.title Make a new reply
+.content
+  = simple_form_for [@topic, @topic.replies.build] do |f|
+    = f.text_area :body,   class: 'input-block-level', rows: 8
+    = f.button    :submit, class: 'btn-small'

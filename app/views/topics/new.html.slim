@@ -1,7 +1,8 @@
 .container-box.p10
-  = simple_form_for [@node, @topic] do |f|
-    fieldset
-      legend Create new topic
-    = f.input   :title, required: false, input_html: {style:"width: 660px"}
-    = f.input   :body, input_html: {class: "textarea"}
-    = f.button  :submit
+  .header
+    span.title Create new topic
+  .content
+    = simple_form_for [@node, @topic] do |f|
+      = f.text_field :title,  class: 'input-block-level', placeholder: 'Title'
+      = f.text_area  :body,   class: 'input-block-level', placeholder: 'Content', rows: 18
+      = f.button     :submit, class: 'btn-small'

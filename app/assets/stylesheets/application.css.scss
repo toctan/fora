@@ -1,6 +1,5 @@
 $navbarLinkColor: #333333;
 $navbarLinkColorHover: #4183C4;
-$textarea: 660px;
 
 @import 'bootstrap';
 @import 'font-awesome';
@@ -52,6 +51,13 @@ a, h3 {
   @include box-shadow(0px, 2px, 5px, 0px, rgba(0, 0, 0, 0.15));
   border: 1px solid rgba(150, 150, 150, 0.6);
 
+  .header .title {
+    display: block;
+    border-bottom: 1px solid #eeeeee;
+    padding: 0 0 8px;
+    margin: 0 0 10px 0;
+  }
+
   a {
     color: #666;
   }
@@ -62,16 +68,5 @@ span.time {
   font-size: 12px;
 }
 
-.textarea {
-  height:230px;
-  min-height: 230px;
-  max-height: 230px;
-
-  width: $textarea;
-  min-width: $textarea;
-  max-width: $textarea;
-}
-
 @import 'header';
 @import 'topic';
-
