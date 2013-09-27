@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :topic do
     user
+    node
 
     sequence(:title) { |n| "Lorem ipsum dolor sit amet (#{n})" }
 

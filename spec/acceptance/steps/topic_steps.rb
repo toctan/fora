@@ -17,10 +17,6 @@ module TopicSteps
     expect(page).to have_selector('.topic-detail .content')
   end
 
-  step 'I (am) on/visit the new topic page' do
-    visit '/topics/new'
-  end
-
   step 'I submit with the topic\'s title' do
     fill_in 'Title', with: topic[:title]
     fill_in 'Body',  with:  topic[:body]
