@@ -1,4 +1,7 @@
-= simple_form_for @topic do |f|
-  = f.input   :title
-  = f.input   :body
-  = f.button  :submit
+.container-box.p10
+  = simple_form_for @topic do |f|
+    fieldset
+      legend Create new topic
+    = f.input   :title, required: false, input_html: {style:"width: 660px"}
+    = f.input   :body, input_html: {class: "textarea"}
+    = f.button  :submit
