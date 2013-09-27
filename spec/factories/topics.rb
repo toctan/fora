@@ -1,11 +1,10 @@
 FactoryGirl.define do
   factory :topic do
     user
-
-    sequence(:title) { |n| "a" * 90 + "(#{n})" }
+    title { Faker::Lorem.sentence }
 
     factory :topic_with_body do
-      body 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.Lorem ipsum dolor sit amet, consectetuer adipiscing elit.Lorem ipsum dolor sit amet, consectetuer adipiscing elit.Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      body { Faker::Lorem.paragraph }
     end
   end
 end
