@@ -1,5 +1,6 @@
 $navbarLinkColor: #333333;
 $navbarLinkColorHover: #4183C4;
+$textarea: 660px;
 
 @import 'bootstrap';
 @import 'font-awesome';
@@ -55,9 +56,20 @@ a, h3{
     color: #666;
   }
 }
+
 span.time{
   margin-right: 10px;
   font-size: 12px;
+}
+
+.textarea{
+  height:230px;
+  min-height: 230px;
+  max-height: 230px;
+
+  width: $textarea;
+  min-width: $textarea;
+  max-width: $textarea;
 }
 
 @import 'header';
