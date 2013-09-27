@@ -10,8 +10,7 @@ html
     .container-fluid.container
       .row-fluid
         .span9.left
-          .container-box.mt20
-            = notice_message
-            = yield
+          = notice_message
+          = yield
         .span3.right
           = yield :sidebar

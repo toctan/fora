@@ -1,1 +1,8 @@
-p.reply = reply.body
+.row.ml10.reply-item
+  .span1 = avatar_tag(reply.user, name: false)
+  .span10
+    p = link_to reply.user.username
+    p = reply.body
+  .span1
+    a
+     i.icon-reply

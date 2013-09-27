@@ -15,7 +15,7 @@ module ReplySteps
   end
 
   step "I should only see the first :num :items" do |num, items|
-    expect(page).to have_selector("##{items} p.#{items.singularize}", count: num)
+    expect(page).to have_selector("##{items} div.#{items.singularize}-item", count: num)
     expect(page).to have_selector('div.pagination')
   end
 
@@ -30,7 +30,7 @@ module ReplySteps
   end
 
   step 'I should see my reply on the bottom' do
-    expect(page).to have_selector('#replies .reply:last-child', text: reply[:body])
+    expect(page).to have_selector('#replies .reply-item:last-child', text: reply[:body])
   end
 end
 

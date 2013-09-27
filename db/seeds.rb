@@ -8,4 +8,6 @@
 
 user = FactoryGirl.create(:confirmed_user)
 
-topic = FactoryGirl.create(:topic_with_body, user: user)
+topic = FactoryGirl.create_list(:topic_with_body, 50, user: user)
+
+reply = FactoryGirl.create_list(:reply, 50, user:user, topic: topic[0])

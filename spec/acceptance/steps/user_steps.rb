@@ -105,7 +105,7 @@ module UserSteps
   end
 
   step "I click :link" do |link|
-    click_link link
+    click_on link
   end
 
   step "I should see star" do

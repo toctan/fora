@@ -10,11 +10,11 @@ module TopicSteps
   end
 
   step 'I click on one topic\'s title' do
-    find('#topics p.topic:first-child a').click
+    find('#topics div.topic-item:first-child div.span10 > a:first-child').click
   end
 
   step 'I should see the topic\'s content' do
-    expect(page).to have_selector('.topic-detail .content')
+    expect(page).to have_selector('#topic-detail .topic-content')
   end
 
   step 'I (am) on/visit the new topic page' do
@@ -28,7 +28,7 @@ module TopicSteps
   end
 
   step "I should see the topic created" do
-    expect(page).to have_selector('.topic-detail .title', text: topic[:title])
+    expect(page).to have_selector('h3', text: topic[:title])
   end
 end
 

@@ -1,3 +1,5 @@
 = simple_form_for [@topic, @topic.replies.build] do |f|
-  = f.input :body
+  fieldset
+    legend make a new reply
+  = f.input :body, label: false, as: :text
   = f.button :submit
