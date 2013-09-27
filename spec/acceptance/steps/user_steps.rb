@@ -104,10 +104,6 @@ module UserSteps
     visit topic_path @topic
   end
 
-  step "I click :link" do |link|
-    click_link link
-  end
-
   step "I should see star" do
     expect(page).to have_link("star", href: star_topic_path(@topic))
   end

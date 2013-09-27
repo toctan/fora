@@ -12,11 +12,17 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
+    @node = Node.find_by key: params[:key]
+    if @node
+      @topic = @node.topics.new
+    else
+      redirect_to root_url, alert: 'No such node.'
+    end
   end
 
   def create
     @topic = current_user.topics.build(topic_params)
+    @topic.node = Node.find(params[:node_id])
 
     if @topic.save
       redirect_to @topic
