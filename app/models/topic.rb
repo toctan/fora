@@ -10,5 +10,7 @@ class Topic < ActiveRecord::Base
   validates :user_id, presence: true
   validates :node_id, presence: true
 
+  default_scope -> { order('updated_at DESC') }
+
   self.per_page = 20
 end

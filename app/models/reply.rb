@@ -4,5 +4,7 @@ class Reply < ActiveRecord::Base
 
   validates_presence_of :body, :topic_id, :user_id
 
+  default_scope -> { order('updated_at DESC') }
+
   self.per_page = 20
 end
