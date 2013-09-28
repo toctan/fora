@@ -3,7 +3,9 @@ module ApplicationHelper
     link = opts.include?(:link) ? opts[:link] : true
     name = opts.include?(:name) ? opts[:name] : true
     size =  opts[:size] || :normal
-    img = avatar_img(user, size)
+    img_class = opts[:img_class]
+
+    img = avatar_img(user, size, img_class)
 
     img << user.username if name
 
@@ -33,7 +35,7 @@ module ApplicationHelper
     end
   end
 
-  def avatar_img(user, size)
+  def avatar_img(user, size, img_class)
     width = user_avatar_width_for_size(size)
     img_src =
       if user.avatar?
@@ -43,6 +45,6 @@ module ApplicationHelper
         "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{width}&d=identicon"
       end
 
-    image_tag(img_src)
+    image_tag(img_src, class: "img-rounded #{img_class}")
   end
 end
