@@ -1,11 +1,11 @@
 module TopicSteps
   def topic
-    @topic ||= FactoryGirl.attributes_for(:topic)
+    @topic ||= attributes_for(:topic)
   end
 
   step 'there exists a bunch of topics' do
-    FactoryGirl.create(:user) do |user|
-      FactoryGirl.create_list(:topic, 21, user: user)
+    create(:user) do |user|
+      create_list(:topic, 21, user: user)
     end
   end
 

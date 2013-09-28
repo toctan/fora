@@ -1,6 +1,6 @@
 module UserSteps
   def visitor
-    @visitor ||= FactoryGirl.attributes_for(:user)
+    @visitor ||= attributes_for(:user)
   end
 
   def fill_sign_in_form(login)
@@ -57,7 +57,7 @@ module UserSteps
   end
 
   step 'I am a signed up user' do
-    @user = FactoryGirl.create(:confirmed_user)
+    @user = create(:confirmed_user)
   end
 
   step 'I am on sign in page' do
@@ -77,7 +77,7 @@ module UserSteps
   end
 
   step 'I am signed in' do
-    @user = FactoryGirl.create(:confirmed_user)
+    @user = create(:confirmed_user)
     login_as @user, scope: :user
   end
 
@@ -98,8 +98,8 @@ module UserSteps
   end
 
   step "I visit an existed topic" do
-    @user ||= FactoryGirl.create(:user)
-    @topic = FactoryGirl.create(:topic, user:@user)
+    @user ||= create(:user)
+    @topic = create(:topic, user:@user)
 
     visit topic_path @topic
   end

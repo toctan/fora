@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  subject(:user) { FactoryGirl.build(:user) }
+  subject(:user) { build(:user) }
 
   it { should respond_to(:topics) }
   it { should respond_to(:replies) }

@@ -1,13 +1,13 @@
 module ReplySteps
   def reply
-    @reply ||= FactoryGirl.create(:reply)
+    @reply ||= create(:reply)
   end
 
   step "there exists a bunch of replies of a topic" do
-    user = FactoryGirl.create(:user)
-    @topic = FactoryGirl.create(:topic, user: user)
+    user = create(:user)
+    @topic = create(:topic, user: user)
 
-    FactoryGirl.create_list(:reply, 25, user: user, topic: @topic)
+    create_list(:reply, 25, user: user, topic: @topic)
   end
 
   step "I visit the topic" do

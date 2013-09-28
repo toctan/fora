@@ -1,11 +1,11 @@
 module NodeSteps
   step 'there exists a node' do
-    @node = FactoryGirl.create(:node)
+    @node = create(:node)
   end
 
   step 'there exists a :name node with a dozen of topics' do |name|
-    FactoryGirl.create(:node, name: name) do |node|
-      @topic = FactoryGirl.create_list(:topic, 7, node: node).sample
+    create(:node, name: name) do |node|
+      @topic = create_list(:topic, 7, node: node).sample
     end
   end
 
