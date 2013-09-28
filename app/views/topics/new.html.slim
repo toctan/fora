@@ -1,6 +1,6 @@
 .container-box.p10
   .header
-    span.title Create new topic
+    p.title Create new topic
   .content
     = simple_form_for [@node, @topic] do |f|
       = f.text_field :title,  class: 'input-block-level', placeholder: 'Title'
