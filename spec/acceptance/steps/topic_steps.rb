@@ -18,8 +18,8 @@ module TopicSteps
   end
 
   step 'I submit with the topic\'s title' do
-    fill_in 'Title', with: topic[:title]
-    fill_in 'Body',  with:  topic[:body]
+    fill_in 'topic_title', with: topic[:title]
+    fill_in 'topic_body',  with: topic[:body]
     click_button "Create Topic"
   end
 
