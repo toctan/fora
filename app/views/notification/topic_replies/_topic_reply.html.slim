@@ -1,0 +1,8 @@
+/ TODO: Refactor this out of view
+- reply = topic_reply.reply
+- topic = reply.topic
+- user  = reply.user
+
+.notification-item
+  span.title = "#{user.username} #{topic.title}"
+  .content = topic_reply.body

@@ -1,4 +1,6 @@
 class Reply < ActiveRecord::Base
+  include Mentionable
+
   belongs_to :topic, counter_cache: true, touch: true
   belongs_to :user,  counter_cache: true
 
@@ -11,6 +13,10 @@ class Reply < ActiveRecord::Base
   self.per_page = 20
 
   private
+
+  def mention_scan_text
+    body
+  end
 
   def send_topic_reply_notification
     if user_id != topic.user_id
