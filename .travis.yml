@@ -8,8 +8,8 @@ before_script:
   - rake db:migrate
   - export RUBY_GC_MALLOC_LIMIT=50000000
 
-bundle_args: --without development
+bundle_args: --without development production
 
-script: 'rspec spec'
+script: 'bundle exec rspec spec'
 
   
