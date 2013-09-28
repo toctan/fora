@@ -6,13 +6,15 @@ class Reply < ActiveRecord::Base
 
   default_scope -> { order('updated_at DESC') }
 
-  after_create :send_notifications
+  after_create :send_topic_reply_notification
 
   self.per_page = 20
 
   private
 
-  def send_notifications
-    user.notify(topic.user_id, topic_id, body) unless user == topic.user
+  def send_topic_reply_notification
+    if user_id != topic.user_id
+      Notification::TopicReply.create user_id: topic.user_id, reply_id: id
+    end
   end
 end

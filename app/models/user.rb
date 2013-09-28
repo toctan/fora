@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :topics,        dependent: :destroy
   has_many :replies,       dependent: :destroy
-  has_many :notifications, dependent: :destroy
+  has_many :notifications, dependent: :destroy, class_name: 'Notification::Base'
 
   has_attached_file :avatar, styles: { normal: '40x40>', thumb: '22x22>' },
                              path:   ':rails_root/public/uploads/assets/users/:id/:style/:filename',
@@ -44,14 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def read_notifications
-    Notification.where(user_id: id, is_read: false).update_all(is_read: true)
-  end
-
-  def notify(user_id, topic_id, data)
-    Notification.create(user_id:  user_id,
-                        topic_id: topic_id,
-                        actor_id: id,
-                        data:     data)
+    notifications.unread.update_all(is_read: true)
   end
 
   def update_with_password(params = {})

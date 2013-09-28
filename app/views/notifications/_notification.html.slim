@@ -1,3 +1,6 @@
-p = notification.actor.username
-p = notification.topic.title
-p = notification.data
+- reply = notification.reply
+- topic = reply.topic
+
+p = reply.user.username
+p = topic.title
+p = notification.body
