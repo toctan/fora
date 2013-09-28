@@ -15,8 +15,8 @@ describe User do
   it { should validate_uniqueness_of(:username) }
   it { should ensure_length_of(:username).is_at_most(17) }
 
-  describe "when username's format is invalid" do
-    before { user.username = "@#123" }
+  describe 'when username\'s format is invalid' do
+    before { user.username = '@#123' }
 
     it { should_not be_valid }
   end
