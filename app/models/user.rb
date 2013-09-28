@@ -16,11 +16,17 @@ class User < ActiveRecord::Base
                     :path => ":rails_root/public/uploads/assets/users/:id/:style/:filename",
                     :url => "/uploads/assets/users/:id/:style/:filename"
 
+  # Role
+  validates :role, presence: true,
+                   inclusion: { in: %w[admin moderator common] }
+
+  # Username
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
                        format: { with: /\A[A-Za-z\d]+\Z/ },
                        length: { maximum: 17 }
 
+  # Avatar
   validates_attachment_content_type :avatar, content_type: ['image/png', 'image/jpeg']
   validates_attachment_size :avatar,
                             less_than: 500.kilobytes,

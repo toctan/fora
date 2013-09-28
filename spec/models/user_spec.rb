@@ -6,6 +6,7 @@ describe User do
   it { should respond_to(:topics) }
   it { should respond_to(:replies) }
   it { should respond_to(:stars) }
+  it { should respond_to(:role) }
 
   it { should respond_to(:replies_count) }
   it { should respond_to(:topics_count) }
@@ -14,6 +15,10 @@ describe User do
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username) }
   it { should ensure_length_of(:username).is_at_most(17) }
+
+  it { should validate_presence_of(:role) }
+  it { should ensure_inclusion_of(:role).in_array(%w[admin moderator common]) }
+  its(:role) { should == "common" }
 
   describe "when username's format is invalid" do
     before { user.username = "@#123" }
