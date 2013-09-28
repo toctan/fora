@@ -14,6 +14,8 @@
       - else
         = link_to font_icon("star-empty"), star_topic_path(@topic), id: "star", method: :patch
 
+      - if can? :destroy, @topic
+        = link_to "delete", topic_path(@topic), method: :delete
 
 - if @topic.replies.empty?
     #no-reply  there is no reply currently

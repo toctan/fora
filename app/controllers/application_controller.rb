@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_devise_params, if: :devise_controller?
+  before_filter :can_can_can
+
+  def can_can_can
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
 
   def configure_devise_params
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password) }

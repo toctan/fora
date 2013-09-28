@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   # Role
   validates :role, presence: true,
-                   inclusion: { in: %w[admin moderator common] }
+                   inclusion: { in: %w[admin moderator user] }
 
   # Username
   validates :username, presence: true,
@@ -52,6 +52,14 @@ class User < ActiveRecord::Base
       params.delete(:current_password)
       self.update_without_password(params)
     end
+  end
+
+  def admin?
+    role == "admin"
+  end
+
+  def user?
+    role == "user"
   end
 
   protected

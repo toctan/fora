@@ -115,6 +115,24 @@ module UserSteps
   step "I should see unstar" do
     expect(page).to have_link("unstar", href: unstar_topic_path(@topic))
   end
+
+  step "I am an admin and signed in" do
+    @user = create(:admin)
+    login_as @user, scope: :user
+  end
+
+  step "I should see delete link" do
+    expect(page).to have_link("delete")
+  end
+
+  step "I should not see delete link" do
+    expect(page).not_to have_link("delete")
+  end
+
+  step "I click delete link" do
+    click_link "delete"
+  end
+
 end
 
 RSpec.configure { |c| c.include UserSteps }

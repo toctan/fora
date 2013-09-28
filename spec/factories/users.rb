@@ -6,6 +6,10 @@ FactoryGirl.define do
 
     factory :confirmed_user do
       confirmed_at Time.now
+
+      factory :admin do
+        role "admin"
+      end
     end
 
     factory :avatar_user do
