@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130925080931) do
+ActiveRecord::Schema.define(version: 20130928044358) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "nodes", force: true do |t|
     t.string   "name"
@@ -21,6 +24,22 @@ ActiveRecord::Schema.define(version: 20130925080931) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "notifications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "reply_id"
+    t.boolean  "is_read",          default: false
+    t.integer  "mentionable_id"
+    t.string   "mentionable_type"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["is_read"], name: "index_notifications_on_is_read", using: :btree
+  add_index "notifications", ["mentionable_id", "mentionable_type"], name: "index_notifications_on_mentionable_id_and_mentionable_type", using: :btree
+  add_index "notifications", ["reply_id"], name: "index_notifications_on_reply_id", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "replies", force: true do |t|
     t.text     "body"

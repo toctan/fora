@@ -1,0 +1,5 @@
+.notification-item
+  = avatar_tag(mention.user)
+  span.title = mention.topic.title
+  .content = mention.body
+  = link_to 'Delete', notification_path(mention), method: :delete

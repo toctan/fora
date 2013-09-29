@@ -3,6 +3,10 @@ module TopicSteps
     @topic ||= attributes_for(:topic)
   end
 
+  step 'I have posted a topic' do
+    @topic = create(:topic, user: @user)
+  end
+
   step 'there exists a bunch of topics' do
     create(:user) do |user|
       create_list(:topic, 21, user: user)
@@ -20,10 +24,10 @@ module TopicSteps
   step 'I submit with the topic\'s title' do
     fill_in 'topic_title', with: topic[:title]
     fill_in 'topic_body',  with: topic[:body]
-    click_button "Create Topic"
+    click_button 'Create Topic'
   end
 
-  step "I should see the topic created" do
+  step 'I should see the topic created' do
     expect(page).to have_selector('h3', text: topic[:title])
   end
 end

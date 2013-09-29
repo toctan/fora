@@ -9,12 +9,13 @@ class User < ActiveRecord::Base
          :validatable,
          :confirmable
 
-  has_many :topics,  dependent: :destroy
-  has_many :replies, dependent: :destroy
+  has_many :topics,        dependent: :destroy
+  has_many :replies,       dependent: :destroy
+  has_many :notifications, dependent: :destroy, class_name: 'Notification::Base'
 
-  has_attached_file :avatar, :styles => { normal: "40x40>", thumb: "22x22>"},
-                    :path => ":rails_root/public/uploads/assets/users/:id/:style/:filename",
-                    :url => "/uploads/assets/users/:id/:style/:filename"
+  has_attached_file :avatar, styles: { normal: '40x40>', thumb: '22x22>' },
+                             path:   ':rails_root/public/uploads/assets/users/:id/:style/:filename',
+                             url:    '/uploads/assets/users/:id/:style/:filename'
 
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
@@ -38,13 +39,25 @@ class User < ActiveRecord::Base
     update_attributes(stars: stars - [topic_id])
   end
 
-  def update_with_password(params={})
+  def new_notification?
+    notifications.unread.any?
+  end
+
+  def read_notifications
+    notifications.unread.update_all(is_read: true)
+  end
+
+  def clear_notifications
+    notifications.delete_all
+  end
+
+  def update_with_password(params = {})
     if !params[:current_password].blank? or !params[:password].blank? or
         !params[:password_confirmation].blank?
       super
     else
       params.delete(:current_password)
-      self.update_without_password(params)
+      update_without_password(params)
     end
   end
 
@@ -54,8 +67,8 @@ class User < ActiveRecord::Base
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
       where(conditions).where([
-        "lower(username) = :value OR lower(email) = :value",
-        { :value => login.downcase }
+        'lower(username) = :value OR lower(email) = :value',
+        { value: login.downcase }
         ]).first
     else
       where(conditions).first
