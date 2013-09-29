@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     notifications.unread.update_all(is_read: true)
   end
 
+  def clear_notifications
+    notifications.delete_all
+  end
+
   def update_with_password(params = {})
     if !params[:current_password].blank? or !params[:password].blank? or
         !params[:password_confirmation].blank?

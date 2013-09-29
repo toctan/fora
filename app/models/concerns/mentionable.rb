@@ -2,7 +2,9 @@ module Mentionable
   extend ActiveSupport::Concern
 
   included do
-    has_many :notifications, as: :mentionable, class_name: 'Notification::Mention'
+    has_many :notifications, as: :mentionable,
+                             class_name: 'Notification::Mention',
+                             dependent: :destroy
     after_create :send_notifications
   end
 

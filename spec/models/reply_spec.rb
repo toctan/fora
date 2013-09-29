@@ -18,8 +18,8 @@ describe Reply do
 
     context 'when the replier is not the topic starter' do
       it 'should send notification to topic starter' do
-        expect(Notification::TopicReply).to receive(:create)
-          .once.with(user: reply.topic.user, reply: reply)
+        expect(reply.reply_notifications).to receive(:create)
+          .once.with(user: reply.topic.user)
       end
 
       context 'when the replier mentions the topic starter in reply' do

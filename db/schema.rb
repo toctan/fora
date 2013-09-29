@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20130928044358) do
     t.datetime "updated_at"
   end
 
+  add_index "notifications", ["is_read"], name: "index_notifications_on_is_read", using: :btree
+  add_index "notifications", ["mentionable_id", "mentionable_type"], name: "index_notifications_on_mentionable_id_and_mentionable_type", using: :btree
   add_index "notifications", ["reply_id"], name: "index_notifications_on_reply_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 

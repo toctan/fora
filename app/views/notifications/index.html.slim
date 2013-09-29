@@ -1,2 +1,3 @@
-.container-box
+.container-box#notifications
+  = link_to 'Clear', clear_notifications_path, method: :post, class: 'btn btn-danger'
   = render @notifications

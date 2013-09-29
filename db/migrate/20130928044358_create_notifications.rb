@@ -3,9 +3,11 @@ class CreateNotifications < ActiveRecord::Migration
     create_table :notifications do |t|
       t.references :user,    index: true
       t.references :reply,   index: true
-      t.boolean    :is_read, index: true, default: false
-      t.belongs_to :mentionable, polymorphic: true
+      t.boolean    :is_read, default: false
+      t.belongs_to :mentionable, polymorphic: true, index: true
       t.string     :type
+
+      t.index      :is_read
 
       t.timestamps
     end

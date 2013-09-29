@@ -18,4 +18,4 @@ Feature: Topic reply notification
   Scenario: Topic starter get notified only one when mentioned in reply
     When another user mentiones me in my topic's reply
     And I visit '/notifications'
-    Then I should see only one new notification
+    Then I should see only 1 new notification

@@ -20,4 +20,25 @@ describe User do
 
     it { should_not be_valid }
   end
+
+  describe 'Notifications' do
+    before { create_list(:notification_mention, 3, user: user) }
+
+    it { expect(user.new_notification?).to be_true }
+
+    describe '#read_notifications' do
+      it 'should mark all new notifications as read' do
+        expect { user.read_notifications }.to change { user
+            .notifications.unread.count }.from(3).to(0)
+        expect(user.new_notification?).to be_false
+      end
+    end
+
+    describe '#clear_notifications' do
+      it 'should delete all the notifications' do
+        expect { user.clear_notifications }.to change { user
+            .notifications.count }.from(3).to(0)
+      end
+    end
+  end
 end

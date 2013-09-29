@@ -11,7 +11,6 @@ Fora::Application.routes.draw do
 
   get 'go/:key'  => 'nodes#show', as: :go
   get 'new/:key' => 'topics#new'
-  get 'notifications' => 'notifications#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -27,6 +26,12 @@ Fora::Application.routes.draw do
     member do
       patch 'star'
       patch 'unstar'
+    end
+  end
+
+  resources :notifications, only: [:index, :destroy] do
+    collection do
+      post 'clear'
     end
   end
 
