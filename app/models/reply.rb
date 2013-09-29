@@ -8,19 +8,22 @@ class Reply < ActiveRecord::Base
 
   default_scope -> { order('updated_at DESC') }
 
-  after_create :send_topic_reply_notification
-
   self.per_page = 20
+
+  def send_notifications
+    if user != topic.user
+      Notification::TopicReply.create user: topic.user, reply: self
+    end
+    super
+  end
 
   private
 
-  def mention_scan_text
-    body
+  def mentioned_users
+    super - [topic.user]
   end
 
-  def send_topic_reply_notification
-    if user_id != topic.user_id
-      Notification::TopicReply.create user_id: topic.user_id, reply_id: id
-    end
+  def mention_scan_text
+    body
   end
 end

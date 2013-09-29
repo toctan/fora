@@ -11,9 +11,7 @@ module ReplySteps
   end
 
   step 'another user replies my topic' do
-    create(:user) do |user|
-      create(:reply, user: user, topic: @topic)
-    end
+    create(:reply, topic: @topic)
   end
 
   step 'I visit the topic' do

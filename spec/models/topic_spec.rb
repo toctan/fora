@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Topic do
+  it_behaves_like Mentionable
+
   it { should respond_to(:user) }
   it { should respond_to(:replies) }
   it { should respond_to(:replies_count) }

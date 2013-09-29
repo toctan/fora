@@ -1,5 +1,5 @@
 class Notification::Mention < Notification::Base
   belongs_to :mentionable, polymorphic: true
 
-  delegate :body, to: :mentionable
+  delegate :body, :topic, :user, to: :mentionable
 end

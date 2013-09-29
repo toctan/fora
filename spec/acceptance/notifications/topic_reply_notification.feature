@@ -8,9 +8,14 @@ Feature: Topic reply notification
     Given I am signed in
     And I have posted a topic
 
-  Scenario: User get notified when other users reply
+  Scenario: Topic starter get notified when other users reply
     When another user replies my topic
     And I visit the homepage
     Then I should see new notification
     When I visit '/notifications'
     Then I should not see the notification indicator
+
+  Scenario: Topic starter get notified only one when mentioned in reply
+    When another user mentiones me in my topic's reply
+    And I visit '/notifications'
+    Then I should see only one new notification

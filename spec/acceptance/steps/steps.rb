@@ -21,11 +21,3 @@ end
 step 'I should see :msg helper block' do |msg|
   expect(page).to have_selector('p.help-block', text: msg)
 end
-
-step 'I should see new notification' do
-  expect(page).to have_selector('.notification-indicator')
-end
-
-step 'I should not see the notification indicator' do
-  expect(page).not_to have_selector('.notification-indicator')
-end

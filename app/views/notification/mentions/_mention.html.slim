@@ -1,12 +1,4 @@
-/ TODO: Refactor this out of view
-- if mention.mentionable.is_a? Reply
-  - reply = mention.mentionable
-  - topic = reply.topic
-  - user  = reply.user
-- else
-  - topic = mention.mentionable
-  - user  = topic.user
-
 .notification-item
-  span.title = "#{user.username} #{topic.title}"
+  = avatar_tag(mention.user)
+  span.title = mention.topic.title
   .content = mention.body
