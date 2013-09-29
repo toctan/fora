@@ -3,17 +3,18 @@ require 'spec_helper'
 describe User do
   subject(:user) { build(:user) }
 
-  it { should respond_to(:topics) }
-  it { should respond_to(:replies) }
   it { should respond_to(:stars) }
   it { should respond_to(:role) }
+  it { should respond_to(:username) }
 
   it { should respond_to(:replies_count) }
   it { should respond_to(:topics_count) }
 
-  it { should respond_to(:username) }
+  it { should have_many(:topics).dependent(:destroy) }
+  it { should have_many(:replies).dependent(:destroy) }
+
   it { should validate_presence_of(:username) }
-  it { should validate_uniqueness_of(:username) }
+  it { should validate_uniqueness_of(:username).case_insensitive }
   it { should ensure_length_of(:username).is_at_most(17) }
 
   it { should validate_presence_of(:role) }

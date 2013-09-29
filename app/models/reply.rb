@@ -3,6 +3,7 @@ class Reply < ActiveRecord::Base
   belongs_to :user, counter_cache: true
 
   validates_presence_of :body, :topic_id, :user_id
+  validates_numericality_of :topic_id, :user_id
 
   default_scope -> { order('updated_at DESC') }
 
