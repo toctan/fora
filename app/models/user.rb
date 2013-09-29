@@ -58,6 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def role?(base_role)
+    # use compare to make pemission inherit
     ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 

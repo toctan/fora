@@ -122,11 +122,11 @@ module UserSteps
   end
 
   step "I should see delete link" do
-    expect(page).to have_link("delete")
+    expect(page).to have_link("delete", href: topic_path(@topic))
   end
 
   step "I should not see delete link" do
-    expect(page).not_to have_link("delete")
+    expect(page).not_to have_link("delete", href: topic_path(@topic))
   end
 
   step "I click delete link" do

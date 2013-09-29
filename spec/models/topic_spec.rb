@@ -30,7 +30,7 @@ describe Topic do
 
   end
 
-  it "should update node topics_count" do
+  it "should update user topics_count" do
     user = create(:user)
 
     expect do

@@ -49,7 +49,6 @@ describe User do
   describe "#unstar_topic" do
     let(:user){create(:confirmed_user)}
     let(:topic){create(:topic)}
-    let(:topic_two){create(:topic)}
 
     it "unstar a stared topic" do
       user.star_topic(topic.id)
@@ -60,10 +59,8 @@ describe User do
     end
 
     it "unstar a unstared topic" do
-      user.star_topic(topic.id)
-
       expect do
-        user.unstar_topic(topic_two.id)
+        user.unstar_topic(topic.id)
       end.not_to change{user.stars.length}
     end
   end

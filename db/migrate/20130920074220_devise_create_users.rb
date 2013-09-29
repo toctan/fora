@@ -3,7 +3,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       t.integer :replies_count, default: 0
       t.integer :topics_count,  default: 0
-      t.string  :role, default: "user"
+      t.string  :role,          default: "user"
       t.integer :stars, array: true, default: []
 
       ## Database authenticatable
