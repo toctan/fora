@@ -4,14 +4,15 @@ class Ability
   def initialize(user)
     if not user
       can :read, Topic
-    elsif user.admin?
+
+    elsif user.role? :admin
       can :manage, :all
-    elsif user.user?
-      can :read, Topic
-      can :create, Topic
-      can :star, Topic
-      can :unstar, Topic
+
+    elsif user.role? :user
+      can [:read, :create, :star, :unstar], Topic
+
     end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

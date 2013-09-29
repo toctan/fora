@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
       u.permit(:username, :avatar, :email, :password, :password_confirmation, :current_password)
     end
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Access denied."
+    redirect_to root_url
+  end
 end

@@ -95,10 +95,8 @@ describe TopicsController do
       it "common user" do
         sign_in_as(:confirmed_user)
 
-        expect do
-          delete "destroy", id: topic.id
-        end.to raise_error(CanCan::AccessDenied)
-
+        delete "destroy", id: topic.id
+        expect(response).to redirect_to(root_url)
       end
 
       it "admin user" do

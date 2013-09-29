@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessor :login, :avatar
 
+  # Order is important. Don't change it unless carefully
+  ROLES = %w[user moderator admin]
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -18,7 +21,7 @@ class User < ActiveRecord::Base
 
   # Role
   validates :role, presence: true,
-                   inclusion: { in: %w[admin moderator user] }
+                   inclusion: { in: ROLES }
 
   # Username
   validates :username, presence: true,
@@ -54,12 +57,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def admin?
-    role == "admin"
-  end
-
-  def user?
-    role == "user"
+  def role?(base_role)
+    ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
   protected
