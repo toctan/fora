@@ -10,17 +10,7 @@ guard 'livereload' do
   watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html))).*}) { |m| "/assets/#{m[3]}" }
 end
 
-guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
-  watch('config/routes.rb')
-  watch('config/application.rb')
-  watch('config/environment.rb')
-  watch('config/environments/test.rb')
-  watch(%r{^config/initializers/.+\.rb$})
-  watch('Gemfile.lock')
-  watch('spec/spec_helper.rb') { :rspec }
-end
-
-guard :rspec, cli: '--drb --fail-fast' do
+guard :rspec, cli: '--fail-fast', spring: true, turnip: true do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
@@ -42,4 +32,3 @@ guard :rspec, cli: '--drb --fail-fast' do
 end
 
 notification :notifysend
-

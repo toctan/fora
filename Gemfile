@@ -22,7 +22,7 @@ gem 'bootstrap_helper'
 gem 'cancan'
 
 gem 'devise'
-gem 'simple_form', '~> 3.0.0.rc'
+gem 'simple_form'
 gem 'will_paginate'
 gem 'paperclip', '~> 3.0'
 
@@ -30,7 +30,7 @@ group :test do
   gem 'turnip'
   gem 'capybara'
   gem 'database_cleaner'
-  gem "shoulda-matchers", github: "thoughtbot/shoulda-matchers"
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
 end
 
 group :development do
@@ -40,9 +40,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'guard-rspec'
-  gem 'spork-rails'
-  gem 'guard-spork'
   gem 'foreman'
+  gem 'spring'
 end
 
 group :development, :test do
