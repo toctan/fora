@@ -28,10 +28,6 @@
 }
 
 .topic-header {
-  img {
-    float:right
-  }
-
   h3 {
     margin: 0px;
   }
@@ -81,19 +77,12 @@ div.pagination {
 #no-reply {
   background: transparent;
   border: 2px dashed rgba(0, 0, 0, 0.1);
-  text-align: center;
-  color: rgba(0, 0, 0, 0.25);
-  font-size: 14px;
   height: 30px;
 }
 
 #reply {
   a {
-    color: $blue;
-  }
-
-  p {
-    text-align: center;
+    color: $linkColor;
     font-size: 16px;
   }
 }

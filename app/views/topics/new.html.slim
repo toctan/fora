@@ -3,6 +3,6 @@
     p.title Create new topic
   .content
     = simple_form_for [@node, @topic] do |f|
-      = f.text_field :title,  class: 'input-block-level', placeholder: 'Title'
-      = f.text_area  :body,   class: 'input-block-level', placeholder: 'Content', rows: 18
-      = f.button     :submit, class: 'btn-small'
+      = f.input :title, label: false, input_html: {class: 'input-block-level'}, placeholder: 'Title'
+      = f.input :body, as: :text, label: false, input_html: {class: 'input-block-level', rows: 18}, placeholder: 'Content'
+      = f.button :submit, class: 'btn-small'

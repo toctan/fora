@@ -1,6 +1,6 @@
 #topic-detail.container-box
   .topic-header.p10
-    = avatar_tag(@topic.user, name: false, class: "avatar")
+    = avatar_tag(@topic.user, name: false, img_class: "pull-right")
     .main
       h3 = @topic.title
       .meta
@@ -18,7 +18,7 @@
         = link_to font_icon("trash"), topic_path(@topic), id: "delete", method: :delete
 
 - if @topic.replies.empty?
-    #no-reply  there is no reply currently
+    #no-reply.text-center.muted  there is no reply currently
 - else
     #replies.container-box
         .replies-header = pluralize(@topic.replies.count, "reply")
@@ -30,4 +30,4 @@
   -if user_signed_in?
     = render 'replies/form'
   -else
-    p = link_to "sign in to reply", new_user_session_path
+    p.text-center = link_to "sign in to reply", new_user_session_path
