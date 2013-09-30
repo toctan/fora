@@ -4,8 +4,8 @@ class Reply < ActiveRecord::Base
   belongs_to :topic, counter_cache: true, touch: true
   belongs_to :user,  counter_cache: true
 
-  has_many :reply_notifications, class_name: 'Notification::TopicReply',
-                                 dependent: :destroy
+  has_one :reply_notification, class_name: 'Notification::TopicReply',
+                               dependent: :destroy
 
   validates_presence_of :body, :topic_id, :user_id
   validates_numericality_of :topic_id, :user_id
@@ -14,14 +14,12 @@ class Reply < ActiveRecord::Base
 
   self.per_page = 20
 
+  private
+
   def send_notifications
-    if user != topic.user
-      reply_notifications.create user: topic.user
-    end
+    create_reply_notification user: topic.user if user != topic.user
     super
   end
-
-  private
 
   def mentioned_users
     super - [topic.user]

@@ -10,13 +10,13 @@ module Mentionable
 
   MENTION_REGEXP = /@(\w{1,17})/
 
+  private
+
   def send_notifications
     mentioned_users.each do |u|
       notifications.create user: u
     end
   end
-
-  private
 
   def mentioned_users
     User.where(username: mentioned_usernames)
