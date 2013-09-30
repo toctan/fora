@@ -11,9 +11,6 @@ describe Topic do
   it { should validate_presence_of(:node_id) }
   it { should validate_presence_of(:title) }
 
-  it { should validate_numericality_of(:user_id) }
-  it { should validate_numericality_of(:node_id) }
-
   it { should ensure_length_of(:title).is_at_most(100) }
 
   it { should belong_to(:user) }
