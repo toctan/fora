@@ -1,0 +1,5 @@
+.notification-item
+  = avatar_tag notification.user
+  span.title = notification.topic.title
+  .content = notification.body
+  = link_to 'Delete', notification_path(notification), method: :delete
