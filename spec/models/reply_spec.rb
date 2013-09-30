@@ -16,6 +16,7 @@ describe Reply do
 
   it { should belong_to(:user) }
   it { should belong_to(:topic).touch }
+  it { should have_one(:reply_notification).dependent(:destroy)}
 
   it { should have_db_index(:topic_id) }
   it { should have_db_index(:user_id) }

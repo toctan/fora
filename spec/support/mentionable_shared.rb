@@ -2,6 +2,8 @@ shared_examples_for Mentionable do
 
   subject { build described_class }
 
+  it { should have_many(:notifications).dependent(:destroy) }
+
   describe '#after_create' do
     after(:each) { subject.save }
 
