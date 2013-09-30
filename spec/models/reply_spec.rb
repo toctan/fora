@@ -20,23 +20,23 @@ describe Reply do
   it { should have_db_index(:topic_id) }
   it { should have_db_index(:user_id) }
 
-  it "should update topic replies_count" do
+  it 'should update topic replies_count' do
     topic = create(:topic)
 
     expect do
-      reply = create(:reply, topic: topic)
+      create(:reply, topic: topic)
       topic.reload
-    end.to change{topic.replies_count}.by(1)
+    end.to change { topic.replies_count }.by(1)
 
   end
 
-  it "should update user replies_count" do
+  it 'should update user replies_count' do
     user = create(:user)
 
     expect do
-      reply = create(:reply, user: user)
+      create(:reply, user: user)
       user.reload
-    end.to change{user.replies_count}.by(1)
+    end.to change { user.replies_count }.by(1)
   end
 
   describe '#after_create' do

@@ -12,14 +12,14 @@ module UserSteps
 
   def fill_edit_form(valid)
 
-    if valid == "illegal"
-      attach_file "Avatar", "spec/assets/#{valid}.txt"
+    if valid == 'illegal'
+      attach_file 'Avatar', "spec/assets/#{valid}.txt"
     else
-      attach_file "Avatar", "spec/assets/#{valid}.jpg"
+      attach_file 'Avatar', "spec/assets/#{valid}.jpg"
     end
 
-    fill_in "Current password", with: @user.password
-    click_button "Update"
+    fill_in 'Current password', with: @user.password
+    click_button 'Update'
   end
 
   def fill_sign_up_form
@@ -32,17 +32,17 @@ module UserSteps
 
   def fill_in_update_form(update_item, password = nil)
     if password
-      fill_in "Current password", with: @user.password
+      fill_in 'Current password', with: @user.password
     end
 
     if update_item == 'password'
       fill_in 'Password', with: @user.password + 'update'
       fill_in 'Password confirmation', with: @user.password + 'update'
     else
-      fill_in update_item.capitalize, with: @user.send(update_item) + "update"
+      fill_in update_item.capitalize, with: @user.send(update_item) + 'update'
     end
 
-    click_button "Update"
+    click_button 'Update'
   end
 
   step 'I sign up with valid data' do
@@ -89,48 +89,48 @@ module UserSteps
     fill_edit_form(type)
   end
 
-  step "I update :update_item without password" do |update_item|
+  step 'I update :update_item without password' do |update_item|
     fill_in_update_form(update_item)
   end
 
-  step "I update :update_item with password" do |update_item|
+  step 'I update :update_item with password' do |update_item|
     fill_in_update_form(update_item, true)
   end
 
-  step "I visit an existed topic" do
+  step 'I visit an existed topic' do
     @user ||= create(:user)
     @topic = create(:topic, user:@user)
 
     visit topic_path @topic
   end
 
-  step "I should see star" do
-    expect(page).to have_link("star", href: star_topic_path(@topic))
+  step 'I should see star' do
+    expect(page).to have_link('star', href: star_topic_path(@topic))
   end
 
-  step "I should not see star" do
-    expect(page).not_to have_link("star", href: star_topic_path(@topic))
+  step 'I should not see star' do
+    expect(page).not_to have_link('star', href: star_topic_path(@topic))
   end
 
-  step "I should see unstar" do
-    expect(page).to have_link("unstar", href: unstar_topic_path(@topic))
+  step 'I should see unstar' do
+    expect(page).to have_link('unstar', href: unstar_topic_path(@topic))
   end
 
-  step "I am an admin and signed in" do
+  step 'I am an admin and signed in' do
     @user = create(:admin)
     login_as @user, scope: :user
   end
 
-  step "I should see delete link" do
-    expect(page).to have_link("delete", href: topic_path(@topic))
+  step 'I should see delete link' do
+    expect(page).to have_link('delete', href: topic_path(@topic))
   end
 
-  step "I should not see delete link" do
-    expect(page).not_to have_link("delete", href: topic_path(@topic))
+  step 'I should not see delete link' do
+    expect(page).not_to have_link('delete', href: topic_path(@topic))
   end
 
-  step "I click delete link" do
-    click_link "delete"
+  step 'I click delete link' do
+    click_link 'delete'
   end
 
 end

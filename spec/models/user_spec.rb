@@ -19,49 +19,49 @@ describe User do
 
   it { should validate_presence_of(:role) }
   it { should ensure_inclusion_of(:role).in_array(%w[admin moderator user]) }
-  its(:role) { should == "user" }
+  its(:role) { should == 'user' }
 
   describe "when username's format is invalid" do
-    before { user.username = "@#123" }
+    before { user.username = '@#123' }
 
     it { should_not be_valid }
   end
 
-  describe "#star_topic" do
-    let(:user) {create(:confirmed_user)}
-    let(:topic) {create(:topic)}
+  describe '#star_topic' do
+    let(:user) { create(:confirmed_user) }
+    let(:topic) { create(:topic) }
 
-    it "star a new topic" do
+    it 'star a new topic' do
       expect do
         user.star_topic(topic.id)
-      end.to change{user.stars.length}.from(0).to(1)
+      end.to change { user.stars.length }.from(0).to(1)
     end
 
-    it "star a stared topic" do
+    it 'star a stared topic' do
       user.star_topic(topic.id)
 
       expect do
         user.star_topic(topic.id)
-      end.not_to change{user.stars.length}
+      end.not_to change { user.stars.length }
     end
   end
 
-  describe "#unstar_topic" do
-    let(:user){create(:confirmed_user)}
-    let(:topic){create(:topic)}
+  describe '#unstar_topic' do
+    let(:user) { create(:confirmed_user) }
+    let(:topic) { create(:topic) }
 
-    it "unstar a stared topic" do
+    it 'unstar a stared topic' do
       user.star_topic(topic.id)
 
-      expect do
-        user.unstar_topic(topic.id)
-      end.to change{user.stars.length}.from(1).to(0)
+      expect { user.unstar_topic(topic.id) }.to change {
+        user.stars.length
+      }.from(1).to(0)
     end
 
-    it "unstar a unstared topic" do
+    it 'unstar a unstared topic' do
       expect do
         user.unstar_topic(topic.id)
-      end.not_to change{user.stars.length}
+      end.not_to change { user.stars.length }
     end
   end
 
@@ -72,16 +72,19 @@ describe User do
 
     describe '#read_notifications' do
       it 'should mark all new notifications as read' do
-        expect { user.read_notifications }.to change { user
-            .notifications.unread.count }.from(3).to(0)
+        expect { user.read_notifications }.to change {
+          user.notifications.unread.count
+        }.from(3).to(0)
+
         expect(user.new_notification?).to be_false
       end
     end
 
     describe '#clear_notifications' do
       it 'should delete all the notifications' do
-        expect { user.clear_notifications }.to change { user
-            .notifications.count }.from(3).to(0)
+        expect { user.clear_notifications }.to change {
+          user.notifications.count
+        }.from(3).to(0)
       end
     end
   end
