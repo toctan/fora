@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:new, :create, :destroy, :star, :unstar]
+  before_filter :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource
 
   def index
@@ -36,7 +36,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
 
     if @topic.destroy
-      flash[:notice] = "delete topic successfully"
+      flash[:notice] = 'Delete topic successfully'
       redirect_to root_url
     end
   end

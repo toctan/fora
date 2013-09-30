@@ -15,6 +15,4 @@ Feature: Admin
     When I visit an existed topic
     Then I should see delete link
     When I click delete link
-    Then I should see 'delete topic successfully' message
-
-
+    Then I should see 'Delete topic successfully' message
