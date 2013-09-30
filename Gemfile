@@ -19,6 +19,7 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass-rails'
 gem 'bootstrap_helper'
+gem 'cancan'
 
 gem 'devise'
 gem 'simple_form', '~> 3.0.0.rc'
@@ -29,7 +30,7 @@ group :test do
   gem 'turnip'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'shoulda-matchers'
+  gem "shoulda-matchers", github: "thoughtbot/shoulda-matchers"
 end
 
 group :development do

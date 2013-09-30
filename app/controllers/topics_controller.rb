@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:new, :create]
+  before_filter :authenticate_user!, :only => [:new, :create, :destroy, :star, :unstar]
+  load_and_authorize_resource
 
   def index
     @topics = Topic.paginate(page: params[:page])
@@ -28,6 +29,15 @@ class TopicsController < ApplicationController
       redirect_to @topic
     else
       render 'new'
+    end
+  end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+
+    if @topic.destroy
+      flash[:notice] = "delete topic successfully"
+      redirect_to root_url
     end
   end
 
