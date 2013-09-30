@@ -1,6 +1,8 @@
 class Reply < ActiveRecord::Base
   include Mentionable
 
+  after_create :send_notification_to_topic_owner
+
   belongs_to :topic, counter_cache: true, touch: true
   belongs_to :user,  counter_cache: true
 
@@ -16,13 +18,12 @@ class Reply < ActiveRecord::Base
 
   private
 
-  def send_notifications
+  def send_notification_to_topic_owner
     create_reply_notification user: topic.user if user != topic.user
-    super
   end
 
   def mentioned_users
-    super - [topic.user]
+    super - [topic.user] # or topic user will get two notification
   end
 
   def mention_scan_text

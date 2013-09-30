@@ -5,6 +5,7 @@ module Mentionable
     has_many :notifications, as: :mentionable,
                              class_name: 'Notification::Mention',
                              dependent: :destroy
+
     after_create :send_notifications
   end
 
@@ -23,7 +24,7 @@ module Mentionable
   end
 
   def mentioned_usernames
-    mention_scan_text.scan(MENTION_REGEXP).flatten.uniq - [user.username]
+    mention_scan_text.scan(MENTION_REGEXP).flatten.uniq - [user.username] # except sender himself
   end
 
   def mention_scan_text
