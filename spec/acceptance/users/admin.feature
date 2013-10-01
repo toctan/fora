@@ -9,9 +9,8 @@ Feature: Admin
     When  I visit an existed topic
     Then  I should not see delete link
 
-
   Scenario: Admin delete a topic
-    Given I am an admin and signed in
+    Given I am signed in as admin
     When I visit an existed topic
     Then I should see delete link
     When I click delete link

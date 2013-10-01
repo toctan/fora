@@ -1,33 +1,32 @@
 module UserSteps
+  def path_to(page_name)
+    case page_name
+    when /^homepage$/i
+      root_path
+    when /^sign_in$/i
+      new_user_session_path
+    when /^settings$/i
+      edit_user_registration_path
+    when /^notification$/i
+      notifications_path
+    when /^topic$/i
+      topic_path @topic
+    else
+      page_name
+    end
+  end
+
   def visitor
     @visitor ||= attributes_for(:user)
   end
 
   def fill_sign_in_form(login)
-    fill_in 'Login',    with: @user.send(login)
-    fill_in 'Password', with: @user.password
-
-    click_button 'Sign in'
-  end
-
-  def fill_edit_form(valid)
-
-    if valid == 'illegal'
-      attach_file 'Avatar', "spec/assets/#{valid}.txt"
-    else
-      attach_file 'Avatar', "spec/assets/#{valid}.jpg"
+    unless login == 'invalid'
+      fill_in 'Login',    with: @user.send(login)
+      fill_in 'Password', with: @user.password
     end
 
-    fill_in 'Current password', with: @user.password
-    click_button 'Update'
-  end
-
-  def fill_sign_up_form
-    fill_in 'Username',    with: visitor[:username]
-    fill_in 'Email', with: visitor[:email]
-    fill_in 'Password', with: visitor[:password]
-
-    click_button 'Sign up'
+    click_button 'Sign in'
   end
 
   def fill_in_update_form(update_item, password = nil)
@@ -48,7 +47,11 @@ module UserSteps
   step 'I sign up with valid data' do
     visit '/users/sign_up'
 
-    fill_sign_up_form
+    visitor.each do |k, v|
+      fill_in "user_#{k}", with: v
+    end
+
+    click_button 'Sign up'
   end
 
   step 'I click the confirmation link' do
@@ -60,33 +63,21 @@ module UserSteps
     @user = create(:confirmed_user)
   end
 
-  step 'I am on sign in page' do
-    visit new_user_session_path
-  end
-
-  step 'I am on update/edit page' do
-    visit edit_user_registration_path
-  end
-
-  step 'I sign in with invalid data' do
-    click_button 'Sign in'
-  end
-
   step 'I sign in with :login' do |login|
     fill_sign_in_form(login)
   end
 
   step 'I am signed in' do
-    @user = create(:confirmed_user)
+    step 'I am signed in as confirmed_user'
+  end
+
+  step 'I am signed in as :role' do |role|
+    @user = create(role)
     login_as @user, scope: :user
   end
 
   step 'I am not signed in' do
     visit '/users/sign_out'
-  end
-
-  step 'I upload with :type image' do |type|
-    fill_edit_form(type)
   end
 
   step 'I update :update_item without password' do |update_item|
@@ -99,7 +90,7 @@ module UserSteps
 
   step 'I visit an existed topic' do
     @user ||= create(:user)
-    @topic = create(:topic, user:@user)
+    @topic = create(:topic, user: @user)
 
     visit topic_path @topic
   end
@@ -116,11 +107,6 @@ module UserSteps
     expect(page).to have_link('unstar', href: unstar_topic_path(@topic))
   end
 
-  step 'I am an admin and signed in' do
-    @user = create(:admin)
-    login_as @user, scope: :user
-  end
-
   step 'I should see delete link' do
     expect(page).to have_link('delete', href: topic_path(@topic))
   end
@@ -128,11 +114,6 @@ module UserSteps
   step 'I should not see delete link' do
     expect(page).not_to have_link('delete', href: topic_path(@topic))
   end
-
-  step 'I click delete link' do
-    click_link 'delete'
-  end
-
 end
 
 RSpec.configure { |c| c.include UserSteps }
