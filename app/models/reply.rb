@@ -1,5 +1,6 @@
 class Reply < ActiveRecord::Base
   include Mentionable
+  include Autohtmlable
 
   after_create :send_notification_to_topic_owner
 
