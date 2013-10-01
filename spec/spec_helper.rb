@@ -7,7 +7,6 @@ require 'rspec/autorun'
 require 'shoulda/matchers/integrations/rspec'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-Dir.glob('spec/acceptance/steps/**/*steps.rb') { |f| load f, true }
 
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 

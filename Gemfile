@@ -28,7 +28,6 @@ gem 'will_paginate'
 gem 'paperclip', '~> 3.0'
 
 group :test do
-  gem 'turnip'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
