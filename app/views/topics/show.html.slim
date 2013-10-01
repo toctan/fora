@@ -9,13 +9,7 @@
   .topic-content.p10 = @topic.body
   .topic-footer
     - if user_signed_in?
-      - if stared?
-        = link_to font_icon("star"), unstar_topic_path(@topic), id: "unstar", method: :patch
-      - else
-        = link_to font_icon("star-empty"), star_topic_path(@topic), id: "star", method: :patch
-
-      - if can? :destroy, @topic
-        = link_to font_icon("trash"), topic_path(@topic), id: "delete", method: :delete
+      = render 'layouts/tools'
 
 - if @topic.replies.empty?
     #no-reply.text-center.muted  there is no reply currently
