@@ -5,10 +5,10 @@ Feature: Sign in
 
   Background:
     Given I am a signed up user
-    And I am on sign in page
+    And I am on sign_in page
 
   Scenario: User sign in with invalid data
-    When I sign in with invalid data
+    When I sign in with invalid
     Then I should see 'Invalid login or password' message
 
   Scenario: User sign in with email

@@ -1,13 +1,9 @@
-step 'I visit the homepage' do
-  visit '/'
-end
-
-step 'I click :link' do |link|
+step 'I click :link( link)' do |link|
   click_link link
 end
 
-step 'I visit :link' do |link|
-  visit link
+step 'I (am) on/visit (the ):page_name( page)' do |page_name|
+  visit path_to(page_name)
 end
 
 step 'I should see :msg message' do |msg|

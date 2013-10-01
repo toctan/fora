@@ -5,7 +5,7 @@ Feature: Update user profile
 
   Background:
     Given I am signed in
-    And I am on update page
+    And I am on settings page
 
   Scenario: Update username without password
     When I update username without password

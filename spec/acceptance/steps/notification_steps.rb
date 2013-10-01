@@ -1,8 +1,4 @@
 module NotificationSteps
-  step 'I am on the notification page' do
-    visit '/notifications'
-  end
-
   step 'someone mentions me in new :item' do |item|
     create(item, body: "@#{@user.username}")
   end
@@ -23,10 +19,6 @@ module NotificationSteps
 
   step 'I should see this notification removed' do
     step "I should see only #{@notifications.count - 1} new notifications"
-  end
-
-  step 'I click button Clear' do
-    click_link 'Clear'
   end
 
   step 'I should see new notification' do

@@ -14,10 +14,6 @@ module ReplySteps
     create(:reply, topic: @topic)
   end
 
-  step 'I visit the topic' do
-    visit topic_path @topic
-  end
-
   step 'I should only see the first :num :items' do |num, items|
     expect(page).to have_selector("##{items} div.#{items.singularize}-item", count: num)
     expect(page).to have_selector('div.pagination')

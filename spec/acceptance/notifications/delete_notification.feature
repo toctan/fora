@@ -13,5 +13,5 @@ Feature: Delete notification
     Then I should see this notification removed
     
   Scenario: Clear all notifications
-    When I click button Clear
+    When I click Clear
     Then I should see no notifications
