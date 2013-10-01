@@ -3,14 +3,15 @@ module ApplicationHelper
     link = opts.include?(:link) ? opts[:link] : true
     name = opts.include?(:name) ? opts[:name] : true
     size =  opts[:size] || :normal
-    img_class = opts[:img_class]
+    img_class  = opts[:img_class]
+    link_class = opts[:link_class]
 
     img = avatar_img(user, size, img_class)
 
     img << user.username if name
 
     if link
-      link_to img, '',  class: 'name'
+      link_to img, '',  class: 'name #{link_class}'
     else
       img
     end

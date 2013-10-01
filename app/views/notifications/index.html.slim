@@ -1,3 +1,5 @@
 .container-box#notifications
-  = link_to 'Clear', clear_notifications_path, method: :post, class: 'btn btn-danger'
+  #notification-header.p10
+    span = "You got " + pluralize(@notifications.length, "notification")
+    = link_to 'Clear All', clear_notifications_path, method: :post, class: 'pull-right btn btn-small'
   = render partial: "notification", collection: @notifications
