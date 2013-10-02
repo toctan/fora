@@ -6,7 +6,7 @@
       .meta
         span.time = @topic.created_at
         = link_to @topic.user.username
-  .topic-content.p10 = @topic.body
+  .topic-content.p10 = @topic.body_html
   .topic-footer
     - if user_signed_in?
       - if stared?
@@ -21,7 +21,7 @@
     #no-reply.text-center.muted  there is no reply currently
 - else
     #replies.container-box
-        .replies-header = pluralize(@topic.replies.count, "reply")
+        .replies-header = pluralize(@topic.replies_count, "reply")
         = render @replies
 
 = will_paginate @replies

@@ -5,6 +5,14 @@ GIT
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
 
+GIT
+  remote: git://github.com/toctan/auto_html.git
+  revision: 87090460755f0827610522b9ea2582f8c17c9051
+  specs:
+    auto_html (1.6.0)
+      redcarpet (~> 2.0)
+      rinku (~> 1.5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -192,6 +200,8 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
+    redcarpet (2.3.0)
+    rinku (1.5.1)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -234,7 +244,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    temple (0.6.6)
+    temple (0.6.7)
     thor (0.18.1)
     thread_safe (0.1.3)
       atomic
@@ -261,6 +271,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  auto_html!
   awesome_print
   better_errors
   binding_of_caller
