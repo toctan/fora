@@ -1,12 +1,13 @@
 class RepliesController < ApplicationController
-  before_filter :authenticate_user!, :only => [:create]
+  before_filter :authenticate_user!, only: [:create]
 
   def create
     @topic = Topic.find(params[:topic_id])
     @reply = @topic.replies.build(reply_params)
     @reply.user_id = current_user.id
 
-    redirect_to :back if @reply.save
+    flash[:notice] = "Reply body can't be blank" unless @reply.save
+    redirect_to :back
   end
 
   private
