@@ -16,6 +16,12 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
 
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+
+  config.before(:each, signin: true) do
+    login_as create(:confirmed_user), scope: :user
+  end
+
   config.use_transactional_fixtures = false
 
   config.before(:suite) do

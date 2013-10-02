@@ -29,6 +29,7 @@ gem 'paperclip', '~> 3.0'
 
 group :test do
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
 end

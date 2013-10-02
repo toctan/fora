@@ -49,7 +49,7 @@ describe Reply do
 
       context 'when the replier mentions the topic starter in reply' do
 
-        before { reply.body = "@#{reply.topic.user.username}"}
+        before { reply.body = "@#{reply.topic.user.username}" }
 
         it 'should not send mention notification' do
           expect(subject.notifications).not_to receive(:create)
