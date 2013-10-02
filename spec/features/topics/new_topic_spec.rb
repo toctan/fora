@@ -18,11 +18,11 @@ feature 'New topic' do
     end
 
     scenario 'Posts a new topic with a youtube wideo', :js do
-      # pending 'fuck GFW'
+      pending 'fuck GFW'
       fill_new_topic_form('http://www.youtube.com/watch?v=eIZTMVNBjc4')
 
       within '.topic-content' do
-        expect(page).to have_selector('iframe #player')
+        expect(page).to have_selector('//iframe[@src="//www.youtube.com/embed/eIZTMVNBjc4"]')
       end
     end
 
