@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130928044358) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "nodes", force: true do |t|
     t.string   "name"
     t.string   "key"
@@ -40,6 +43,7 @@ ActiveRecord::Schema.define(version: 20130928044358) do
 
   create_table "replies", force: true do |t|
     t.text     "body"
+    t.text     "body_html"
     t.integer  "user_id"
     t.integer  "topic_id"
     t.datetime "created_at"
@@ -52,6 +56,7 @@ ActiveRecord::Schema.define(version: 20130928044358) do
   create_table "topics", force: true do |t|
     t.string   "title"
     t.text     "body"
+    t.text     "body_html"
     t.integer  "replies_count", default: 0
     t.integer  "user_id"
     t.integer  "node_id"

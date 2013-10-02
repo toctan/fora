@@ -1,5 +1,6 @@
 class Reply < ActiveRecord::Base
   include Mentionable
+  include Autohtmlable
 
   after_create :send_notification_to_topic_owner
 
@@ -10,7 +11,6 @@ class Reply < ActiveRecord::Base
                                dependent: :destroy
 
   validates_presence_of :body, :topic_id, :user_id
-  validates_numericality_of :topic_id, :user_id
 
   default_scope -> { order('updated_at DESC') }
 
