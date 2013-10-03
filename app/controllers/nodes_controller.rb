@@ -3,7 +3,7 @@ class NodesController < ApplicationController
     @node = Node.find_by key: params[:key]
 
     if @node
-      @topics = @node.topics.paginate(page: params[:page])
+      @topics = @node.topics.page(params[:page]).includes(:user)
     else
       redirect_to root_path, alert: 'No such node.'
     end

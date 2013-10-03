@@ -8,22 +8,28 @@ class ApplicationController < ActionController::Base
   # cancan is not ready for rails4, this hack make it work
   before_filter :can_can_can
 
+  protected
+
+  def configure_devise_params
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:username, :email, :password)
+    end
+
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:username, :avatar, :email, :password,
+               :password_confirmation, :current_password)
+    end
+  end
+
+  private
+
   def can_can_can
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
-  def configure_devise_params
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password) }
-
-    devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:username, :avatar, :email, :password, :password_confirmation, :current_password)
-    end
-  end
-
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied."
-    redirect_to root_url
+    redirect_to root_url, error: 'Access denied.'
   end
 end

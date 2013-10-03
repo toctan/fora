@@ -4,12 +4,12 @@ class TopicsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @topics = Topic.paginate(page: params[:page])
+    @topics = Topic.page(params[:page]).includes(:user)
   end
 
   def show
     @topic = Topic.find(params[:id])
-    @replies = @topic.replies.paginate(page: params[:page])
+    @replies = @topic.replies.page(params[:page]).includes(:user)
   end
 
   def new

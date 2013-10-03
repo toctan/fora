@@ -2,7 +2,8 @@ class NotificationsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @notifications = current_user.notifications
+    # TODO: 1 + N + N query? Move this into model
+    @notifications = current_user.notifications.page(params[:page])
     current_user.read_notifications
   end
 
