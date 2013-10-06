@@ -3,13 +3,17 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       t.integer :replies_count, default: 0
       t.integer :topics_count,  default: 0
-      t.string  :role,          default: "user"
+      t.string  :role,          default: 'user'
       t.integer :stars, array: true, default: []
 
       ## Database authenticatable
       t.string :username,           :null => false, :default => ""
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
+
+      ## Omniauthable
+      t.string :provider
+      t.string :uid
 
       ## Recoverable
       t.string   :reset_password_token

@@ -7,7 +7,7 @@
       = f.error_notification
       .form-inputs
         = f.input :username, :required => true, :autofocus => true
-        = f.input :email, :required => true
-        = f.input :password, :required => true
+        = f.input :email,    :required => true if f.object.email_required?
+        = f.input :password, :required => true if f.object.password_required?
       .form-actions
         = f.button :submit, "Sign up"
