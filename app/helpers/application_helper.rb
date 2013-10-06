@@ -11,18 +11,16 @@ module ApplicationHelper
     img << user.username if name
 
     if link
-      link_to img, '',  class: 'name #{link_class}'
+      link_to img, '',  class: "name #{link_class}"
     else
       img
     end
   end
 
-  def font_icon(name, size = nil)
-    if size
-      content_tag(:i, nil, class: "icon-#{size} icon-#{name}")
-    else
-      content_tag(:i, nil, class: "icon-#{name}")
-    end
+  def font_icon(name, size = nil,  data = {})
+    klass = "icon-#{name}"
+    klass << " icon-#{size}" if size
+    content_tag(:i, nil, class: klass, data: data, style: 'cursor:pointer')
   end
 
   private
