@@ -3,4 +3,8 @@ class Node < ActiveRecord::Base
 
   validates :name, presence: true
   validates :key,  presence: true
+
+  def self.more?
+    Node.all.count > 15
+  end
 end
