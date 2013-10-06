@@ -1,0 +1,7 @@
+#self-replies-header, #self-topics-header{
+  @include header-style;
+}
+
+#self-replies-footer, #self-topics-footer{
+  @include footer-style;
+}

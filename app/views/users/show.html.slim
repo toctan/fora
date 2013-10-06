@@ -1,0 +1,24 @@
+#self-info.container-box.p10
+    = avatar_tag(@user, size: :large, name: false)
+    p = @user.created_at
+    p = @user.username
+    p = @user.email
+
+-if @user.topics.empty?
+  #no-reply.text-center.muted = "You haven't publish any topic"
+
+-else
+  #self-topics.container-box
+    #self-topics-header = "My topics"
+    = render @user.latest_topics
+    #self-topics-footer = link_to 'More topics', '#' if @user.more_topics?
+
+-if @user.replies.empty?
+  #no-reply.text-center.muted = "You haven't reply to any topic"
+
+-else
+  #self-replies.container-box
+    #self-replies-header = "My replies"
+    = render @user.latest_replies
+    #self-replies-footer = link_to 'More replies', '#' if @user.more_replies?
+

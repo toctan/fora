@@ -63,6 +63,24 @@ class User < ActiveRecord::Base
 
   def email_required?
     super && !avatar?
+
+  TOPICS_NUM = 10
+  REPLIES_NUM = 10
+
+  def latest_topics
+    topics.order("created_at DESC").limit(TOPICS_NUM)
+  end
+
+  def latest_replies
+    replies.order("created_at DESC").limit(REPLIES_NUM)
+  end
+
+  def more_topics?
+    topics.count > TOPICS_NUM
+  end
+
+  def more_replies?
+    replies.count > REPLIES_NUM
   end
 
   def star_topic(topic_id)
