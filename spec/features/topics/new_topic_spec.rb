@@ -12,7 +12,7 @@ feature 'New topic' do
     scenario 'Posts a new topic with blank body' do
       fill_new_topic_form
 
-      within '.topic-header .main' do
+      within '#topic-header .main' do
         expect(page).to have_selector('h3', text: topic[:title])
       end
     end

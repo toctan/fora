@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessor :login, :avatar
+  attr_accessor :login
+  attr_reader :avatar_remote_url
 
-  # Order is important. Don't change it unless carefully
+  # Order is important. Don't change it unless...
   ROLES = %w[user moderator admin]
 
   devise :database_authenticatable,
@@ -73,6 +74,11 @@ class User < ActiveRecord::Base
   def role?(base_role)
     # use compare to make pemission inherit
     ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
+
+  def avatar_remote_url=(url)
+    self.avatar = URI.parse(url)
+    @avatar_remote_url = url
   end
 
   protected
