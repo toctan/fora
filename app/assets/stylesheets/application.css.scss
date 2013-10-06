@@ -17,14 +17,26 @@ $navbarLinkColorHover: #4183C4;
   border-radius: $top $top $bottom $bottom;
 }
 
+@mixin header-background{
+  background: #f5f5f5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(whitesmoke));
+  background-image: -webkit-linear-gradient(top, white, whitesmoke);
+  background-image: -moz-linear-gradient(top, white, whitesmoke);
+  background-image: -o-linear-gradient(top, white, whitesmoke);
+  background-image: linear-gradient(to bottom, white, whitesmoke);
+}
+
+@mixin item-style{
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px;
+  margin-left: 0px;
+}
 
 // Helper
 .ml10 {
   margin-left: 10px;
 }
-.ml0 {
-  margin-left: 0px;
-}
+
 .p10 {
   padding:10px;
 }
@@ -66,5 +78,14 @@ span.time {
   font-size: 12px;
 }
 
+p.mb0{
+  margin-bottom: 0px;
+}
+
+p.indent{
+  text-indent: 2em;
+}
+
 @import 'header';
 @import 'topic';
+@import 'notification';
