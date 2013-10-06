@@ -1,7 +1,7 @@
 .row.reply-item
   .span1 = avatar_tag(reply.user, name: false)
   .span10
-    p = link_to reply.user.username
+    p = link_to reply.user.username, "#",class: "name"
     p = reply.body_html
   .span1
     a

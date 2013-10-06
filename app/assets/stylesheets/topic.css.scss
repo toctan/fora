@@ -55,6 +55,12 @@
 .reply-item {
   @include item-style;
   padding-bottom: 0px;
+
+  .span10{
+    a:not(.name) {
+      color: $linkColor;
+    }
+  }
 }
 
 .span1 {
