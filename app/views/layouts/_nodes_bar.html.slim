@@ -1,0 +1,5 @@
+ul.inline
+  - @nodes.each do |node|
+    li = link_to node.name, go_path(key: node.key)
+  - if Node.more?
+    li.more = link_to "All nodes", nodes_path

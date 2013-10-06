@@ -1,10 +1,6 @@
 #topics.container-box
   #node-bar.header
-    ul.inline
-      - @nodes.each do |node|
-        li = link_to node.name, go_path(key: node.key)
-      - if Node.more?
-        li.more = link_to "All nodes", "#"
+    = render 'layouts/nodes_bar'
   = render @topics
 
 = will_paginate @topics

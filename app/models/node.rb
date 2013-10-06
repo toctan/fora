@@ -5,6 +5,10 @@ class Node < ActiveRecord::Base
   validates :key,  presence: true
 
   def self.more?
-    Node.all.count > 15
+    Node.all.count > limit
+  end
+
+  def self.limit
+    return 15
   end
 end
