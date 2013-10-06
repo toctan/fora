@@ -12,7 +12,7 @@ module ApplicationHelper
     img << user.username if name
 
     if link
-      link_to img, '',  class: "name #{link_class}"
+      link_to img, user_path(username: user.username),  class: 'name #{link_class}'
     else
       img
     end

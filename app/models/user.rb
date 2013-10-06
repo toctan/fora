@@ -63,6 +63,7 @@ class User < ActiveRecord::Base
 
   def email_required?
     super && !avatar?
+  end
 
   TOPICS_NUM = 10
   REPLIES_NUM = 10

@@ -6,7 +6,7 @@ header.navbar.navbar-fixed-top.top-navbar
         - if user_signed_in?
           li = avatar_tag current_user, size: :thumb
           li = link_to font_icon('envelope-alt', 'large'), '/notifications',
-            class: 'notification-indicator' if current_user.new_notification?
+            class: 'notification-indicator'
           li = link_to font_icon('wrench', 'large'), edit_user_registration_path
           li = link_to font_icon('signout', 'large'), destroy_user_session_path, method: :delete
         - else

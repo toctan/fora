@@ -26,24 +26,17 @@
 }
 
 .topic-footer {
-<<<<<<< HEAD
   padding: 0 10px 0 10px;
-=======
-  @include footer-style;
->>>>>>> Finish profile page beta
 
   ul {
     margin-bottom: 0;
   }
 }
 
-<<<<<<< HEAD
 #replies-header{
   padding: 3px 10px 3px 10px;
 }
 
-=======
->>>>>>> Finish profile page beta
 .reply-item {
   @include item-style;
 
@@ -73,17 +66,7 @@ div.pagination {
   }
 }
 
-<<<<<<< HEAD
-=======
-#no-reply {
-  margin-top: 20px;
-  background: transparent;
-  border: 2px dashed rgba(0, 0, 0, 0.1);
-  height: 30px;
-}
-
->>>>>>> Finish profile page beta
-#reply {
+  #reply {
   a {
     font-size: 16px;
   }
