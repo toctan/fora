@@ -39,23 +39,21 @@ class User < ActiveRecord::Base
                             message: 'must less than 500KB'
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.username = auth.info.nickname
-      user.avatar_remote_url = auth.info.image
-      user.confirmed_at = Time.now
-    end
+    where(auth.slice(:provider, :uid)).first_or_create(
+      provider:          auth.provider,
+      uid:               auth.uid,
+      username:          auth.info.nickname,
+      avatar_remote_url: auth.info.image,
+      confirmed_at:      Time.now
+      )
   end
 
   def self.new_with_session(params, session)
-    if session['devise.user_attributes']
-      new(session['devise.user_attributes']) do |user|
+    super.tap do |user|
+      if session['devise.user_attributes']
         user.attributes = params
         user.valid?
       end
-    else
-      super
     end
   end
 
