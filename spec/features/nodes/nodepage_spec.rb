@@ -21,6 +21,6 @@ feature 'Node page' do
   scenario 'User visits index page about node' do
     visit '/nodes'
 
-    expect(page).to have_selector('#nodes p a', count: 1)
+    expect(page).to have_content('There are')
   end
 end

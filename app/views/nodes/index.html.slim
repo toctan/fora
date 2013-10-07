@@ -1,3 +1,5 @@
 #nodes.container-box
+  .header = "There are " + pluralize(@nodes.count, "node")
+
   - @nodes.each do |node|
     p = link_to node.name, go_path(key: node.key)
