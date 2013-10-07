@@ -13,11 +13,13 @@ a, h3 {
 }
 
 .container-box {
-  margin-top: 20px;
-  background: #fff;
   @include radius(3px, 3px);
   @include box-shadow(0px, 2px, 5px, 0px, rgba(0, 0, 0, 0.15));
+
+  background: #fff;
   border: 1px solid rgba(150, 150, 150, 0.6);
+
+  margin-top: 20px;
 
   .content{
     padding: 10px;
@@ -43,4 +45,8 @@ p.indent{
 
 .header{
   @include header-style;
+}
+
+.footer{
+  @include footer-style;
 }

@@ -7,8 +7,8 @@
       .meta
         span.time = @topic.created_at
         = link_to @topic.user.username
-  .topic-content.p10 = @topic.body_html
-  .topic-footer
+  #topic-content.content = @topic.body_html
+  .topic-footer.footer
     - if user_signed_in?
       = render 'layouts/tools'
 
