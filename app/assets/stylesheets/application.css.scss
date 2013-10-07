@@ -12,10 +12,8 @@ $navbarLinkColorHover: #4183C4;
 // Global
 @import 'global';
 
-.header{
-  @include header-background;
-}
 
 @import 'header';
 @import 'topic';
 @import 'notification';
+@import 'node';

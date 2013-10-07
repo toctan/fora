@@ -9,6 +9,6 @@ class Node < ActiveRecord::Base
   end
 
   def self.limit
-    return 15
+    return 10
   end
 end

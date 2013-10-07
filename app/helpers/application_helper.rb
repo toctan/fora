@@ -46,4 +46,19 @@ module ApplicationHelper
 
     image_tag(img_src, class: "img-rounded #{img_class}")
   end
+
+  def render_breadcrumb(node)
+    content_tag(:ul, class: "breadcrumb") do
+      content_tag(:li) do
+        link_to('Home', root_path) +
+        content_tag(:span, "/",class: "divider")
+      end +
+      content_tag(:li, "#{ node.key }", class: "active")
+    end
+  end
+
+  def breadcrumb_with_create_button(node)
+    link_to('Create new topic', "/new/#{ node.key }", class: 'btn btn-success btn-small pull-right mt5') +
+    render_breadcrumb(node)
+  end
 end

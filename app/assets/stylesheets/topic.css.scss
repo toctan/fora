@@ -79,7 +79,12 @@ div.pagination {
 
 #reply {
   a {
-    color: $linkColor;
     font-size: 16px;
+  }
+}
+
+#node-bar{
+  a{
+    font-weight: bold;
   }
 }

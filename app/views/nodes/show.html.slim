@@ -1,3 +1,7 @@
-#topics.container-box = render @topics
+#topics.container-box
+  .header
+    = breadcrumb_with_create_button(@node)
+
+  = render @topics
 
 = will_paginate @topics
