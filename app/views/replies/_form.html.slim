@@ -1,5 +1,5 @@
 .header
-  p.title Make a new reply
+  span = "Make a new reply"
 .content
   = simple_form_for [@topic, @topic.replies.build] do |f|
     = f.text_area :body,   class: 'input-block-level', rows: 8

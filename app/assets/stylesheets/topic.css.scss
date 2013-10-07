@@ -16,10 +16,6 @@
   }
 }
 
-#replies-header, #topic-header {
-  @include header-background;
-}
-
 .topic-header {
   h3 {
     margin: 0px;
@@ -48,8 +44,8 @@
   }
 }
 
-#replies-header {
-  padding:0 10px 0 10px;
+#reply-header{
+  padding: 3px 10px 3px 10px;
 }
 
 .reply-item {
