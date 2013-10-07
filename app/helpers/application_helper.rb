@@ -61,4 +61,14 @@ module ApplicationHelper
     link_to('Create new topic', "/new/#{ node.key }", class: 'btn btn-success btn-small pull-right mt5') +
     render_breadcrumb(node)
   end
+
+  def notice_message
+    flash_messages = []
+    flash.each do |type, message|
+      type = :success if type == :notice
+      text = content_tag(:div, link_to("x", "#", :class => "close", "data-dismiss" => "alert") + message, :class => "alert fade in alert-#{type}")
+      flash_messages << text if message
+    end
+    flash_messages.join("\n").html_safe
+  end
 end

@@ -26,9 +26,9 @@ feature 'Homepage' do
     expect(page).not_to have_selector('#user-links .icon-signin')
   end
 
-  scenario 'Visitor can only see 15 nodes' do
-    expect(page).to have_selector("#node-bar li:not(.more) a", count: 15)
+  scenario 'Visitor can only see 10 nodes' do
+    expect(page).to have_selector("#node-bar li a:not(.btn)", count: 10)
 
-    expect(page).to have_selector("#node-bar li.more a", count: 1)
+    expect(page).to have_selector("#node-bar li a.btn", count: 1)
   end
 end
