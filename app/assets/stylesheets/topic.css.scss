@@ -2,8 +2,9 @@
   @include item-style;
 
   .count {
-    background: #bbb;
     @include radius(8px, 8px);
+
+    background: #bbb;
     text-align: center;
   }
 }
@@ -16,28 +17,17 @@
   }
 }
 
-#replies-header, #topic-header {
-  @include header-background;
-}
-
 .topic-header {
   h3 {
     margin: 0px;
   }
 }
 
-.topic-content {
+#topic-content {
   padding-top: 20px;
 }
 
 .topic-footer {
-  background: #eeeeee;
-  background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
-  background: -webkit-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: -o-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: -ms-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: linear-gradient(to bottom, #eeeeee 0%, #cccccc 100%);
   padding: 0 10px 0 10px;
 
   ul {
@@ -48,12 +38,13 @@
   }
 }
 
-#replies-header {
-  padding:0 10px 0 10px;
+#replies-header{
+  padding: 3px 10px 3px 10px;
 }
 
 .reply-item {
   @include item-style;
+
   padding-bottom: 0px;
 
   .span10{
@@ -91,8 +82,4 @@ div.pagination {
     color: $linkColor;
     font-size: 16px;
   }
-}
-
-#new_reply, #new_topic {
-  margin: 0;
 }

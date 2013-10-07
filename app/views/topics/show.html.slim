@@ -1,14 +1,14 @@
 / TODO: Ugly view code
 #topic-detail.container-box
-  #topic-header.p10
+  #topic-header.header
     = avatar_tag(@topic.user, name: false, img_class: "pull-right")
     .main
       h3 = @topic.title
       .meta
         span.time = @topic.created_at
         = link_to @topic.user.username
-  .topic-content.p10 = @topic.body_html
-  .topic-footer
+  #topic-content.content = @topic.body_html
+  .topic-footer.footer
     - if user_signed_in?
       = render 'layouts/tools'
 
@@ -16,12 +16,12 @@
     #no-reply.text-center.muted  there is no reply currently
 - else
     #replies.container-box
-      #replies-header = pluralize(@topic.replies_count, "reply")
+      #replies-header.header = pluralize(@topic.replies_count, "reply")
       = render @replies
 
 = will_paginate @replies
 
-#reply.container-box.p10
+#reply.container-box
   -if user_signed_in?
     = render 'replies/form'
   -else
