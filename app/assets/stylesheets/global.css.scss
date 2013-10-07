@@ -1,7 +1,7 @@
 body {
   padding-top: $navbarHeight;
   background: #e3e3e3;
-  background: transparent url("/assets/background.png") repeat scroll 0 0;
+  background: $body-background;
 }
 
 a, h3 {
@@ -50,4 +50,8 @@ p.indent{
 
 .footer{
   @include footer-style;
+}
+
+.empty{
+  @include empty-style;
 }

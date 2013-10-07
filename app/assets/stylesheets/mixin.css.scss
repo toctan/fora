@@ -45,4 +45,20 @@
   background: -o-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
   background: -ms-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
   background: linear-gradient(to bottom, #eeeeee 0%, #cccccc 100%);
+
+  .row{
+    margin-left: 0px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #666;
+  }
+}
+
+@mixin empty-style{
+  background: $body-background;
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-top: 30px;
 }

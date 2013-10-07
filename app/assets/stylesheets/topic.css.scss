@@ -33,9 +33,6 @@
   ul {
     margin-bottom: 0;
   }
-  a {
-    text-decoration: none;
-  }
 }
 
 #replies-header{
@@ -69,12 +66,6 @@ div.pagination {
   li:last-child {
     display: none;
   }
-}
-
-#no-reply {
-  background: transparent;
-  border: 2px dashed rgba(0, 0, 0, 0.1);
-  height: 30px;
 }
 
 #reply {

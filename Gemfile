@@ -17,7 +17,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'slim-rails'
 
 gem 'bootstrap-sass'
-gem 'bootstrap_helper'
 gem 'auto_html', github: 'toctan/auto_html'
 
 gem 'devise'
