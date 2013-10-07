@@ -3,6 +3,8 @@ html
   head
     title = t('site.name')
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    / keep this under application.css to keep font-awesome clean from bootstrap
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css", rel: "stylesheet"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   body
