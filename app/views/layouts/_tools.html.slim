@@ -1,8 +1,13 @@
-ul.inline
-  - if stared?
-    li = link_to font_icon("star"), unstar_topic_path(@topic), id: "unstar", method: :patch
-  - else
-    li = link_to font_icon("star-empty"), star_topic_path(@topic), id: "star", method: :patch
+.row.ml0
+  .span11 = render 'layouts/social_share'
 
-  - if can? :destroy, @topic
-    li = link_to font_icon("trash"), topic_path(@topic), id: "delete", method: :delete
+  .span1
+    - if user_signed_in?
+      ul.inline.pull-right
+        - if stared?
+          li = link_to font_icon("star"), unstar_topic_path(@topic), id: "unstar", method: :patch
+        - else
+          li = link_to font_icon("star-empty"), star_topic_path(@topic), id: "star", method: :patch
+
+        - if can? :destroy, @topic
+          li = link_to font_icon("trash"), topic_path(@topic), id: "delete", method: :delete
