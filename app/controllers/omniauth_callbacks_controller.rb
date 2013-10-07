@@ -13,4 +13,8 @@ class OmniauthCallbacksController < ApplicationController
 
   alias_method :twitter, :all
   alias_method :weibo,   :all
+
+  def failure
+    redirect_to root_url, error: params[:message]
+  end
 end
