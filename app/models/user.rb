@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
       )
   end
 
+  # override devise method
   def self.new_with_session(params, session)
     super.tap do |user|
       if session['devise.user_attributes']
@@ -61,6 +62,7 @@ class User < ActiveRecord::Base
     super && provider.blank?
   end
 
+  # require email if avatar is not available
   def email_required?
     super && !avatar?
   end
