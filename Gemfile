@@ -20,6 +20,8 @@ gem 'bootstrap-sass'
 gem 'auto_html', github: 'toctan/auto_html'
 
 gem 'devise'
+gem 'omniauth-twitter'
+gem 'omniauth-weibo-oauth2'
 gem 'cancan'
 gem 'simple_form'
 gem 'will_paginate'
