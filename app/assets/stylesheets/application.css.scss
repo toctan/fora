@@ -24,34 +24,12 @@
 @import 'global';
 
 
-@import 'header';
 @import 'topic';
 @import 'notification';
 @import 'node';
 
-
-// todo put this in somewhere properly
-#hottest{
-  .header{
-    padding: 0 10px 0 5px;
-  }
-
-  ul{
-    list-style: none;
-
-    margin-left: 0;
-    margin-bottom: 0;
-  }
-
-  .row{
-    margin-left: 0px;
-  }
-}
-.hottest-item{
-  @include item-style;
-  padding: 1px 5px 1px 5px;
-
-  img{
-    margin-top: 3px;
-  }
-}
+@import 'layouts/header_bar';
+@import 'layouts/hottest_bar';
+@import 'layouts/tools_bar';
+@import 'layouts/nodes_bar';
+@import 'layouts/pagination';
