@@ -44,8 +44,11 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.after(:all) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   config.infer_base_class_for_anonymous_controllers = false
 
   config.order = 'random'
-
 end
