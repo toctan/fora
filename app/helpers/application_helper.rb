@@ -63,6 +63,10 @@ module ApplicationHelper
     render_breadcrumb(node)
   end
 
+  def time_ago_in_words(time)
+    super(time) + " ago"
+  end
+
   def notice_message
     flash_messages = []
     flash.each do |type, message|
