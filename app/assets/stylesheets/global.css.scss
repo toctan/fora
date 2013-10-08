@@ -50,8 +50,16 @@ p.indent{
 
 .footer{
   @include footer-style;
+
+  a{
+    color: #666;
+  }
 }
 
 .empty{
   @include empty-style;
+}
+
+.row{
+  margin-left: 0px;
 }

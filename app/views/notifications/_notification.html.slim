@@ -2,8 +2,8 @@
   .span1 = avatar_tag notification.user, name: false
   .span8
     p = link_to notification.topic.title, topic_path(notification.topic), class: "title"
-    p.mb0 = link_to(notification.user.username, "#", class: "muted")  + ":"
+    p.mb0 = link_to(notification.user.username, user_path(username: notification.user.username), class: "muted")  + ":"
     p.indent = notification.body
   .span3.muted
-    small = time_ago_in_words(notification.created_at) + " ago"
+    small = time_ago_in_words(notification.created_at)
     p.hide = link_to 'Delete', notification_path(notification), method: :delete

@@ -3,6 +3,6 @@
   .span10
     = link_to topic.title, topic
     p
-      = link_to topic.user.username
+      = link_to topic.user.username, user_path(username: topic.user.username)
   .span1
     .count = topic.replies_count
