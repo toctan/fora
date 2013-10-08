@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   def self.new_with_session(params, session)
     super.tap do |user|
       if session['devise.user_attributes']
-        user.attributes = params
+        user.attributes = session['devise.user_attributes']
         user.valid?
       end
     end

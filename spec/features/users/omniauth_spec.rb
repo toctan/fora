@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Users get authenticated' do
+feature 'Third party signin' do
   scenario 'via twitter' do
     mock_auth(:twitter)
     visit user_omniauth_authorize_url(:twitter)
@@ -15,7 +15,16 @@ feature 'Users get authenticated' do
     expect(page).to have_flash_message 'authenticated from weibo'
   end
 
-  scenario 'failure' do
+  scenario 'when the username has been taken' do
+    create(:user, username: 'nick')
+    mock_auth(:twitter)
+    visit user_omniauth_authorize_url(:twitter)
+
+    expect(page).to have_selector('.form-inputs input', count: 1)
+    expect(page).to have_inline_help 'has already been taken'
+  end
+
+  scenario 'authrozation failed' do
     pending
     # TODO: omniauth does not fail with this message why?
     OmniAuth.config.mock_auth[:twitter] = :invalid_credentials
