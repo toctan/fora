@@ -21,10 +21,17 @@ describe User do
   it { should ensure_inclusion_of(:role).in_array(%w[admin moderator user]) }
   its(:role) { should == 'user' }
 
+
   describe "when username's format is invalid" do
     before { user.username = '@#123' }
 
     it { should_not be_valid }
+  end
+
+  describe "when username contain underscore" do
+    before { user.username = 'a_b_c_d_e_f' }
+
+    it { should be_valid }
   end
 
   describe '#star_topic' do

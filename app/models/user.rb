@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   # Username
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
-                       format: { with: /\A[A-Za-z\d]+\Z/ },
+                       format: { with: /\A[A-Za-z_\d]+\Z/ },
                        length: { maximum: 17 }
 
   # Avatar
