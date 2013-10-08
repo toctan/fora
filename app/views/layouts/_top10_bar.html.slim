@@ -1,8 +1,8 @@
-#hottest.container-box
+#top10.container-box
   .header
-    span.muted = "hottest topics today"
+    span.muted = "Top 10 topics today"
   ul
-    - @hottest.each do |item|
+    - @top10.each do |item|
       li.hottest-item
         .row.ml0
           .span2 = avatar_tag(item.user, name: false, size: :thumb)

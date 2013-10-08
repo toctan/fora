@@ -46,15 +46,12 @@ p.indent{
 
 .header{
   @include header-style;
-  @include radius(5px, 5px);
+  @include radius(5px, 0px);
 }
 
 .footer{
   @include footer-style;
-
-  a{
-    color: #666;
-  }
+  @include radius(0px, 5px);
 }
 
 .empty{

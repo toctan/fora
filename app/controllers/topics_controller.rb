@@ -8,6 +8,8 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.page(params[:page]).includes(:user)
     @nodes = Node.take(Node.limit)
+
+    @top10 = Topic.top10
   end
 
   def show
