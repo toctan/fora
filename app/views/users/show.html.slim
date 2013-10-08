@@ -1,0 +1,46 @@
+#self-info.container-box.p10
+    .row
+      .span2 = avatar_tag(@user, size: :large, name: false)
+      .span10
+        h3 = @user.username
+        p = font_icon('envelope') + "  " + @user.email
+        span.time
+          = "Signed up at "
+          = time_tag(@user.created_at)
+
+-if @user.topics.empty?
+  #no-reply.text-center.muted = "You haven't publish any topic"
+
+-else
+  #self-topics.container-box
+    .header = pluralize(@user.topics.count, 'topic')
+    table.table.table-hover
+      tr
+        th = "Title"
+        th = "Replies"
+        th = "Time"
+      - @user.topics.each do |topic|
+        tr
+          td = link_to topic.title, topic_path(topic)
+          td = topic.replies_count
+          td
+            span.time = time_ago_in_words(topic.created_at)
+
+-if @user.replies.empty?
+  .hero-unit.empty = "You haven't reply to any topic"
+
+-else
+  #self-replies.container-box
+    .header = pluralize(@user.replies.count, 'reply')
+    table.table
+      - @user.replies.each do |reply|
+        tr.success
+          td.muted = "Replied topic"
+          td
+            = link_to reply.topic.title, topic_path(reply.topic)
+            span.muted = "By"
+            = avatar_tag(reply.topic.user, size: :thumb)
+        tr
+          td
+            span.time= time_ago_in_words(reply.created_at)
+          td = reply.body_html
