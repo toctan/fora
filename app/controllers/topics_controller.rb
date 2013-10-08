@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.page(params[:page]).includes(:user)
-    @nodes = Node.all.limit(Node.limit)
+    @nodes = Node.take(Node.limit)
   end
 
   def show

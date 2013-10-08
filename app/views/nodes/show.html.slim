@@ -2,10 +2,8 @@
   .header
     = breadcrumb_with_create_button(@node)
 
-  - if @topics
-    = render @topics
+  = render @topics if @topics
 
-- if @topics.empty?
-  .hero-unit.empty = "No topic in this node yet"
+.hero-unit.empty = "No topic in this node yet" if @topics.empty?
 
 = will_paginate @topics
