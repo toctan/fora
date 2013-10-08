@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20130928044358) do
     t.datetime "updated_at"
   end
 
+  add_index "nodes", ["key"], name: "index_nodes_on_key", unique: true, using: :btree
+
   create_table "notifications", force: true do |t|
     t.integer  "user_id"
     t.integer  "reply_id"

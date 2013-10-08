@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :node do
-    name 'node'
+    sequence(:name) { |n| "node#{n}" }
     key  { "#{name}" }
   end
 end
