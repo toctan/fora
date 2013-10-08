@@ -52,10 +52,6 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
-    bootstrap_helper (4.2.2.3)
-      railties (= 4.0.0)
-      thor (~> 0.14)
-      will_paginate (>= 3.0.3)
     builder (3.1.4)
     callsite (0.0.11)
     cancan (1.6.10)
@@ -104,9 +100,6 @@ GEM
       railties (>= 3.0.0)
     ffaker (1.19.0)
     ffi (1.9.0)
-    font-awesome-sass-rails (3.0.2.2)
-      railties (>= 3.1.1)
-      sass-rails (>= 3.1.1)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
@@ -275,7 +268,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
-  bootstrap_helper
   cancan
   capybara
   capybara-webkit
@@ -284,7 +276,6 @@ DEPENDENCIES
   devise
   factory_girl_rails
   ffaker
-  font-awesome-sass-rails
   foreman
   guard-livereload
   guard-rspec

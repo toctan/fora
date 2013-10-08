@@ -1,7 +1,7 @@
 body {
   padding-top: $navbarHeight;
   background: #e3e3e3;
-  background: transparent url("/assets/background.png") repeat scroll 0 0;
+  background: $body-background;
 }
 
 a, h3 {
@@ -24,15 +24,16 @@ a, h3 {
   .content{
     padding: 10px;
   }
-
-  a {
-    color: #666;
-  }
 }
 
 span.time {
   margin-right: 10px;
   font-size: 12px;
+}
+
+ul.breadcrumb{
+  margin-bottom: 0px;
+  background: none;
 }
 
 p.mb0{
@@ -49,4 +50,8 @@ p.indent{
 
 .footer{
   @include footer-style;
+}
+
+.empty{
+  @include empty-style;
 }

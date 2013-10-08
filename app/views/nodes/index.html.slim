@@ -1,0 +1,6 @@
+#nodes.container-box
+  .header.muted = "There are " + pluralize(@nodes.count, "node")
+
+  .content
+    - @nodes.each do |node|
+      span.item = link_to node.name, go_path(key: node.key)

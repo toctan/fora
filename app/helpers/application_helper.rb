@@ -46,4 +46,54 @@ module ApplicationHelper
 
     image_tag(img_src, class: "img-rounded #{img_class}")
   end
+
+  def render_breadcrumb(node)
+    content_tag(:ul, class: "breadcrumb") do
+      content_tag(:li) do
+        link_to('Home', root_path) +
+        content_tag(:span, "/",class: "divider")
+      end +
+      content_tag(:li, "#{ node.key }", class: "active")
+    end
+  end
+
+  def breadcrumb_with_create_button(node)
+    link_to('Create new topic', "/new/#{ node.key }", class: 'btn btn-success btn-small pull-right mt5') +
+    render_breadcrumb(node)
+  end
+
+  def notice_message
+    flash_messages = []
+    flash.each do |type, message|
+      type = :success if type == :notice
+      text = content_tag(:div, link_to("x", "#", :class => "close", "data-dismiss" => "alert") + message, :class => "alert fade in alert-#{type}")
+      flash_messages << text if message
+    end
+    flash_messages.join("\n").html_safe
+  end
+
+  def will_paginate(collection = nil, options = {})
+    options[:renderer] ||= BootstrapLinkRenderer
+    super.try :html_safe
+  end
+
+  class BootstrapLinkRenderer < WillPaginate::ActionView::LinkRenderer
+    protected
+
+    def html_container(html)
+      tag :div, tag(:ul, html), container_attributes
+    end
+
+    def page_number(page)
+      tag :li, link(page, page, :rel => rel_value(page)), :class => ('active' if page == current_page)
+    end
+
+    def previous_or_next_page(page, text, classname)
+      tag :li, link(text, page || '#'), :class => [classname[0..3], classname, ('disabled' unless page)].join(' ')
+    end
+
+    def gap
+      tag :li, link(super, '#'), :class => 'disabled'
+    end
+  end
 end

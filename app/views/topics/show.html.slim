@@ -10,15 +10,14 @@
 
   #topic-content.content = @topic.body_html
   .topic-footer.footer
-    - if user_signed_in?
-      = render 'layouts/tools'
+    = render 'layouts/tools'
 
 - if @replies.empty?
-    #no-reply.text-center.muted  there is no reply currently
+  .empty.hero-unit = "there is no reply currently"
 - else
-    #replies.container-box
-      #replies-header.header = pluralize(@topic.replies_count, "reply")
-      = render @replies
+  #replies.container-box
+    #replies-header.header = pluralize(@topic.replies_count, "reply")
+    = render @replies
 
 = will_paginate @replies
 

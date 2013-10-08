@@ -1,3 +1,6 @@
-#topics.container-box = render @topics
+#topics.container-box
+  #node-bar.header
+    = render 'layouts/nodes_bar'
+  = render @topics
 
 = will_paginate @topics

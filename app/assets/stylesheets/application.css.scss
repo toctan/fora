@@ -1,5 +1,5 @@
-$navbarLinkColor: #333333;
-$navbarLinkColorHover: #4183C4;
+// Variable
+@import 'variable';
 
 @import 'bootstrap';
 
@@ -12,6 +12,8 @@ $navbarLinkColorHover: #4183C4;
 // Global
 @import 'global';
 
+
 @import 'header';
 @import 'topic';
 @import 'notification';
+@import 'node';
