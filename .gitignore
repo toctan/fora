@@ -26,4 +26,6 @@ config/database.yml
 # vagrant
 .vagrant/
 Vagrantfile
+
 TAGS
+.env

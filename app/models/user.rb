@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   ROLES = %w[user moderator admin]
 
   devise :database_authenticatable,
+         :omniauthable,
          :registerable,
          :recoverable,
          :rememberable,
@@ -37,6 +38,33 @@ class User < ActiveRecord::Base
                             less_than: 500.kilobytes,
                             message: 'must less than 500KB'
 
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create(
+      provider:          auth.provider,
+      uid:               auth.uid,
+      username:          auth.info.nickname,
+      avatar_remote_url: auth.info.image,
+      confirmed_at:      Time.now
+      )
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if session['devise.user_attributes']
+        user.attributes = params
+        user.valid?
+      end
+    end
+  end
+
+  def password_required?
+    super && provider.blank?
+  end
+
+  def email_required?
+    super && !avatar?
+  end
+
   def star_topic(topic_id)
     return if stars.include?(topic_id)
     stars_will_change!
@@ -62,12 +90,11 @@ class User < ActiveRecord::Base
   end
 
   def update_with_password(params = {})
-    if !params[:current_password].blank? or !params[:password].blank? or
-        !params[:password_confirmation].blank?
-      super
-    else
+    if params[:password].blank? && params[:password_confirmation].blank?
       params.delete(:current_password)
       update_without_password(params)
+    else
+      super
     end
   end
 

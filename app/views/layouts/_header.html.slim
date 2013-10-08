@@ -12,3 +12,5 @@ header.navbar.navbar-fixed-top.top-navbar
         - else
           li = link_to 'sign up', new_user_registration_path
           li = link_to font_icon('signin', 'large'), new_user_session_path
+          li = link_to font_icon('twitter', 'large'), user_omniauth_authorize_path(:twitter)
+          li = link_to font_icon('weibo', 'large'), user_omniauth_authorize_path(:weibo)

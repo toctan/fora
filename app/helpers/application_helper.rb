@@ -1,5 +1,6 @@
 module ApplicationHelper
   def avatar_tag(user, opts = {})
+    # TODO: method too long...
     link = opts.include?(:link) ? opts[:link] : true
     name = opts.include?(:name) ? opts[:name] : true
     size =  opts[:size] || :normal

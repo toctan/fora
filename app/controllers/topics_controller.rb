@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :find_topic, only: [:show, :destroy]
+
   load_and_authorize_resource
 
   def index
@@ -9,7 +11,6 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id])
     @replies = @topic.replies.page(params[:page]).includes(:user)
   end
 
@@ -34,12 +35,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find(params[:id])
-
-    if @topic.destroy
-      flash[:notice] = 'Delete topic successfully'
-      redirect_to root_url
-    end
+    redirect_to root_url, notice: 'Delete topic successfully' if @topic.destroy
   end
 
   def star
@@ -58,5 +54,9 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:title, :body)
+  end
+
+  def find_topic
+    @topic = Topic.find(params[:id])
   end
 end
