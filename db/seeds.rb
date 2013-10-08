@@ -8,6 +8,8 @@ user = FactoryGirl.create(:confirmed_user,
 
 p ' > primary node ...'
 
+nodes = FactoryGirl.create_list(:node, 20)
+
 node = FactoryGirl.create(:node, name: 'fora')
 
 FactoryGirl.create_list(:topic, 10, user: user, node: node)

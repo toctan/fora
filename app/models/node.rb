@@ -3,4 +3,12 @@ class Node < ActiveRecord::Base
 
   validates :name, presence: true
   validates :key,  presence: true
+
+  def self.more?
+    Node.count > limit
+  end
+
+  def self.limit
+    return 10
+  end
 end

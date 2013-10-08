@@ -2,6 +2,7 @@ require 'spec_helper'
 
 feature 'Homepage' do
   before(:all) do
+    create_list(:node, 20)
     create(:user) do |user|
       create_list(:topic, 21, user: user)
     end
@@ -23,5 +24,11 @@ feature 'Homepage' do
   scenario 'Signed in user visits homepage', :signin do
     expect(page).to have_selector('#user-links .icon-signout')
     expect(page).not_to have_selector('#user-links .icon-signin')
+  end
+
+  scenario 'Visitor can only see 10 nodes' do
+    expect(page).to have_selector("#node-bar li a:not(.btn)", count: 10)
+
+    expect(page).to have_selector("#node-bar li a.btn", count: 1)
   end
 end

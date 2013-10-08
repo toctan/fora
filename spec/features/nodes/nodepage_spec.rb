@@ -12,9 +12,15 @@ feature 'Node page' do
     end
   end
 
-  scenario 'User visits an existed node' do
+  scenario 'User visits an unexisted node' do
     visit '/go/unexisted'
 
     expect(page).to have_flash_message('No such node', 'alert')
+  end
+
+  scenario 'User visits index page about node' do
+    visit '/nodes'
+
+    expect(page).to have_content('There are')
   end
 end
