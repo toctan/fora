@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'visit user profile' do
+feature 'User profile page' do
   let(:user) { create(:confirmed_user) }
   before do
     create_list(:topic, 30, user: user)
@@ -9,9 +9,9 @@ feature 'visit user profile' do
     visit user_path(user.username)
   end
 
-  scenario 'by unsigned user' do
+  scenario "Visitor sees all the user's topics and repies" do
     expect(page).to have_content(user.username)
-    expect(page).to have_selector("#self-topics tr", count: 31)
-    expect(page).to have_selector("#self-replies tr", count: 50)
+    expect(page).to have_selector('#self-topics tr', count: 31)
+    expect(page).to have_selector('#self-replies tr', count: 50)
   end
 end
