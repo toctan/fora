@@ -14,3 +14,7 @@ script: xvfb-run rake
 
 notifications:
   email: false
+
+addons:
+  code_climate:
+    repo_token: 85d9258a24758e9dd5ed205063cf141c06e9af368194afcfd719440794ab227b

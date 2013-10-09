@@ -7,6 +7,8 @@ feature 'Node page' do
   scenario 'User visits an existed node' do
     visit go_path(node.key)
 
+    expect(page).to have_selector('ul.breadcrumb')
+
     within '#topics' do
       expect(page).to have_selector('.topic-item', count: 8)
     end
@@ -16,11 +18,5 @@ feature 'Node page' do
     visit '/go/unexisted'
 
     expect(page).to have_flash_message('No such node', 'alert')
-  end
-
-  scenario 'User visits index page about node' do
-    visit '/nodes'
-
-    expect(page).to have_content('There are')
   end
 end
