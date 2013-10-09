@@ -7,6 +7,10 @@ feature 'Homepage' do
     end
   end
 
+  after(:all) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   before(:each) { visit root_path }
 
   scenario 'Visitor browses topics' do
