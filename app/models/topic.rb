@@ -14,6 +14,7 @@ class Topic < ActiveRecord::Base
   validates :node_id, presence: true
 
   default_scope -> { order('updated_at DESC') }
+  scope :top10, -> { order('replies_count DESC').limit(10) }
 
   self.per_page = 20
 

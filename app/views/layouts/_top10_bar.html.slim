@@ -1,0 +1,11 @@
+#top10.container-box
+  .header
+    span.muted = "Top 10 topics today"
+  ul
+    - @top10.each do |item|
+      li.hottest-item
+        .row.ml0
+          .span2 = avatar_tag(item.user, name: false, size: :thumb)
+          .span10
+            small = link_to item.title, topic_path(item)
+  .footer
