@@ -13,6 +13,8 @@ class Topic < ActiveRecord::Base
   validates :user_id, presence: true
   validates :node_id, presence: true
 
+  delegate :username, to: :user
+
   default_scope -> { order('updated_at DESC') }
   scope :top10, -> { order('replies_count DESC').limit(10) }
 

@@ -3,5 +3,7 @@ class Notification::Base < ActiveRecord::Base
 
   belongs_to :user
 
+  delegate :username, to: :user
+
   scope :unread, -> { where(is_read: false) }
 end

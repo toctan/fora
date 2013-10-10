@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def username_tag(username)
+    link_to username, user_path(username), class: 'name'
+  end
+
   def avatar_tag(user, size = :normal, opts = {})
     img = avatar_img(user, size, opts[:img_class])
 

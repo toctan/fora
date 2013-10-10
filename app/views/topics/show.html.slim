@@ -6,7 +6,7 @@
       h3 = @topic.title
       .meta
         span.time = @topic.created_at
-        = link_to @topic.user.username, user_path(username: @topic.user.username)
+        = username_tag @topic.username
 
   #topic-content.content = @topic.body_html
   .topic-footer.footer
