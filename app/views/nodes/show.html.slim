@@ -1,9 +1,4 @@
 #topics.container-box
-  .header
-    = breadcrumb_with_create_button(@node)
-
-  = render @topics if @topics
-
-.hero-unit.empty = "No topic in this node yet" if @topics.empty?
+  = render @topics
 
 = will_paginate @topics

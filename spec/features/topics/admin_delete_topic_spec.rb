@@ -9,6 +9,7 @@ feature 'Admin' do
   end
 
   scenario 'deletes a topic' do
+    pending
     expect { click_link 'delete' }.to change(Topic, :count).by(-1)
 
     expect(page).to have_flash_message 'Delete topic successfully'

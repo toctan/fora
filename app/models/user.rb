@@ -22,17 +22,14 @@ class User < ActiveRecord::Base
                              path:   ':rails_root/public/uploads/assets/users/:id/:style/:filename',
                              url:    '/uploads/assets/users/:id/:style/:filename'
 
-  # Role
   validates :role, presence: true,
                    inclusion: { in: ROLES }
 
-  # Username
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
                        format: { with: /\A[A-Za-z_\d]+\Z/ },
                        length: { maximum: 17 }
 
-  # Avatar
   validates_attachment_content_type :avatar, content_type: ['image/png', 'image/jpeg']
   validates_attachment_size :avatar,
                             less_than: 500.kilobytes,
@@ -48,7 +45,6 @@ class User < ActiveRecord::Base
       )
   end
 
-  # override devise method
   def self.new_with_session(params, session)
     super.tap do |user|
       if session['devise.user_attributes']
@@ -62,21 +58,8 @@ class User < ActiveRecord::Base
     super && provider.blank?
   end
 
-  # require email if avatar is not available
   def email_required?
     super && !avatar?
-  end
-
-  def star_topic(topic_id)
-    return if stars.include?(topic_id)
-    stars_will_change!
-    update_attributes(stars: stars << topic_id)
-  end
-
-  def unstar_topic(topic_id)
-    return unless stars.include?(topic_id)
-    stars_will_change!
-    update_attributes(stars: stars - [topic_id])
   end
 
   def new_notification?

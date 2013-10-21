@@ -34,44 +34,6 @@ describe User do
     it { should be_valid }
   end
 
-  describe '#star_topic' do
-    let(:user) { create(:confirmed_user) }
-    let(:topic) { create(:topic) }
-
-    it 'star a new topic' do
-      expect do
-        user.star_topic(topic.id)
-      end.to change { user.stars.length }.from(0).to(1)
-    end
-
-    it 'star a stared topic' do
-      user.star_topic(topic.id)
-
-      expect do
-        user.star_topic(topic.id)
-      end.not_to change { user.stars.length }
-    end
-  end
-
-  describe '#unstar_topic' do
-    let(:user) { create(:confirmed_user) }
-    let(:topic) { create(:topic) }
-
-    it 'unstar a stared topic' do
-      user.star_topic(topic.id)
-
-      expect { user.unstar_topic(topic.id) }.to change {
-        user.stars.length
-      }.from(1).to(0)
-    end
-
-    it 'unstar a unstared topic' do
-      expect do
-        user.unstar_topic(topic.id)
-      end.not_to change { user.stars.length }
-    end
-  end
-
   describe 'Notifications' do
     before { create_list(:notification_mention, 3, user: user) }
 
