@@ -1,7 +1,7 @@
 / TODO: Ugly view code
 #topic-detail.container-box
   #topic-header.header
-    = avatar_tag(@topic.user, name: false, img_class: "pull-right")
+    = avatar_tag @topic.user
     .main
       h3 = @topic.title
       .meta
