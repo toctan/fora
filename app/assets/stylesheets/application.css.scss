@@ -1,0 +1,21 @@
+@import "normalize";
+@import "semantic-ui";
+@import "bourbon";
+
+@import "header";
+
+$font-stack: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei",
+             "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+$primary-color: #3C3C3C;
+$base-line-height: 1.5rem;
+
+body {
+  font: 1rem/1.5 $font-stack;
+  color: $primary-color;
+  background: #f0f0f0 url(/assets/bg.gif) repeat;
+  padding-top: 4.5rem;
+}
+
+a {
+  text-decoration: none;
+}

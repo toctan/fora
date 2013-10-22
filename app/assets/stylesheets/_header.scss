@@ -1,0 +1,24 @@
+header.main.menu {
+  top: 0;
+  height: 3rem;
+  box-shadow: 0 1px 4px rgba(#000, 0.2);
+
+  .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .item {
+    padding: 0 1rem;
+    line-height: 3rem;
+  }
+
+  .dropdown .item {
+    line-height: 1;
+  }
+
+  .name img {
+    margin: 12px 0;
+    float: left;
+  }
+}

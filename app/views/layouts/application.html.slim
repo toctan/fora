@@ -7,5 +7,7 @@ html
     = csrf_meta_tags
   body
     = render "layouts/header"
-    = notice_message
-    = yield
+    .ui.two.column.page.grid
+      .column
+        = notice_message
+        = yield
