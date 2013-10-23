@@ -2,9 +2,6 @@ class User < ActiveRecord::Base
   attr_accessor :login
   attr_reader :avatar_remote_url
 
-  # Order is important. Don't change it unless...
-  ROLES = %w[user moderator admin]
-
   devise :database_authenticatable,
          :omniauthable,
          :registerable,
@@ -21,9 +18,6 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: { normal: '40x40>', thumb: '22x22>' },
                              path:   ':rails_root/public/uploads/assets/users/:id/:style/:filename',
                              url:    '/uploads/assets/users/:id/:style/:filename'
-
-  validates :role, presence: true,
-                   inclusion: { in: ROLES }
 
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
@@ -81,11 +75,6 @@ class User < ActiveRecord::Base
     else
       super
     end
-  end
-
-  def role?(base_role)
-    # use compare to make pemission inherit
-    ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
   def avatar_remote_url=(url)

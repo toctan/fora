@@ -17,7 +17,7 @@ feature 'New topic' do
       end
     end
 
-    scenario 'Posts a new topic with a youtube wideo', :js do
+    scenario 'Posts a new topic with a youtube video', :js do
       pending 'fuck GFW'
       fill_new_topic_form('http://www.youtube.com/watch?v=eIZTMVNBjc4')
 
@@ -26,7 +26,7 @@ feature 'New topic' do
       end
     end
 
-    scenario 'Posts a new topic with a youku wideo' do
+    scenario 'Posts a new topic with a youku video' do
       fill_new_topic_form('http://v.youku.com/v_show/id_XNDk0MTU1OTIw')
 
       expect(page).to have_selector('//*[@id="topic-detail"]/div[2]/p/embed')

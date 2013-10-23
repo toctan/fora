@@ -3,7 +3,6 @@ require 'spec_helper'
 describe User do
   subject(:user) { build(:user) }
 
-  it { should respond_to(:role) }
   it { should respond_to(:username) }
 
   it { should respond_to(:replies_count) }
@@ -15,11 +14,6 @@ describe User do
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username).case_insensitive }
   it { should ensure_length_of(:username).is_at_most(17) }
-
-  it { should validate_presence_of(:role) }
-  it { should ensure_inclusion_of(:role).in_array(%w[admin moderator user]) }
-  its(:role) { should == 'user' }
-
 
   describe "when username's format is invalid" do
     before { user.username = '@#123' }

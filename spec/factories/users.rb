@@ -8,7 +8,7 @@ FactoryGirl.define do
       confirmed_at Time.now
 
       factory :admin do
-        role 'admin'
+        admin true
       end
     end
 
