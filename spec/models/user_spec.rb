@@ -3,7 +3,6 @@ require 'spec_helper'
 describe User do
   subject(:user) { build(:user) }
 
-  it { should respond_to(:stars) }
   it { should respond_to(:role) }
   it { should respond_to(:username) }
 

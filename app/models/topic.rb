@@ -16,9 +16,15 @@ class Topic < ActiveRecord::Base
   delegate :username, to: :user
 
   default_scope -> { order('updated_at DESC') }
-  scope :top10, -> { order('replies_count DESC').limit(10) }
 
   self.per_page = 20
+
+  def new_reply(replier_id, reply_params)
+    replies.build(reply_params).tap do |reply|
+      reply.user_id = replier_id
+      update(last_replier_id: replier_id) if reply.save
+    end
+  end
 
   def topic
     self

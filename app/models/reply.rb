@@ -2,8 +2,6 @@ class Reply < ActiveRecord::Base
   include Mentionable
   include Autohtmlable
 
-  default_scope -> { order('updated_at ASC') }
-
   belongs_to :topic, counter_cache: true, touch: true
   belongs_to :user,  counter_cache: true
 
@@ -25,7 +23,7 @@ class Reply < ActiveRecord::Base
   end
 
   def mentioned_users
-    super - [topic.user] # or topic user will get two notification
+    super - [topic.user]
   end
 
   def mention_scan_text

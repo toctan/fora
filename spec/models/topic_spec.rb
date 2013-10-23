@@ -22,19 +22,30 @@ describe Topic do
   it 'should update node topics_count' do
     node = create(:node)
 
-    expect do
-      create(:topic, node: node)
-      node.reload
-    end.to change { node.topics_count }.by(1)
-
+    expect { create(:topic, node: node) }
+      .to change { node.reload.topics_count }.by(1)
   end
 
   it 'should update user topics_count' do
     user = create(:user)
 
-    expect do
-      create(:topic, user: user)
-      user.reload
-    end.to change { user.topics_count }.by(1)
+    expect { create(:topic, user: user) }
+      .to change { user.reload.topics_count }.by(1)
+  end
+
+  describe '#new_reply' do
+    let(:topic) { create(:topic) }
+    let(:user) { User.last }
+
+    it 'saves the reply' do
+      expect { topic.new_reply(user.id, attributes_for(:reply)) }
+        .to change { Reply.count }.by(1)
+    end
+
+    it 'updates last_replier_id' do
+      topic.new_reply(user.id, attributes_for(:reply))
+
+      expect(topic.reload.last_replier_id).to eq user.id
+    end
   end
 end

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130928044358) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "nodes", force: true do |t|
     t.string   "name"
     t.string   "key"
@@ -56,7 +59,8 @@ ActiveRecord::Schema.define(version: 20130928044358) do
     t.string   "title"
     t.text     "body"
     t.text     "body_html"
-    t.integer  "replies_count", default: 0
+    t.integer  "replies_count",   default: 0
+    t.integer  "last_replier_id"
     t.integer  "user_id"
     t.integer  "node_id"
     t.datetime "created_at"
@@ -70,7 +74,6 @@ ActiveRecord::Schema.define(version: 20130928044358) do
     t.integer  "replies_count",          default: 0
     t.integer  "topics_count",           default: 0
     t.string   "role",                   default: "user"
-    t.integer  "stars",                  default: [],                  array: true
     t.string   "username",               default: "",     null: false
     t.string   "email",                  default: "",     null: false
     t.string   "encrypted_password",     default: "",     null: false
