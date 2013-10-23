@@ -22,7 +22,7 @@ class Topic < ActiveRecord::Base
   def new_reply(replier_id, reply_params)
     replies.build(reply_params).tap do |reply|
       reply.user_id = replier_id
-      update(last_replier_id: replier_id) if reply.save
+      update_replier(replier_id) if reply.save
     end
   end
 
@@ -34,5 +34,16 @@ class Topic < ActiveRecord::Base
 
   def mention_scan_text
     "#{body} #{title}"
+  end
+
+  def update_replier(replier_id)
+    active_replier_ids = Reply.select('COUNT(id) as replies_count',
+      'user_id', 'MAX(updated_at) AS updated_at')
+      .where(topic_id: id).group(:user_id)
+      .order('replies_count desc', 'updated_at desc')
+      .limit(3).map(&:user_id)
+
+    update(last_replier_id: replier_id,
+      active_replier_ids: active_replier_ids)
   end
 end

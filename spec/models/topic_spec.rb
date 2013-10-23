@@ -47,5 +47,24 @@ describe Topic do
 
       expect(topic.reload.last_replier_id).to eq user.id
     end
+
+    describe 'active repliers' do
+      let(:users) { create_list(:user, 3) }
+      let(:replier) { create(:user) }
+
+      before do
+        users.each do |u|
+          create_list(:reply, 2, topic: topic, user: u)
+        end
+        create(:reply, topic: topic, user: replier)
+      end
+
+      it 'updates active replier ids' do
+        topic.new_reply(replier.id, attributes_for(:reply))
+
+        expect(topic.reload.active_replier_ids)
+          .to eq [replier.id, users[2].id, users[1].id]
+      end
+    end
   end
 end
