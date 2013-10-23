@@ -18,23 +18,16 @@ Fora::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :nodes do
-    resources :topics
+  resources :nodes, only: :index do
+    resources :topics, only: :create
   end
 
-  resources :topics do
-    resources :replies
-
-    member do
-      patch 'star'
-      patch 'unstar'
-    end
+  resources :topics, except: [:edit, :update] do
+    resources :replies, only: :create
   end
 
   resources :notifications, only: [:index, :destroy] do
-    collection do
-      post 'clear'
-    end
+    post 'clear', on: :collection
   end
 
   # Example resource route with options:

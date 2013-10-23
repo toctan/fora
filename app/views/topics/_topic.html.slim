@@ -1,8 +1,7 @@
 .row.topic-item
-  .span1 = link_to avatar_tag(topic.user, name: false)
+  .span1 = link_to avatar_tag topic.user
   .span10
     = link_to topic.title, topic
-    p
-      = link_to topic.user.username, user_path(username: topic.user.username)
+
   .span1
     .count = topic.replies_count

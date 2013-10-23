@@ -1,16 +1,16 @@
-header.navbar.navbar-fixed-top.top-navbar
-  .navbar-inner
-    .container
-      = link_to t('site.name'), root_path, class: 'brand', id: "brand"
-      ul.nav.pull-right#user-links
-        - if user_signed_in?
-          li = avatar_tag current_user, size: :thumb
-          li = link_to font_icon('envelope-alt', 'large'), '/notifications',
-            class: 'notification-indicator'
-          li = link_to font_icon('wrench', 'large'), edit_user_registration_path
-          li = link_to font_icon('signout', 'large'), destroy_user_session_path, method: :delete
-        - else
-          li = link_to 'sign up', new_user_registration_path
-          li = link_to font_icon('signin', 'large'), new_user_session_path
-          li = link_to font_icon('twitter', 'large'), user_omniauth_authorize_path(:twitter)
-          li = link_to font_icon('weibo', 'large'), user_omniauth_authorize_path(:weibo)
+header.ui.page.grid.fixed.main.menu
+  = link_to t('site.name'), root_path, class: "item logo"
+  .menu.right
+    - if user_signed_in?
+      .ui.pointing.dropdown.item
+        = avatar_tag current_user, :thumb
+        = icon 'dropdown'
+        .menu
+          = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'item'
+    - else
+      = link_to icon('twitter', 'circular inverted blue'),
+          user_omniauth_authorize_path(:twitter), class: 'popup item',
+            title: 'Sign in via twitter'
+      = link_to icon('weibo', 'circular inverted red'),
+          user_omniauth_authorize_path(:weibo), class: 'popup item',
+            title: 'Sign in via weibo'

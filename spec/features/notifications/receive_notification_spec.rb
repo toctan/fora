@@ -12,15 +12,15 @@ feature 'Receive notification when' do
     expect(page).to have_selector('.notification-indicator')
   end
 
-  scenario 'someone replies my topic' do
+  xscenario 'someone replies my topic' do
     create(:reply, topic: topic)
   end
 
-  scenario 'mentioned in reply' do
+  xscenario 'mentioned in reply' do
     create(:reply, body: "@#{user.username}")
   end
 
-  scenario 'mentioned in topic' do
+  xscenario 'mentioned in topic' do
     create(:topic, body: "@#{user.username}")
   end
 end

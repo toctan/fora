@@ -2,7 +2,7 @@ class Reply < ActiveRecord::Base
   include Mentionable
   include Autohtmlable
 
-  after_create :send_notification_to_topic_owner
+  default_scope -> { order('updated_at ASC') }
 
   belongs_to :topic, counter_cache: true, touch: true
   belongs_to :user,  counter_cache: true
@@ -12,7 +12,9 @@ class Reply < ActiveRecord::Base
 
   validates_presence_of :body, :topic_id, :user_id
 
-  default_scope -> { order('updated_at ASC') }
+  after_create :send_notification_to_topic_owner
+
+  delegate :username, to: :user
 
   self.per_page = 20
 

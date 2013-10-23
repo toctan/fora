@@ -1,35 +1,21 @@
-// Variable
-@import 'variable';
+@import "normalize";
+@import "semantic-ui";
+@import "bourbon";
 
-@import 'bootstrap';
+@import "header";
 
-// Mixin
-@import 'mixin';
+$font-stack: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei",
+             "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+$primary-color: #3C3C3C;
+$base-line-height: 1.5rem;
 
-@mixin footer-style{
-  background: #eeeeee;
-  background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
-  background: -webkit-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: -o-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: -ms-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: linear-gradient(to bottom, #eeeeee 0%, #cccccc 100%);
-  padding: 0 10px 0 10px;
+body {
+  font: 1rem/1.5 $font-stack;
+  color: $primary-color;
+  background: #f0f0f0 url(/assets/bg.gif) repeat;
+  padding-top: 4.5rem;
 }
 
-// Helper
-@import 'helper';
-
-// Global
-@import 'global';
-
-
-@import 'topic';
-@import 'notification';
-@import 'node';
-
-@import 'layouts/header_bar';
-@import 'layouts/top10_bar';
-@import 'layouts/tools_bar';
-@import 'layouts/nodes_bar';
-@import 'layouts/pagination';
+a {
+  text-decoration: none;
+}

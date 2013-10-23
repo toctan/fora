@@ -15,8 +15,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'slim-rails'
-
-gem 'bootstrap-sass'
+gem 'neat'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'auto_html', github: 'toctan/auto_html'
 
 gem 'devise'
@@ -35,8 +35,6 @@ group :test do
 end
 
 group :development do
-  gem 'pry-rails'
-  gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -46,6 +44,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'jazz_hands'
   gem 'ffaker'
   gem 'rspec-rails'
   gem 'factory_girl_rails'

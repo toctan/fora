@@ -24,7 +24,7 @@ module Mentionable
   end
 
   def mentioned_usernames
-    mention_scan_text.scan(MENTION_REGEXP).flatten.uniq - [user.username] # except sender himself
+    mention_scan_text.scan(MENTION_REGEXP).flatten.uniq - [username] # except sender himself
   end
 
   def mention_scan_text
