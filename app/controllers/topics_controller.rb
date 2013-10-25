@@ -1,5 +1,4 @@
 class TopicsController < ApplicationController
-
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :find_topic, only: [:show, :destroy]
 
@@ -24,7 +23,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.build(topic_params)
-    @topic.node = Node.find(params[:node_id])
+    @topic.node_id = params[:node_id]
 
     if @topic.save
       redirect_to @topic
@@ -35,18 +34,6 @@ class TopicsController < ApplicationController
 
   def destroy
     redirect_to root_url, notice: 'Delete topic successfully' if @topic.destroy
-  end
-
-  def star
-    current_user.star_topic(params[:id].to_i)
-
-    redirect_to :back
-  end
-
-  def unstar
-    current_user.unstar_topic(params[:id].to_i)
-
-    redirect_to :back
   end
 
   private

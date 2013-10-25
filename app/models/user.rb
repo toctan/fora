@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessor :login
-  attr_reader :avatar_remote_url
+  include Avatar
 
-  # Order is important. Don't change it unless...
-  ROLES = %w[user moderator admin]
+  attr_accessor :login, :description
 
   devise :database_authenticatable,
          :omniauthable,
@@ -18,22 +16,10 @@ class User < ActiveRecord::Base
   has_many :replies,       dependent: :destroy
   has_many :notifications, dependent: :destroy, class_name: 'Notification::Base'
 
-  has_attached_file :avatar, styles: { normal: '40x40>', thumb: '22x22>' },
-                             path:   ':rails_root/public/uploads/assets/users/:id/:style/:filename',
-                             url:    '/uploads/assets/users/:id/:style/:filename'
-
-  validates :role, presence: true,
-                   inclusion: { in: ROLES }
-
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
                        format: { with: /\A[A-Za-z_\d]+\Z/ },
                        length: { maximum: 17 }
-
-  validates_attachment_content_type :avatar, content_type: ['image/png', 'image/jpeg']
-  validates_attachment_size :avatar,
-                            less_than: 500.kilobytes,
-                            message: 'must less than 500KB'
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create(
@@ -81,16 +67,6 @@ class User < ActiveRecord::Base
     else
       super
     end
-  end
-
-  def role?(base_role)
-    # use compare to make pemission inherit
-    ROLES.index(base_role.to_s) <= ROLES.index(role)
-  end
-
-  def avatar_remote_url=(url)
-    self.avatar = URI.parse(url)
-    @avatar_remote_url = url
   end
 
   protected

@@ -20,6 +20,6 @@ feature 'Reply a topic', :signin do
   scenario 'with blank body' do
     click_button 'Create Reply'
 
-    expect(page).to have_flash_message("can't be blank")
+    expect(page).to have_flash_message("can't be blank", 'error')
   end
 end
