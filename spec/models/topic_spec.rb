@@ -33,6 +33,20 @@ describe Topic do
       .to change { user.reload.topics_count }.by(1)
   end
 
+  describe '#participant_ids' do
+    let(:topic) do
+      Topic.new(
+        user_id: 1,
+        active_replier_ids: [4, 3, 5, 6],
+        last_replier_id: 2
+        )
+    end
+
+    it 'returns the ids in proper order' do
+      expect(topic.participant_ids).to eq [1, 2, 4, 3, 5, 6]
+    end
+  end
+
   describe '#new_reply' do
     let(:topic) { create(:topic) }
     let(:user) { User.last }
@@ -49,21 +63,20 @@ describe Topic do
     end
 
     describe 'active repliers' do
-      let(:users) { create_list(:user, 3) }
-      let(:replier) { create(:user) }
+      let(:users) { create_list(:user, 5) }
+      let(:replier) { users.last }
 
       before do
         users.each do |u|
           create_list(:reply, 2, topic: topic, user: u)
         end
-        create(:reply, topic: topic, user: replier)
       end
 
       it 'updates active replier ids' do
         topic.new_reply(replier.id, attributes_for(:reply))
 
         expect(topic.reload.active_replier_ids)
-          .to eq [replier.id, users[2].id, users[1].id]
+          .to eq [replier.id, *users[1..3].reverse.map(&:id)]
       end
     end
   end
