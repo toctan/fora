@@ -1,21 +1,35 @@
+/**
+ * Vendor:
+ * normalize.css http://necolas.github.io/normalize.css/
+ * Semantic UI   http://semantic-ui.com/
+ * Bourbon       http://bourbon.io/
+ * Bourbon Neat  http://neat.bourbon.io/
+ */
 @import "normalize";
 @import "semantic-ui";
+
 @import "bourbon";
+@import "grid-settings";
+@import "neat";
 
+/**
+ * Base
+ */
+@import "variables";
+@import "base";
+
+/**
+ * Shared
+ */
 @import "header";
+@import "card";
 
-$font-stack: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei",
-             "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
-$primary-color: #3C3C3C;
-$base-line-height: 1.5rem;
+/**
+ * Controller
+ */
+@import "topic-show";
 
-body {
-  font: 1rem/1.5 $font-stack;
-  color: $primary-color;
-  background: #f0f0f0 url(/assets/bg.gif) repeat;
-  padding-top: 4.5rem;
-}
-
-a {
-  text-decoration: none;
-}
+/**
+ * Shame: http://csswizardry.com/2013/04/shame-css/
+ */
+@import "shame";

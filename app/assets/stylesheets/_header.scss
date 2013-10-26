@@ -4,8 +4,13 @@ header.main.menu {
   box-shadow: 0 1px 4px rgba(#000, 0.2);
 
   .logo {
-    font-weight: bold;
     font-size: 1.2rem;
+    color: #fff;
+    background-color: $brand-color;
+
+    &:hover {
+      background-color: $brand-color;
+    }
   }
 
   .item {
@@ -15,10 +20,5 @@ header.main.menu {
 
   .dropdown .item {
     line-height: 1;
-  }
-
-  .name img {
-    margin: 12px 0;
-    float: left;
   }
 }

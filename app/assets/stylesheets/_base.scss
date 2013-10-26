@@ -1,0 +1,21 @@
+html {
+  font: 1rem/1.5 $base-face;
+  color: $base-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-face;
+}
+
+body {
+  background: #f0f0f0 url(/assets/bg.gif) repeat;
+  padding: 4.5rem 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container { @include outer-container; }
+.main { @include span-columns(8); }
+
