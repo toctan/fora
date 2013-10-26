@@ -1,6 +1,4 @@
-.row.reply-item
-  .span1 = avatar_tag reply.user
-  .span10
-    p = reply.body_html
-  .span1
-    = icon('reply', nil, username: reply.username)
+.reply-item
+  = avatar_tag reply.user
+  p = reply.body_html
+  = semantic_icon('reply')

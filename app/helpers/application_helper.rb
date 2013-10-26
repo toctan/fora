@@ -1,15 +1,13 @@
 module ApplicationHelper
   def username_tag(username)
-    link_to username, user_path(username), class: 'name'
+    link_to username, '#', class: 'name'
   end
 
   def avatar_tag(user, size = :normal, opts = {})
-    img = avatar_img(user, size, opts[:img_class])
-
-    link_to img, '#', class: "name #{opts[:class]}"
+    link_to avatar_img(user, size), '#', class: 'avatar'
   end
 
-  def avatar_img(user, size, klass = 'rounded')
+  def avatar_img(user, size, klass = 'avatar')
     img_src =
       if user.avatar?
         user.avatar.url(size)
@@ -19,31 +17,18 @@ module ApplicationHelper
         "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{width}&d=identicon"
       end
 
-    image_tag(img_src, class: "#{klass} ui image")
-  end
-
-  def icon(name, klass = nil, data = {})
-    content_tag(:i, nil, class: "#{name} #{klass} icon", data: data)
+    image_tag(img_src, class: "ui #{klass} image",
+      style: "width:#{width}px;height:#{width}px;")
   end
 
   private
 
   def user_avatar_width_for_size(size)
     case size
-    when :thumb  then 24
-    when :normal then 40
+    when :thumb  then 32
+    when :normal then 48
     when :large  then 64
     else size
     end
-  end
-
-  def notice_message
-    flash_messages = []
-    flash.each do |type, message|
-      type = :success if type == :notice
-      text = content_tag(:div, link_to("x", "#", :class => "close", "data-dismiss" => "alert") + message, :class => "alert fade in alert-#{type}")
-      flash_messages << text if message
-    end
-    flash_messages.join("\n").html_safe
   end
 end
