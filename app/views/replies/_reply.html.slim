@@ -1,4 +1,10 @@
-.reply-item
+.reply.media
   = avatar_tag reply.user
-  p = reply.body_html
-  = semantic_icon('reply')
+  .media__body
+    = username_tag reply.username
+    span.reply__meta
+      span.reply__time = time_ago_in_words reply.created_at
+      = link_to semantic_icon('reply mail'), '#', class: 'js-reply', data: { name: reply.username }
+
+    .reply__body
+      = reply.body_html

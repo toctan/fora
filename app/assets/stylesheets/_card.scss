@@ -1,18 +1,12 @@
+/*
+ * $CARD
+ */
 .card {
   position: relative;
   background: #fff;
-  margin-bottom: $base-line-height;
+  margin-bottom: $base-spacing-unit;
   border: em(1) solid #ccc;
   border-color: #ebeae5 #e0dfdc #dbdad7;
   box-shadow: 0 em(1) em(3) rgba(#000, 0.05);
   border-radius: $brand-round;
-}
-
-.card__header {
-  padding: 1rem;
-  border-bottom: em(1) solid #eaeaea;
-}
-
-.card__body {
-  padding: 1rem;
 }

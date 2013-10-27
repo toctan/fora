@@ -1,0 +1,27 @@
+/* 
+ * $MEDIA
+ * Place an avatar and text-like content side-by-side.
+ * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+ */
+.media {
+  padding: $half-spacing-unit;
+
+  .avatar {
+    float: left;
+    margin-right: $half-spacing-unit;
+
+    img {
+      border-radius: em(5)!important;
+    }
+  }
+}
+
+.media__body {
+  overflow: hidden;
+  @include force-wrap;
+}
+
+.media__body,
+.media__body > :last-child {
+  margin-bottom: 0;
+}

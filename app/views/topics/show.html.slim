@@ -1,9 +1,14 @@
 .topic.card
-  .card__header
+  .topic__header.media
     = avatar_tag @topic.user
     span.topic__node.ui.red.label = @topic.node.name
-    h1.topic__title = @topic.title
-    span.topic__meta
-      | Posted by #{@topic.username} #{time_ago_in_words(@topic.created_at)} ago
+    .media__body
+      h1.topic__title = @topic.title
+      span.topic__meta
+        | Posted by #{@topic.username} #{time_ago_in_words(@topic.created_at)} ago
 
-  .card__body.topic__body = @topic.body_html
+  .topic__body.media = @topic.body_html
+
+.replies = render @replies
+
+= render 'replies/form'

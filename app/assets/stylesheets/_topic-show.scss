@@ -1,10 +1,5 @@
-.topic .avatar {
-  float: left;
-
-  .image {
-    border-radius: em(5);
-    margin-right: 1rem;
-  }
+.topic__header {
+  border-bottom: em(1) solid #eaeaea;
 }
 
 .topic__title {
@@ -18,7 +13,7 @@
   color: #888;
 }
 
-.topic__body {
+.topic__body, .reply__body {
   a {
     color: $blue;
     border-bottom: .07em solid rgba(#000, 0.1);
@@ -43,10 +38,10 @@
 
 .topic__node.label {
   position: relative;
-  left: 1.8rem;
+  left: 1.55rem;
   float: right;
   margin: 0.2rem 0;
-  padding: 0.1em 2em 0.2em 0.8em;
+  padding: 0.2em 2em 0.3em 0.8em;
   border-color: rgba(0, 0, 0, 0.15);
   border-radius: 4px 0px 0px 4px;
   text-transform: none;
@@ -64,4 +59,48 @@
     border-left-color: inherit;
     border-bottom: 1em solid transparent;
   }
+}
+
+.replies {
+  padding: 0;
+}
+
+.reply:not(.icon) {
+  @extend .card;
+  min-height: 6rem;
+  margin: 0 0 em(-1);
+  border-radius: 0;
+
+  &:first-child {
+    border-radius: $brand-round $brand-round 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 $brand-round $brand-round;
+  }
+
+  &:hover .reply__time {
+    opacity: 1;
+  }
+}
+
+.reply__meta {
+  float: right;
+
+  .icon {
+    color: $base-color;
+    margin-left: em(5);
+  }
+}
+
+.reply__time {
+  color: #888;
+  font-size: 0.9rem;
+  opacity: 0;
+  @include transition (opacity 0.3s ease-in-out);
+}
+
+#reply_body {
+  min-height: inherit;
+  height: inherit;
 }

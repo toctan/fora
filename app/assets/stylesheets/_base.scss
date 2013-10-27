@@ -16,6 +16,16 @@ a {
   text-decoration: none;
 }
 
+.username {
+  color: inherit!important;
+  font-weight: bold;
+  font-size: 1rem;
+
+  &:hover {
+    border-bottom: .07em solid rgba(#000, 0.1);
+  }
+}
+
 .container { @include outer-container; }
 .main { @include span-columns(8); }
 
