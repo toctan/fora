@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'slim-rails'
 gem 'neat'
+gem 'flutie'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'auto_html', github: 'toctan/auto_html'
 
