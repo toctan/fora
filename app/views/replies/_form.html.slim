@@ -1,6 +1,7 @@
-.reply.media
-  = avatar_tag current_user
-  .media__body
-    = simple_form_for [@topic, @topic.replies.build] do |f|
-      = f.input  :body, label: false, input_html: { rows: 4 }
-      = f.button :submit, class: 'mini'
+- if current_user
+  .reply.media
+    = avatar_tag current_user
+    .media__body
+      = simple_form_for [@topic, @topic.replies.build] do |f|
+        = f.input  :body, label: false, input_html: { rows: 4 }
+        = f.button :submit, class: 'mini'

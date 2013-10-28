@@ -14,17 +14,13 @@ feature 'Visitor signs up' do
   scenario 'with invalid email' do
     sign_up_with visitor.merge(email: 'invalid_email')
 
-    within('.user_email') do
-      expect(page).to have_inline_help 'is invalid'
-    end
+    expect(page).to have_inline_help 'is invalid'
   end
 
   scenario 'with blank password' do
     sign_up_with visitor.merge(password: '')
 
-    within('.user_password') do
-      expect(page).to have_inline_help "can't be blank"
-    end
+    expect(page).to have_inline_help "can't be blank"
   end
 end
 
