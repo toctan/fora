@@ -5,7 +5,9 @@
     .media__body
       h1.topic__title = @topic.title
       span.topic__meta
-        | Posted by #{@topic.username} #{time_ago_in_words(@topic.created_at)} ago
+        Posted by #{@topic.username} #{time_ago_in_words(@topic.created_at)} ago
+        span &nbsp;·&nbsp;
+        | #{@topic.hits} hits
 
   .topic__body.media = @topic.body_html
 

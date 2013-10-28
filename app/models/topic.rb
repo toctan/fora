@@ -19,6 +19,11 @@ class Topic < ActiveRecord::Base
 
   self.per_page = 20
 
+  # TODO: It takes about 30ms to finish, maybe using redis counter?
+  def update_hits
+    Topic.where(id: id).update_all 'hits = hits + 1'
+  end
+
   def participants(users = nil)
     @participants ||= TopicParticipants.new(self, users: users).participants
   end
@@ -40,6 +45,7 @@ class Topic < ActiveRecord::Base
 
   private
 
+  # TODO: This should be done in background job
   def update_replier(replier_id)
     active_replier_ids =
       Reply.select('COUNT(id) as replies_count',

@@ -4,6 +4,7 @@ class CreateTopics < ActiveRecord::Migration
       t.string     :title
       t.text       :body
       t.text       :body_html
+      t.integer    :hits,          default: 0
       t.integer    :replies_count, default: 0
       t.integer    :last_replier_id
       t.references :user, index: true

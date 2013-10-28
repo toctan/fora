@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20130928044358) do
     t.string   "title"
     t.text     "body"
     t.text     "body_html"
+    t.integer  "hits",               default: 0
     t.integer  "replies_count",      default: 0
     t.integer  "last_replier_id"
     t.integer  "user_id"

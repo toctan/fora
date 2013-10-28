@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :find_topic, only: [:show, :destroy]
+  before_filter :find_topic,  only: [:show, :destroy]
+  after_filter :update_hits, only: :show
 
   load_and_authorize_resource
 
@@ -44,5 +45,9 @@ class TopicsController < ApplicationController
 
   def find_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def update_hits
+    @topic.update_hits
   end
 end
