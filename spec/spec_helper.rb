@@ -19,7 +19,12 @@ RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.before(:each, signin: true) do
-    login_as create(:confirmed_user), scope: :user
+    @current_user ||= create(:confirmed_user)
+    login_as @current_user, scope: :user
+  end
+
+  config.after(:each, signin: true) do
+    @current_user.destroy
   end
 
   config.use_transactional_fixtures = false

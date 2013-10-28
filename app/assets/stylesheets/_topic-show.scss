@@ -13,6 +13,16 @@
   color: #888;
 }
 
+.topic__like {
+  .heart.icon {
+    color: #ff7e94;
+  }
+
+  .empty.heart.icon {
+    color: inherit;
+  }
+}
+
 .topic__body, .reply__body {
   a {
     color: $blue;

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Avatar
+  include LikeSource
 
   attr_accessor :login, :description
 

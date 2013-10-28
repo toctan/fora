@@ -12,6 +12,9 @@ Fora::Application.routes.draw do
   get 'go/:key'  => 'nodes#show', as: :go
   get 'new/:key' => 'topics#new'
 
+  post   'like/:type/:id' => 'likes#create',  as: :like
+  delete 'like/:type/:id' => 'likes#destroy', as: :dislike
+
   get 'users/:username'  => 'users#show', as: :user
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
