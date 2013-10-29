@@ -18,7 +18,7 @@
 
 .media__body {
   overflow: hidden;
-  @include force-wrap;
+  /* @include force-wrap; */
 }
 
 .media__body,

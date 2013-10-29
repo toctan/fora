@@ -24,6 +24,7 @@
   - unless @topic.body_html.blank?
     .topic__body.media = @topic.body_html
 
-.replies = render @replies
+-unless @replies.blank?
+  .replies = render @replies
 
 = render 'replies/form'

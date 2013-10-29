@@ -16,7 +16,7 @@ feature 'New topic' do
     end
 
     scenario 'Posts a new topic with a youtube video', :js do
-      pending 'fuck GFW' unless ENV['TRAVIS']
+      pending 'fuck GFW'
       fill_new_topic_form('http://www.youtube.com/watch?v=eIZTMVNBjc4')
 
       expect(page).to have_selector('//iframe[@src="//www.youtube.com/embed/eIZTMVNBjc4"]')

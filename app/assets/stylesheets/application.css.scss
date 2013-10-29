@@ -5,7 +5,7 @@
  * Bourbon       http://bourbon.io/
  * Bourbon Neat  http://neat.bourbon.io/
  */
-@import "normalize";
+@import "vendor/normalize";
 @import "semantic-ui";
 
 @import "bourbon";
@@ -15,22 +15,27 @@
 /**
  * Base
  */
-@import "variables";
-@import "mixin";
-@import "base";
-@import "utility";
+@import "base/variables";
+@import "base/mixin";
+@import "base/base";
+@import "base/utility";
+
+/**
+ * Generic
+ */
+@import "generic/card";
+@import "generic/media";
 
 /**
  * Shared
  */
 @import "header";
-@import "card";
-@import "media";
 
 /**
- * Controller
+ * Resources
  */
-@import "topic-show";
+@import "topic";
+@import "reply";
 
 /**
  * Shame: http://csswizardry.com/2013/04/shame-css/

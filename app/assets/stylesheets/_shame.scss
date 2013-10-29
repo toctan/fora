@@ -8,3 +8,9 @@
   @include box-sizing(content-box); 
 }
 
+/**
+ * Semantic UI button looks terrible with Ubuntu-Light
+ */
+.ui.button {
+  font-weight: normal;
+}

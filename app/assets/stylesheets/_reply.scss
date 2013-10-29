@@ -1,0 +1,81 @@
+
+/**
+ * Reply
+ */
+
+.replies {
+  margin-bottom: 3rem;
+  counter-reset: replies-counter;
+  @include verticle-line;
+}
+
+.reply:not(.icon) {
+  @extend .card;
+  min-height: 6rem;
+  margin: 0 0 em(-1);
+  border-radius: 0;
+  @include rtriangle;
+
+  &:after {
+    content: counter(replies-counter);
+    counter-increment: replies-counter;
+    position: absolute;
+    right: 1rem;
+    bottom: .25rem;
+    font: italic 3.5rem/3.5rem $helvetica;
+    color: rgba(#000, .15)
+  }
+
+  &:first-child {
+    border-radius: $brand-round $brand-round 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 $brand-round $brand-round;
+  }
+
+  &:hover .reply__time {
+    opacity: 1;
+  }
+}
+
+.reply__meta {
+  float: right;
+
+  .icon {
+    color: $base-color;
+    margin-left: em(5);
+  }
+}
+
+.reply__time {
+  color: #888;
+  font-size: 0.9rem;
+  opacity: 0;
+  @include transition (opacity 0.3s ease-in-out);
+}
+
+.reply--form {
+  @include rtriangle;
+
+  .form textarea {
+    min-height: inherit;
+    height: inherit;
+  }
+}
+
+.reply--signin {
+  text-align: center;
+
+  .ui.button {
+    margin: 0 1rem 1rem 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.reply--signin__title {
+  margin: 0 0 1rem;
+}

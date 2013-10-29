@@ -9,7 +9,7 @@ feature 'Likes', :signin do
   scenario 'A user likes a topic' do
     click_link 'js-like'
 
-    expect(page).to have_selector('.topic__likes-count', text: 1)
+    expect(page).to have_content '1 Likes'
   end
 
   context 'When user has liked the topic' do
@@ -18,7 +18,7 @@ feature 'Likes', :signin do
     scenario 'A user dislikes a topic' do
       click_link 'js-like'
 
-      expect(page).to have_selector('.topic__likes-count', text: 0)
+      expect(page).to have_content '0 Likes'
     end
   end
 end
