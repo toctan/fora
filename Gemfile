@@ -42,6 +42,8 @@ group :development do
   gem 'guard-rspec'
   gem 'foreman'
   gem 'spring'
+  gem 'spring'
+  gem "spring-commands-rspec", require: false
 end
 
 group :development, :test do
