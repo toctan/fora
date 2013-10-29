@@ -24,7 +24,6 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.build(topic_params)
-    @topic.node_id = params[:node_id]
 
     if @topic.save
       redirect_to @topic
@@ -40,7 +39,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :body)
+    params.require(:topic).permit(:title, :body, :node_id)
   end
 
   def find_topic
