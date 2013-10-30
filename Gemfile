@@ -36,12 +36,13 @@ group :test do
 end
 
 group :development do
+  gem 'annotate', '>=2.5.0'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'meta_request'
-  gem 'guard-rspec'
   gem 'foreman'
-  gem 'spring'
+  gem 'guard-rspec'
+  gem 'guard-livereload', require: false
+  gem 'meta_request'
   gem 'spring'
   gem "spring-commands-rspec", require: false
 end
@@ -51,7 +52,6 @@ group :development, :test do
   gem 'ffaker'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'guard-livereload'
   gem 'launchy'
 end
 

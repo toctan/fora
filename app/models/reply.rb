@@ -30,3 +30,22 @@ class Reply < ActiveRecord::Base
     body
   end
 end
+
+# == Schema Information
+#
+# Table name: replies
+#
+#  id         :integer          not null, primary key
+#  body       :text
+#  body_html  :text
+#  user_id    :integer
+#  topic_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+# Indexes
+#
+#  index_replies_on_topic_id  (topic_id)
+#  index_replies_on_user_id   (user_id)
+#
+

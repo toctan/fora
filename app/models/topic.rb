@@ -64,3 +64,28 @@ class Topic < ActiveRecord::Base
     "#{body} #{title}"
   end
 end
+
+# == Schema Information
+#
+# Table name: topics
+#
+#  id                 :integer          not null, primary key
+#  title              :string(255)
+#  body               :text
+#  body_html          :text
+#  hits               :integer          default(0)
+#  likes_count        :integer          default(0)
+#  replies_count      :integer          default(0)
+#  last_replier_id    :integer
+#  user_id            :integer
+#  node_id            :integer
+#  active_replier_ids :integer          default([])
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+# Indexes
+#
+#  index_topics_on_node_id  (node_id)
+#  index_topics_on_user_id  (user_id)
+#
+
