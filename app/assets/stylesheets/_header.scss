@@ -1,10 +1,13 @@
-header.main.menu {
-  top: 0;
+.site-nav {
   height: 3rem;
+  line-height: 3rem;
+  margin-bottom: 1.5rem;
+  background: #fff;
   box-shadow: 0 1px 4px rgba(#000, 0.2);
 
   .logo {
     font-size: 1.2rem;
+    padding: 0 1rem;
     color: #fff;
     background-color: $brand-color;
 
@@ -13,12 +16,14 @@ header.main.menu {
     }
   }
 
-  .item {
-    padding: 0 1rem;
-    line-height: 3rem;
+  img {
+    vertical-align: middle;
+    @include border-radius(3rem);
   }
+}
 
-  .dropdown .item {
-    line-height: 1;
+.profile-link {
+  li {
+    margin-left: 1rem;
   }
 }

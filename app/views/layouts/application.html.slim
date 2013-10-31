@@ -5,10 +5,11 @@ html
     = stylesheet_link_tag    'application', 'data-turbolinks-track' => true, media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body class = body_class
+  body
     = render 'layouts/header'
 
     .container
-      .main
-        = semantic_flash
-        = yield
+      .grid
+        .main.grid__item.one-whole.desk-two-thirds
+          = semantic_flash
+          = yield

@@ -1,17 +1,18 @@
-header.ui.fixed.main.menu
+nav.site-nav
   .container
-    = link_to t('site.name'), root_path, class: "item logo"
-    .menu.right
-      - if user_signed_in?
-        .ui.pointing.dropdown.item
-          = avatar_tag current_user, :thumb
-          = semantic_icon 'dropdown'
-          .menu
-            = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'item'
-      - else
-        = link_to semantic_icon('twitter', 'circular inverted blue'),
-            user_omniauth_authorize_path(:twitter), class: 'popup item',
-              title: 'Sign in via twitter'
-        = link_to semantic_icon('weibo', 'circular inverted red'),
-            user_omniauth_authorize_path(:weibo), class: 'popup item',
-              title: 'Sign in via weibo'
+    ul.nav
+      li = link_to t('site.name'), root_path, class: 'logo'
+      ul.nav.float--right.profile-link
+        - if user_signed_in?
+          li.ui.pointing.dropdown
+            = avatar_tag current_user, :thumb
+            = semantic_icon 'dropdown'
+            .menu
+              = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'item'
+        - else
+          li = link_to semantic_icon('twitter', 'circular inverted blue'),
+              user_omniauth_authorize_path(:twitter), class: 'popup',
+                title: 'Sign in via twitter'
+          li = link_to semantic_icon('weibo', 'circular inverted red'),
+              user_omniauth_authorize_path(:weibo), class: 'popup',
+                title: 'Sign in via weibo'

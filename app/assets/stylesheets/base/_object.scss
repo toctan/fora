@@ -1,0 +1,47 @@
+/**
+ * Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
+ */
+.nav {
+  list-style: none;
+  margin-left: 0;
+  @extend .cf;
+
+  > li {
+
+    &,
+    > a {
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+    }
+  }
+}
+
+
+/* 
+ * $MEDIA
+ * Place an avatar and text-like content side-by-side.
+ * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+ */
+.media {
+  @extend .islet;
+
+  .avatar {
+    @extend .media__img;
+    @include border-radius;
+  }
+}
+
+
+/*
+ * $CARD
+ */
+.card {
+  position: relative;
+  background: #fff;
+  margin-bottom: $base-spacing-unit;
+  border: em(1) solid #ccc;
+  border-color: #ebeae5 #e0dfdc #dbdad7;
+  box-shadow: 0 em(1) em(3) rgba(#000, 0.05);
+  @include border-radius;
+}

@@ -1,23 +1,8 @@
 /**
- * Force wrap long urls and text
- * http://perishablepress.com/wrapping-content/
+ * Insert a 3rem long vertical line after the element
  */
-
-@mixin force-wrap {
-  white-space:     pre;          /* CSS 2.0 */
-  white-space:     pre-wrap;     /* CSS 2.1 */
-  white-space:     pre-line;     /* CSS 3.0 */
-  white-space:     -pre-wrap;    /* Opera 4-6 */
-  white-space:   -o-pre-wrap;    /* Opera 7 */
-  white-space: -moz-pre-wrap;    /* Mozilla */
-  white-space:  -hp-pre-wrap;    /* HP Printers */
-  word-wrap:      break-word;    /* IE 5+ */
-}
-
-/**
- * Insert a 3rem vertical line after the element
- */
-@mixin verticle-line {
+@mixin verticle-line($height: 3rem) {
+  margin-bottom: $height;
   position: relative;
 
   &:after {
@@ -26,11 +11,12 @@
     top: 100%;
     left: 1.5 * $base-spacing-unit;
     width: 0;
-    height: 3rem;
+    height: $height;
     border-left: em(2) solid #ccc;
     z-index: -1;
   }
 }
+
 
 /**
  * Reply triangular points-out arrow
@@ -45,23 +31,14 @@
     left: $triangle-width;
     width: $triangle-width;
     height: $triangle-width;
-    border: $brand-border;
+    border: em(1.5) solid #dadada;
     border-right: none;
     border-bottom: none;
-    @include transform(rotate(45deg));
+    @include rotate(45deg);
   }
 
   &:before {
     top: $offset;
     background: #fff;
   }
-
-  /* &:after {
-     bottom: $offset;
-    background: $background;
-  }
-
-  &:last-child:after {
-    display: none;
-  } */
 }

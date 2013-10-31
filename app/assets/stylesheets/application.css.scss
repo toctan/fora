@@ -1,30 +1,26 @@
 /**
  * Vendor:
- * normalize.css http://necolas.github.io/normalize.css/
- * Semantic UI   http://semantic-ui.com/
- * Bourbon       http://bourbon.io/
- * Bourbon Neat  http://neat.bourbon.io/
+ * caompass    http://compass-style.org
+ * inuit.css   http://inuitcss.com
+ * Semantic UI http://semantic-ui.com/
  */
-@import "vendor/normalize";
-@import "semantic-ui";
+@import "vars";
+@import "compass";
+@import "compass-inuit";
 
-@import "bourbon";
-@import "grid-settings";
-@import "neat";
+/* @import "semantic-ui/elements/icon"; */
+
+/* @import "semantic-ui/modules/transition"; */
+/* @import "semantic-ui/modules/popup"; */
+/* @import "semantic-ui/modules/dropdown"; */
 
 /**
  * Base
  */
-@import "base/variables";
 @import "base/mixin";
+@import "base/function";
+@import "base/object";
 @import "base/base";
-@import "base/utility";
-
-/**
- * Generic
- */
-@import "generic/card";
-@import "generic/media";
 
 /**
  * Shared

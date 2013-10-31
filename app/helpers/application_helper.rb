@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def avatar_tag(user, size = :normal, opts = {})
-    link_to avatar_img(user, size), '#', class: 'avatar'
+    link_to avatar_img(user, size), '#'
   end
 
   def avatar_img(user, size, klass = 'avatar')
@@ -17,8 +17,7 @@ module ApplicationHelper
         "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{width}&d=identicon"
       end
 
-    image_tag(img_src, class: "ui #{klass} image",
-      style: "width:#{width}px;height:#{width}px;")
+    image_tag(img_src, class: klass, style: "width:#{width}px;height:#{width}px;")
   end
 
   private

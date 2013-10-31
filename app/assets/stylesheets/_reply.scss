@@ -1,10 +1,7 @@
-
 /**
  * Reply
  */
-
 .replies {
-  margin-bottom: 3rem;
   counter-reset: replies-counter;
   @include verticle-line;
 }
@@ -27,11 +24,11 @@
   }
 
   &:first-child {
-    border-radius: $brand-round $brand-round 0 0;
+    @include border-top-radius;
   }
 
   &:last-child {
-    border-radius: 0 0 $brand-round $brand-round;
+    @include border-bottom-radius;
   }
 
   &:hover .reply__time {
@@ -43,7 +40,6 @@
   float: right;
 
   .icon {
-    color: $base-color;
     margin-left: em(5);
   }
 }

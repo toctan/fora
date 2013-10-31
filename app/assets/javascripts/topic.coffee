@@ -1,7 +1,7 @@
-init_reply = ->
+ready = ->
   $('.ui.dropdown').dropdown
     on: 'hover'
-  $('.ui.main.menu .popup.item').popup
+  $('.site-nav .popup').popup
     position : 'bottom center'
 
   $('#replies').on 'click', '.icon-reply', ->
@@ -9,5 +9,5 @@ init_reply = ->
     text = "#{reply_body.val()}@#{$(this).data('username')} "
     reply_body.focus().val(text)
 
-$(document).ready(init_reply)
-$(document).on('page:load', init_reply)
+$(document).ready(ready)
+$(document).on('page:load', ready)
