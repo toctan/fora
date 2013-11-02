@@ -2,37 +2,37 @@
  * Reply
  */
 .replies {
+  @extend .block-list;
   counter-reset: replies-counter;
   @include verticle-line;
-}
 
-.reply:not(.icon) {
-  @extend .card;
-  min-height: 6rem;
-  margin: 0 0 em(-1);
-  border-radius: 0;
-  @include rtriangle;
+  > .reply {
+    @extend .flush;
+    position: relative;
+    @include rtriangle;
 
-  &:after {
-    content: counter(replies-counter);
-    counter-increment: replies-counter;
-    position: absolute;
-    right: 1rem;
-    bottom: .25rem;
-    font: italic 3.5rem/3.5rem $helvetica;
-    color: rgba(#000, .15)
-  }
+    &:after {
+      content: counter(replies-counter);
+      counter-increment: replies-counter;
+      position: absolute;
+      right: 1rem;
+      bottom: .25rem;
+      font: italic 3rem/3rem $helvetica;
+      color: rgba(#000, .1)
+    }
 
-  &:first-child {
-    @include border-top-radius;
-  }
+    &:first-child {
+      @include border-top-radius;
+    }
 
-  &:last-child {
-    @include border-bottom-radius;
-  }
+    &:last-child {
+      @include border-bottom-radius;
+      border-bottom: none;
+    }
 
-  &:hover .reply__time {
-    opacity: 1;
+    &:hover .reply__time {
+      opacity: 1;
+    }
   }
 }
 
@@ -61,10 +61,11 @@
 }
 
 .reply--signin {
+  min-height: 6rem;
   text-align: center;
 
   .ui.button {
-    margin: 0 1rem 1rem 0;
+    margin-right: 1rem;
 
     &:last-child {
       margin-right: 0;
@@ -73,5 +74,5 @@
 }
 
 .reply--signin__title {
-  margin: 0 0 1rem;
+  margin-top: 1rem;
 }

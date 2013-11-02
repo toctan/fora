@@ -12,6 +12,20 @@ a {
   color: inherit;
 }
 
+.bullet {
+  margin: 0 em(5);
+}
+
+.avatar {
+  display: inline-block;
+  line-height: 1;
+
+  img {
+    display: block;
+    @include border-radius;
+  }
+}
+
 .username {
   color: inherit!important;
   font-weight: bold;

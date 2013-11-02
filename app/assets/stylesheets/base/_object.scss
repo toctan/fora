@@ -20,7 +20,7 @@
 
 /* 
  * $MEDIA
- * Place an avatar and text-like content side-by-side.
+ * Place an image and text-like content side-by-side.
  * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
  */
 .media {
@@ -28,7 +28,6 @@
 
   .avatar {
     @extend .media__img;
-    @include border-radius;
   }
 }
 
@@ -39,9 +38,7 @@
 .card {
   position: relative;
   background: #fff;
-  margin-bottom: $base-spacing-unit;
-  border: em(1) solid #ccc;
-  border-color: #ebeae5 #e0dfdc #dbdad7;
-  box-shadow: 0 em(1) em(3) rgba(#000, 0.05);
+  box-shadow: 0 em(1) em(3) rgba(#000, 0.2),
+              0 em(1) 0 rgba(#fff, 0.9) inset;
   @include border-radius;
 }

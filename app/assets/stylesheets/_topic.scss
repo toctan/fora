@@ -1,12 +1,8 @@
 /**
- * Topic
+ * $TOPIC
  */
 .topic {
   @include verticle-line;
-
-  .media {
-    margin: 0;
-  }
 }
 
 .topic__header {
@@ -14,13 +10,13 @@
 }
 
 .topic__title {
-  font-size: 1.5rem;
-  line-height: 1.5rem;
-  margin: 0!important;
+  @extend .gamma;
+  @extend .flush;
 }
 
 .topic__meta {
-  font-size: 0.85rem;
+  @extend .zeta;
+  display: inline-block;
   color: #888;
 }
 
@@ -50,12 +46,14 @@
   }
 }
 
-.topic__node.label {
+.topic__node {
+  @extend .ui.red.label;
+  @extend .zeta;
   position: relative;
   left: 1.55rem;
   float: right;
   margin: 0.2rem 0;
-  padding: 0.2em 2em 0.3em 0.8em;
+  padding: 0 2em 0.1em 0.8em;
   border-color: rgba(0, 0, 0, 0.15);
   border-radius: 4px 0px 0px 4px;
   text-transform: none;
@@ -72,5 +70,32 @@
     border-left: 1em solid;
     border-left-color: inherit;
     border-bottom: 1em solid transparent;
+  }
+}
+
+
+.topic--item {
+  @extend .islet;
+  @extend .card;
+  @include border-radius(0);
+
+  &:after {
+    content: attr(data-replies-count);
+    position: absolute;
+    right: 1rem;
+    bottom: .25rem;
+    font: italic 3rem/3rem $helvetica;
+    color: rgba(#000, .1)
+  }
+}
+.topics .card {
+}
+
+.participants {
+  display: inline-block;
+  vertical-align: middle;
+
+  img {
+    @include border-radius(5rem);
   }
 }

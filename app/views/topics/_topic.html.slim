@@ -1,7 +1,14 @@
-.row.topic-item
-  .span1 = link_to avatar_tag topic.user
-  .span10
-    = link_to topic.title, topic
-
-  .span1
-    .count = topic.replies_count
+.topic--item data-replies-count="#{topic.replies_count}"
+  .topic__node = topic.node_name
+  .delta = link_to topic.title, topic
+  span.participants
+    - participants = topic.participants
+    = avatar_tag participants.shift
+    - topic.participants.last(4).each do |p|
+      = avatar_tag p, :thumb
+  .topic__meta
+    = bullet
+    = semantic_icon('empty heart')
+    | #{topic.likes_count} Likes
+    = bullet
+    = time_ago_in_words(topic.updated_at)

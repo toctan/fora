@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @topics = Topic.page(params[:page]).includes(:user)
+    @topics = TopicList.list 1
   end
 
   def show

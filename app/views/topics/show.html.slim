@@ -1,10 +1,10 @@
 .topic.card
-  .topic__header.media
+  .topic__header.media.flush
     = avatar_tag @topic.user
-    span.topic__node.ui.red.label = @topic.node.name
+    .topic__node = @topic.node_name
     .media__body
       h1.topic__title = @topic.title
-      span.topic__meta
+      .topic__meta
         | Posted by #{@topic.username} #{time_ago_in_words(@topic.created_at)} ago
         span &nbsp;·&nbsp;
         | #{@topic.hits} hits
@@ -22,9 +22,9 @@
             span.count #{@topic.likes_count} Likes
 
   - unless @topic.body_html.blank?
-    .topic__body.media = @topic.body_html
+    .topic__body.islet.flush = @topic.body_html
 
 -unless @replies.blank?
-  .replies = render @replies
+  ul.replies.card = render @replies
 
 = render 'replies/form'
