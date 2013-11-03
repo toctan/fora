@@ -6,9 +6,10 @@
       h1.topic__title = @topic.title
       = render partial: 'topic_meta'
 
-  .topic__body.body-text.islet.flush
+  .topic__body.body-text.islet.flush.hard--bottom
     = @topic.body_html unless @topic.body_html.blank?
-    = render partial: 'topic_footer'
+
+  = render partial: 'topic_footer'
 
 -unless @replies.blank?
   ul.replies.card = render @replies

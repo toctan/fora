@@ -8,7 +8,7 @@ feature 'Delete topic' do
     visit topic_path(topic)
   end
 
-  scenario 'deletes a topic' do
+  scenario 'Admin deletes a topic' do
     expect { click_link 'js-delete-topic' }.to change(Topic, :count).by(-1)
 
     expect(page).to have_flash_message 'Delete topic successfully'

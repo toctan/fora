@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20131028115931) do
     t.integer  "replies_count",          default: 0
     t.integer  "topics_count",           default: 0
     t.boolean  "admin",                  default: false, null: false
+    t.integer  "bookmarks",              default: [],                 array: true
     t.string   "username",               default: "",    null: false
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false

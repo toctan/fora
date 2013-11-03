@@ -4,6 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :replies_count, default: 0
       t.integer :topics_count,  default: 0
       t.boolean :admin,         default: false, null: false
+      t.integer :bookmarks,     default: [], array: true
 
       ## Database authenticatable
       t.string :username,           :null => false, :default => ""

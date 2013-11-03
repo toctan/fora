@@ -21,20 +21,15 @@
 }
 
 .topic__footer {
-  line-height: 1;
+  @extend .delta;
 
   .liked {
     color: #ff7e94!important;
   }
 
-  .heart.icon {
-    font-size: 1.3em;
-    margin-right: em(6);
-  }
-
   .icon {
     cursor: pointer;
-    color: #888;
+    color: #999;
 
     &:hover {
       color: inherit;

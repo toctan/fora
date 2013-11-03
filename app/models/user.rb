@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Avatar
   include LikeSource
+  include Bookmark
 
   attr_accessor :login, :description
 
@@ -84,7 +85,6 @@ class User < ActiveRecord::Base
     end
   end
 end
-
 # == Schema Information
 #
 # Table name: users
@@ -93,6 +93,7 @@ end
 #  replies_count          :integer          default(0)
 #  topics_count           :integer          default(0)
 #  admin                  :boolean          default(FALSE), not null
+#  bookmarks              :integer          default([])
 #  username               :string(255)      default(""), not null
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
@@ -124,4 +125,3 @@ end
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_username              (username) UNIQUE
 #
-

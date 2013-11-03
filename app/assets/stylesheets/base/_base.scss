@@ -12,7 +12,7 @@ a {
   color: inherit;
 }
 
-.body-text a:not(:icon) {
+.body-text a {
   color: $blue;
   border-bottom: .07em solid rgba(#000, 0.1);
   padding-bottom: .07em;

@@ -13,6 +13,7 @@ Fora::Application.routes.draw do
   get 'new/:key' => 'topics#new'
 
   post 'like/:type/:id' => 'likes#create_or_destroy',  as: :like
+  post 'bookmark/:id' => 'bookmarks#create_or_destroy', as: :bookmark
 
   get 'users/:username'  => 'users#show', as: :user
 

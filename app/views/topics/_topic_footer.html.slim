@@ -1,12 +1,16 @@
-.topic__footer.text--right
-  - icon = 'large heart'
-  - icon << ' liked' if current_user && current_user.likes?(@topic)
+.topic__footer.text--right.soft-half.hard--top
+  -if current_user
+    - like_icon = current_user.likes?(@topic) ? 'liked' : 'empty'
+    = link_to like_path(@topic.class, @topic.id), method: :post, id: 'js-like' do
+      = semantic_icon('heart', like_icon)
 
-  = link_to like_path(@topic.class, @topic.id), method: :post, id: 'js-like' do
-    = semantic_icon(icon)
+    - bookmark_icon = 'empty' unless current_user.bookmarked?(@topic.id)
+    = link_to bookmark_path(@topic.id), method: :post, id: 'js-bookmark' do
+      = semantic_icon('bookmark', bookmark_icon)
 
-  = semantic_icon('large twitter')
-  = semantic_icon('large weibo')
+  = semantic_icon('twitter')
+  = semantic_icon('weibo')
+
   - if can? :destroy, @topic
-    = link_to semantic_icon('large trash'), @topic, method: :delete,
+    = link_to semantic_icon('trash'), @topic, method: :delete,
         id: 'js-delete-topic', data: { confirm: 'Are you sure?' }
