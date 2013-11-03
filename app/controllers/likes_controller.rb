@@ -2,15 +2,8 @@ class LikesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_likeable
 
-  def create
-    current_user.like @likeable
-
-    redirect_to :back
-  end
-
-  def destroy
-    current_user.dislike @likeable
-
+  def create_or_destroy
+    current_user.like_or_dislike @likeable
     redirect_to :back
   end
 

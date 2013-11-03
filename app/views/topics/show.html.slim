@@ -4,25 +4,11 @@
     .topic__node = @topic.node_name
     .media__body
       h1.topic__title = @topic.title
-      .topic__meta
-        | Posted by #{@topic.username} #{time_ago_in_words(@topic.created_at)} ago
-        span &nbsp;·&nbsp;
-        | #{@topic.hits} hits
-        span &nbsp;·&nbsp;
-        / TODO: Use ajax && refactor
-        - if current_user && current_user.liked?(@topic)
-          = link_to(dislike_path(@topic.class, @topic.id), method: :delete,
-          class: 'topic__like', id: 'js-like', title: 'Like?') do
-            = semantic_icon('heart')
-            span.count #{@topic.likes_count} Likes
-        - else
-          = link_to(like_path(@topic.class, @topic.id), method: :post,
-          class: 'topic__like', id: 'js-like', title: 'Dislike?') do
-            = semantic_icon('empty heart')
-            span.count #{@topic.likes_count} Likes
+      = render partial: 'topic_meta'
 
-  - unless @topic.body_html.blank?
-    .topic__body.islet.flush = @topic.body_html
+  .topic__body.body-text.islet.flush
+    = @topic.body_html unless @topic.body_html.blank?
+    = render partial: 'topic_footer'
 
 -unless @replies.blank?
   ul.replies.card = render @replies

@@ -12,8 +12,7 @@ Fora::Application.routes.draw do
   get 'go/:key'  => 'nodes#show', as: :go
   get 'new/:key' => 'topics#new'
 
-  post   'like/:type/:id' => 'likes#create',  as: :like
-  delete 'like/:type/:id' => 'likes#destroy', as: :dislike
+  post 'like/:type/:id' => 'likes#create_or_destroy',  as: :like
 
   get 'users/:username'  => 'users#show', as: :user
 

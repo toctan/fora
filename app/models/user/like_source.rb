@@ -14,10 +14,16 @@ class User
       likes.where(likeable: target).first.try(:destroy)
     end
 
-    def liked?(target)
-      likes.where(likeable: target).present?
+    def like_or_dislike(target)
+      if likes?(target)
+        dislike(target)
+      else
+        like(target)
+      end
     end
 
-    alias_method :likes?, :liked?
+    def likes?(target)
+      likes.where(likeable: target).present?
+    end
   end
 end

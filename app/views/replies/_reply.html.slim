@@ -6,5 +6,5 @@ li.reply.media
       span.reply__time = time_ago_in_words reply.created_at
       = link_to semantic_icon('reply mail'), '#', class: 'js-reply', data: { name: reply.username }
 
-    .reply__body
+    .reply__body.body-text
       = reply.body_html

@@ -12,6 +12,19 @@ a {
   color: inherit;
 }
 
+.body-text a:not(:icon) {
+  color: $blue;
+  border-bottom: .07em solid rgba(#000, 0.1);
+  padding-bottom: .07em;
+
+  &:hover { border-bottom: .07em solid $blue; }
+  &:active {
+    color: #fff;
+    background: $blue;
+    border: none;
+  }
+}
+
 .bullet {
   margin: 0 em(5);
 }

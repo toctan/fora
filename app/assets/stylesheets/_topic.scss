@@ -20,28 +20,24 @@
   color: #888;
 }
 
-.topic__like {
+.topic__footer {
+  line-height: 1;
+
+  .liked {
+    color: #ff7e94!important;
+  }
+
   .heart.icon {
-    color: #ff7e94;
+    font-size: 1.3em;
+    margin-right: em(6);
   }
 
-  .empty.heart.icon {
-    color: inherit;
-  }
-}
+  .icon {
+    cursor: pointer;
+    color: #888;
 
-.topic__body,
-.reply__body {
-  a {
-    color: $blue;
-    border-bottom: .07em solid rgba(#000, 0.1);
-    padding-bottom: .07em;
-
-    &:hover { border-bottom: .07em solid $blue; }
-    &:active {
-      color: #fff;
-      background: $blue;
-      border: none;
+    &:hover {
+      color: inherit;
     }
   }
 }

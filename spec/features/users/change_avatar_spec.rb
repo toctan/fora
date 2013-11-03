@@ -12,6 +12,7 @@ feature 'Signed in user changes his avatar to', :signin do
   end
 
   scenario 'huge image' do
+    pending
     attach_avatar 'spec/assets/huge.jpg'
 
     expect(page).to have_inline_help 'must less than 500KB'
