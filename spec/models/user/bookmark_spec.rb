@@ -1,32 +1,47 @@
 require 'spec_helper'
 
 describe User::Bookmark do
-  subject(:user) { create(:user) }
-  let(:topic) { create(:topic, user: user) }
+  class DummyUser
+    include User::Bookmark
+
+    attr_accessor :bookmarks
+
+    def initialize
+      @bookmarks = []
+    end
+
+    def bookmarks_will_change!
+    end
+
+    def save!
+    end
+  end
+
+  subject(:user) { DummyUser.new }
 
   describe '#bookmarked?' do
     it 'returns false when the topic is not bookmarked' do
-      result = user.bookmarked? topic.id
-      expect(result).to eq false
+      result = user.bookmarked? 1
+      expect(result).to be_false
     end
 
     it 'returns true when the topic is bookmarked' do
-      user.update(bookmarks: [topic.id])
-      result = user.reload.bookmarked? topic.id
-      expect(result).to eq true
+      user.bookmarks = [1]
+      result = user.bookmarked? 1
+      expect(result).to be_true
     end
   end
 
   describe '#bookmark_or_unbookmark' do
     it 'bookmarks the topic when it is not bookmarked' do
-      user.bookmark_or_unbookmark topic.id
-      expect(user.reload.bookmarks).to eq [topic.id]
+      user.bookmark_or_unbookmark 1
+      expect(user.bookmarks).to eq [1]
     end
 
     it 'unbookmarks the topic when it is bookmarked' do
-      user.update(bookmarks: [topic.id])
-      user.bookmark_or_unbookmark topic.id
-      expect(user.reload.bookmarks).to eq []
+      user.bookmarks = [1]
+      user.bookmark_or_unbookmark 1
+      expect(user.bookmarks).to eq []
     end
   end
 end
