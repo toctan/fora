@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @replies = @topic.replies.page(params[:page]).includes(:user)
+    @replies = @topic.replies.includes(:user)
   end
 
   def new

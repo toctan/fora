@@ -14,8 +14,6 @@ class Reply < ActiveRecord::Base
 
   delegate :username, to: :user
 
-  self.per_page = 20
-
   private
 
   def send_notification_to_topic_owner
@@ -48,4 +46,3 @@ end
 #  index_replies_on_topic_id  (topic_id)
 #  index_replies_on_user_id   (user_id)
 #
-
