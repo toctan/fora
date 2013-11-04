@@ -6,6 +6,6 @@ feature 'Bookmark', :signin do
 
   scenario 'User bookmarks a topic successfully' do
     click_link 'js-bookmark'
-    expect(@user.bookmarks).to eq [topic.id]
+    expect(@current_user.reload.bookmarks).to eq [topic.id]
   end
 end

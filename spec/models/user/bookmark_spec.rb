@@ -10,11 +10,9 @@ describe User::Bookmark do
       @bookmarks = []
     end
 
-    def bookmarks_will_change!
-    end
+    def bookmarks_will_change!; end
 
-    def save!
-    end
+    def save!; end
   end
 
   subject(:user) { DummyUser.new }

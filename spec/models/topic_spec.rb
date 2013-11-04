@@ -3,35 +3,18 @@ require 'spec_helper'
 describe Topic do
   it_behaves_like Mentionable
 
-  it { should respond_to(:replies_count) }
-
-  it { should have_many(:replies).dependent(:destroy) }
-
   it { should validate_presence_of(:user_id) }
   it { should validate_presence_of(:node_id) }
   it { should validate_presence_of(:title) }
 
   it { should ensure_length_of(:title).is_at_most(100) }
 
-  it { should belong_to(:user) }
-  it { should belong_to(:node) }
+  it { should have_many(:replies).dependent(:destroy) }
+  it { should belong_to(:user).counter_cache }
+  it { should belong_to(:node).counter_cache }
 
   it { should have_db_index(:node_id) }
   it { should have_db_index(:user_id) }
-
-  it 'should update node topics_count' do
-    node = create(:node)
-
-    expect { create(:topic, node: node) }
-      .to change { node.reload.topics_count }.by(1)
-  end
-
-  it 'should update user topics_count' do
-    user = create(:user)
-
-    expect { create(:topic, user: user) }
-      .to change { user.reload.topics_count }.by(1)
-  end
 
   describe '#update_hits' do
     let(:topic) { build_stubbed(:topic) }

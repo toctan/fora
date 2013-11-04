@@ -18,6 +18,8 @@ class User
       likes.where(likeable: target).present?
     end
 
+    private
+
     def like(target)
       likes.create(likeable: target)
     end

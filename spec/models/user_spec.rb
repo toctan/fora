@@ -1,12 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  subject(:user) { build(:user) }
-
-  it { should respond_to(:username) }
-
-  it { should respond_to(:replies_count) }
-  it { should respond_to(:topics_count) }
+  it { should have_db_index([:provider, :uid]).unique(true) }
 
   it { should have_many(:topics).dependent(:destroy) }
   it { should have_many(:replies).dependent(:destroy) }
@@ -15,19 +10,16 @@ describe User do
   it { should validate_uniqueness_of(:username).case_insensitive }
   it { should ensure_length_of(:username).is_at_most(17) }
 
-  describe "when username's format is invalid" do
-    before { user.username = '@#123' }
+  it { should allow_value('foo_bar').for(:username) }
+  it { should_not allow_value('@foo').for(:username) }
 
-    it { should_not be_valid }
-  end
-
-  describe "when username contain underscore" do
-    before { user.username = 'a_b_c_d_e_f' }
-
-    it { should be_valid }
-  end
+  it { should validate_uniqueness_of(:username).case_insensitive }
+  it { should allow_value('foo+bar@example.com').for(:email) }
+  it { should_not allow_value('foo;@example.com').for(:email) }
 
   describe 'Notifications' do
+    subject(:user) { build(:user) }
+
     before { create_list(:notification_mention, 3, user: user) }
 
     it { expect(user.new_notification?).to be_true }
