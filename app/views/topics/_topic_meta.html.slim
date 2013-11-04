@@ -1,18 +1,5 @@
-.topic__meta
-  | Posted by #{@topic.username} #{time_ago_in_words(@topic.created_at)} ago
-  = bullet
-  | #{@topic.hits} hits
-  = bullet
-  = semantic_icon('heart')
-  span.count #{@topic.likes_count} Likes
-  / TODO: Use ajax && refactor
-  / - if current_user && current_user.liked?(@topic)
-    = link_to(dislike_path(@topic.class, @topic.id), method: :delete,
-    class: 'topic__like', id: 'js-like', title: 'Like?') do
-      = semantic_icon('heart')
-      span.count #{@topic.likes_count} Likes
-  / - else
-    = link_to(like_path(@topic.class, @topic.id), method: :post,
-    class: 'topic__like', id: 'js-like', title: 'Dislike?') do
-      = semantic_icon('empty heart')
-      span.count #{@topic.likes_count} Likes
+ul.topic__meta.nav
+  li.topic__meta-item By #{@topic.username}
+  li.topic__meta-item #{time_ago_in_words(@topic.created_at)} ago
+  li.topic__meta-item #{@topic.hits} hits
+  li.topic__meta-item #{semantic_icon('heart')} #{@topic.likes_count} Likes

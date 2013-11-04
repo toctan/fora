@@ -20,6 +20,17 @@
   color: #888;
 }
 
+.topic__meta-item {
+  &:after {
+    content: ' · ';
+    padding: 0 em(5);
+  }
+
+  &:last-child:after {
+    content: '';
+  }
+}
+
 .topic__footer {
   @extend .delta;
 
@@ -78,8 +89,6 @@
     font: italic 3rem/3rem $helvetica;
     color: rgba(#000, .1)
   }
-}
-.topics .card {
 }
 
 .participants {

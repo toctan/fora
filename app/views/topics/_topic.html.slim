@@ -6,9 +6,6 @@
     = avatar_tag participants.shift
     - topic.participants.last(4).each do |p|
       = avatar_tag p, :thumb
-  .topic__meta
-    = bullet
-    = semantic_icon('empty heart')
-    | #{topic.likes_count} Likes
-    = bullet
-    = time_ago_in_words(topic.updated_at)
+  ul.topic__meta.nav
+    li.topic__meta-item #{time_ago_in_words(topic.created_at)} ago
+    li.topic__meta-item #{semantic_icon('empty heart')} #{topic.likes_count} Likes

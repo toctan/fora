@@ -8,10 +8,6 @@ module ApplicationHelper
     link_to avatar_img(user, size), '#', class: 'avatar'
   end
 
-  def bullet
-    content_tag :span, '•', class: 'bullet'
-  end
-
   def avatar_img(user, size)
     width = user_avatar_width_for_size(size)
     img_src =
