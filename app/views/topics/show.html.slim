@@ -3,7 +3,7 @@
     = avatar_tag @topic.user
     .topic__node = @topic.node_name
     .media__body
-      h1.topic__title = @topic.title
+      h1.topic__title.gamma.flush = @topic.title
       = render partial: 'topic_meta'
 
   .topic__body.body-text.islet.flush.hard--bottom
@@ -15,3 +15,6 @@
   ul.replies.card = render @replies
 
 = render 'replies/form'
+
+- content_for :sidebar do
+  = render 'nodes/node', node: @topic.node

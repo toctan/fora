@@ -9,11 +9,6 @@
   border-bottom: em(1) solid #eaeaea;
 }
 
-.topic__title {
-  @extend .gamma;
-  @extend .flush;
-}
-
 .topic__meta {
   @extend .zeta;
   display: inline-block;
@@ -22,7 +17,7 @@
 
 .topic__meta-item {
   &:after {
-    content: ' · ';
+    content: '·';
     padding: 0 em(5);
   }
 
@@ -55,7 +50,7 @@
   left: 1.55rem;
   float: right;
   margin: 0.2rem 0;
-  padding: 0 2em 0.1em 0.8em;
+  padding: 0 1em 0.1em 0.8em;
   border-color: rgba(0, 0, 0, 0.15);
   border-radius: 4px 0px 0px 4px;
   text-transform: none;
@@ -77,9 +72,12 @@
 
 
 .topic--item {
-  @extend .islet;
-  @extend .card;
   @include border-radius(0);
+
+  .topic__meta li:first-child:before {
+    content: '·';
+    padding: 0 em(5);
+  }
 
   &:after {
     content: attr(data-replies-count);
