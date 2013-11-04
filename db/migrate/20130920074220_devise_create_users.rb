@@ -6,6 +6,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.boolean :admin,         default: false, null: false
       t.integer :bookmarks,     default: [], array: true
 
+      ## Avatar
+      t.attachment :avatar
+
       ## Database authenticatable
       t.string :username,           :null => false, :default => ""
       t.string :email,              :null => false, :default => ""

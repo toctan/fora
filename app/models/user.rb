@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
-                       format: { with: /\A[A-Za-z_\d]+\Z/ },
+                       format: { with: /\A[A-Za-z_\d]+\z/ },
                        length: { maximum: 17 }
 
   def self.from_omniauth(auth)

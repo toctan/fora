@@ -13,7 +13,7 @@ describe User do
   it { should allow_value('foo_bar').for(:username) }
   it { should_not allow_value('@foo').for(:username) }
 
-  it { should validate_uniqueness_of(:username).case_insensitive }
+  it { should validate_uniqueness_of(:email).case_insensitive }
   it { should allow_value('foo+bar@example.com').for(:email) }
   it { should_not allow_value('foo;@example.com').for(:email) }
 
