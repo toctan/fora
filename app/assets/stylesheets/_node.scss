@@ -18,3 +18,8 @@
   @include background-image(linear-gradient(to top, rgba(#000, 0.7) 0,
                     rgba(#000, 0.3) 70%, rgba(#000, 0) 100%));  
 }
+
+.nodes > .node-item {
+  @extend .grid__item;
+  @extend .desk-one-third;
+}

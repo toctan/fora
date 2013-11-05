@@ -1,5 +1,9 @@
-# -*- coding: utf-8 -*-
 module ApplicationHelper
+  def nav_link(key, path)
+    klass = 'active' if body_class.include? "#{key}-index"
+    link_to t(key), path, class: klass
+  end
+
   def username_tag(username)
     link_to username, '#', class: 'username'
   end

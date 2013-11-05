@@ -1,6 +1,8 @@
 class NodesController < ApplicationController
+  before_filter :custom_layout, only: :index
+
   def index
-    @nodes = Node.all
+    @nodes = Node.page(params[:page])
   end
 
   def show
@@ -11,5 +13,11 @@ class NodesController < ApplicationController
     else
       redirect_to root_path, alert: 'No such node.'
     end
+  end
+
+  private
+
+  def custom_layout
+    @custom_layout = true
   end
 end

@@ -3,7 +3,7 @@ class Node < ActiveRecord::Base
 
   has_many :topics, dependent: :destroy
 
-  has_attached_file :image, styles: { medium: '300x200>' }
+  has_attached_file :image, styles: { medium: '300>' }
 
   validates_attachment :image, content_type: { content_type: /^image\/(jpg|jpeg|png)$/ },
                                size: { less_than: 2.megabytes }

@@ -5,13 +5,16 @@ html
     = stylesheet_link_tag    'application', 'data-turbolinks-track' => true, media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body
+  body class=body_class
     = render 'layouts/header'
 
     .container
-      .grid
-        .main.grid__item.one-whole.desk-two-thirds
-          = semantic_flash
-          = yield
-        .sidebar.grid__item.one-whole.desk-one-third
-          = yield :sidebar
+      - if @custom_layout
+        = yield
+      - else
+        .grid
+          .main.grid__item.one-whole.desk-two-thirds
+            = semantic_flash
+            = yield
+          .sidebar.grid__item.one-whole.desk-one-third
+            = yield :sidebar
