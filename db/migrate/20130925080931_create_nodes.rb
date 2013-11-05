@@ -5,6 +5,7 @@ class CreateNodes < ActiveRecord::Migration
       t.string  :key
       t.string  :description
       t.integer :topics_count, default: 0
+      t.attachment :image
 
       t.timestamps
     end
