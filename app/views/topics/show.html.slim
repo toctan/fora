@@ -1,28 +1,20 @@
-/ TODO: Ugly view code
-#topic-detail.container-box
-  #topic-header.header
-    = avatar_tag(@topic.user, name: false, img_class: "pull-right")
-    .main
-      h3 = @topic.title
-      .meta
-        span.time = @topic.created_at
-        = link_to @topic.user.username, user_path(username: @topic.user.username)
+.topic.card
+  .topic__header.media.flush
+    = avatar_tag @topic.user
+    .topic__node = @topic.node_name
+    .media__body
+      h1.topic__title.gamma.flush = @topic.title
+      = render partial: 'topic_meta'
 
-  #topic-content.content = @topic.body_html
-  .topic-footer.footer
-    = render 'layouts/tools'
+  .topic__body.body-text.islet.flush.hard--bottom
+    = @topic.body_html unless @topic.body_html.blank?
 
-- if @replies.empty?
-  .empty.hero-unit = "there is no reply currently"
-- else
-  #replies.container-box
-    #replies-header.header = pluralize(@topic.replies_count, "reply")
-    = render @replies
+  = render partial: 'topic_footer'
 
-= will_paginate @replies
+-unless @replies.blank?
+  ul.replies.card = render @replies
 
-#reply.container-box
-  -if user_signed_in?
-    = render 'replies/form'
-  -else
-    p.text-center = link_to "sign in to reply", new_user_session_path
+= render 'replies/form'
+
+- content_for :sidebar do
+  = render 'nodes/node', node: @topic.node

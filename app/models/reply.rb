@@ -2,8 +2,6 @@ class Reply < ActiveRecord::Base
   include Mentionable
   include Autohtmlable
 
-  after_create :send_notification_to_topic_owner
-
   belongs_to :topic, counter_cache: true, touch: true
   belongs_to :user,  counter_cache: true
 
@@ -12,9 +10,9 @@ class Reply < ActiveRecord::Base
 
   validates_presence_of :body, :topic_id, :user_id
 
-  default_scope -> { order('updated_at ASC') }
+  after_create :send_notification_to_topic_owner
 
-  self.per_page = 20
+  delegate :username, to: :user
 
   private
 
@@ -23,10 +21,28 @@ class Reply < ActiveRecord::Base
   end
 
   def mentioned_users
-    super - [topic.user] # or topic user will get two notification
+    super - [topic.user]
   end
 
   def mention_scan_text
     body
   end
 end
+
+# == Schema Information
+#
+# Table name: replies
+#
+#  id         :integer          not null, primary key
+#  body       :text
+#  body_html  :text
+#  user_id    :integer
+#  topic_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+# Indexes
+#
+#  index_replies_on_topic_id  (topic_id)
+#  index_replies_on_user_id   (user_id)
+#

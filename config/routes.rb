@@ -12,29 +12,23 @@ Fora::Application.routes.draw do
   get 'go/:key'  => 'nodes#show', as: :go
   get 'new/:key' => 'topics#new'
 
+  post 'like/:type/:id' => 'likes#create_or_destroy',  as: :like
+  post 'bookmark/:id' => 'bookmarks#create_or_destroy', as: :bookmark
+
   get 'users/:username'  => 'users#show', as: :user
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :nodes do
-    resources :topics
-  end
+  resources :nodes, only: :index
 
-  resources :topics do
-    resources :replies
-
-    member do
-      patch 'star'
-      patch 'unstar'
-    end
+  resources :topics, except: [:edit, :update] do
+    resources :replies, only: :create
   end
 
   resources :notifications, only: [:index, :destroy] do
-    collection do
-      post 'clear'
-    end
+    post 'clear', on: :collection
   end
 
   # Example resource route with options:

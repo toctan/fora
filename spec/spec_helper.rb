@@ -4,6 +4,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'paperclip/matchers'
 require 'shoulda/matchers/integrations/rspec'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -14,12 +15,18 @@ RSpec.configure do |config|
 
   config.include ActionDispatch::TestProcess
   config.include FactoryGirl::Syntax::Methods
+  config.include Paperclip::Shoulda::Matchers
   config.include Devise::TestHelpers, type: :controller
 
   config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.before(:each, signin: true) do
-    login_as create(:confirmed_user), scope: :user
+    @current_user ||= create(:confirmed_user)
+    login_as @current_user, scope: :user
+  end
+
+  config.after(:each, signin: true) do
+    @current_user.destroy
   end
 
   config.use_transactional_fixtures = false

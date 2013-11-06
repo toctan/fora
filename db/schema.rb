@@ -11,13 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130928044358) do
+ActiveRecord::Schema.define(version: 20131028115931) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type", using: :btree
+  add_index "likes", ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true, using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "nodes", force: true do |t|
     t.string   "name"
     t.string   "key"
     t.string   "description"
-    t.integer  "topics_count", default: 0
+    t.integer  "topics_count",       default: 0
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,9 +75,13 @@ ActiveRecord::Schema.define(version: 20130928044358) do
     t.string   "title"
     t.text     "body"
     t.text     "body_html"
-    t.integer  "replies_count", default: 0
+    t.integer  "hits",               default: 0
+    t.integer  "likes_count",        default: 0
+    t.integer  "replies_count",      default: 0
+    t.integer  "last_replier_id"
     t.integer  "user_id"
     t.integer  "node_id"
+    t.integer  "active_replier_ids", default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,17 +92,21 @@ ActiveRecord::Schema.define(version: 20130928044358) do
   create_table "users", force: true do |t|
     t.integer  "replies_count",          default: 0
     t.integer  "topics_count",           default: 0
-    t.string   "role",                   default: "user"
-    t.integer  "stars",                  default: [],                  array: true
-    t.string   "username",               default: "",     null: false
-    t.string   "email",                  default: "",     null: false
-    t.string   "encrypted_password",     default: "",     null: false
+    t.boolean  "admin",                  default: false, null: false
+    t.integer  "bookmarks",              default: [],                 array: true
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "username",               default: "",    null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,      null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -90,14 +117,11 @@ ActiveRecord::Schema.define(version: 20130928044358) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 

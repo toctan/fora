@@ -12,31 +12,37 @@ feature 'New topic' do
     scenario 'Posts a new topic with blank body' do
       fill_new_topic_form
 
-      within '#topic-header .main' do
-        expect(page).to have_selector('h3', text: topic[:title])
-      end
+      expect(page).to have_content topic[:title]
     end
 
-    scenario 'Posts a new topic with a youtube wideo', :js do
+    scenario 'Posts a new topic with a youtube video', :js do
       pending 'fuck GFW'
       fill_new_topic_form('http://www.youtube.com/watch?v=eIZTMVNBjc4')
 
-      within '.topic-content' do
-        expect(page).to have_selector('//iframe[@src="//www.youtube.com/embed/eIZTMVNBjc4"]')
-      end
+      expect(page).to have_selector('//iframe[@src="//www.youtube.com/embed/eIZTMVNBjc4"]')
     end
 
-    scenario 'Posts a new topic with a youku wideo' do
+    scenario 'Posts a new topic with a youku video' do
       fill_new_topic_form('http://v.youku.com/v_show/id_XNDk0MTU1OTIw')
 
-      expect(page).to have_selector('//*[@id="topic-detail"]/div[2]/p/embed')
+      expect(page).to have_selector('//embed[@src="http://player.youku.com/player.php/sid/XNDk0MTU1OTIw/v.swf"]')
+    end
+
+    context 'when the user forgets to fill the title' do
+      before { click_button 'Create Topic' }
+
+      scenario 'Fill the missed title' do
+        fill_new_topic_form
+
+        expect(page).to have_content topic[:title]
+      end
     end
   end
 
   scenario 'Unsigned user tries to visit new topic page' do
     visit "/new/#{node.key}"
 
-    expect(page).to have_flash_message('You need to sign in', 'alert')
+    expect(page).to have_flash_message('You need to sign in', 'error')
   end
 end
 

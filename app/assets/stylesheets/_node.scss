@@ -1,0 +1,25 @@
+.node {
+  padding-bottom: 61.8%;
+  color: white;
+  background-color: $brand-color;
+  background-position: center;
+  @include background-size(cover);
+}
+
+.node__body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include border-radius;
+}
+
+.node[style*="background-image"] .node__body {
+  @include background-image(linear-gradient(to top, rgba(#000, 0.7) 0,
+                    rgba(#000, 0.3) 70%, rgba(#000, 0) 100%));  
+}
+
+.nodes > .node-item {
+  @extend .grid__item;
+  @extend .desk-one-third;
+}

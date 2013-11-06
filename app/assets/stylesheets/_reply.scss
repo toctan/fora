@@ -1,0 +1,78 @@
+/**
+ * Reply
+ */
+.replies {
+  @extend .block-list;
+  counter-reset: replies-counter;
+  @include verticle-line;
+
+  > .reply {
+    @extend .flush;
+    position: relative;
+    @include rtriangle;
+
+    &:after {
+      content: counter(replies-counter);
+      counter-increment: replies-counter;
+      position: absolute;
+      right: 1rem;
+      bottom: .25rem;
+      font: italic 3rem/3rem $helvetica;
+      color: rgba(#000, .1)
+    }
+
+    &:first-child {
+      @include border-top-radius;
+    }
+
+    &:last-child {
+      @include border-bottom-radius;
+      border-bottom: none;
+    }
+
+    &:hover .reply__time {
+      opacity: 1;
+    }
+  }
+}
+
+.reply__meta {
+  float: right;
+
+  .icon {
+    margin-left: em(5);
+  }
+}
+
+.reply__time {
+  color: #888;
+  font-size: 0.9rem;
+  opacity: 0;
+  @include transition (opacity 0.3s ease-in-out);
+}
+
+.reply--form {
+  @include rtriangle;
+
+  .form textarea {
+    min-height: inherit;
+    height: inherit;
+  }
+}
+
+.reply--signin {
+  min-height: 6rem;
+  text-align: center;
+
+  .ui.button {
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.reply--signin__title {
+  margin-top: 1rem;
+}

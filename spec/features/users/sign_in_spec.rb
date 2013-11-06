@@ -22,7 +22,7 @@ feature 'User signs in' do
   scenario 'with invalid credential' do
     fill_sign_in_form('invalid')
 
-    expect(page).to have_flash_message 'Invalid login or password', 'alert'
+    expect(page).to have_flash_message 'Invalid login or password', 'error'
   end
 end
 

@@ -1,0 +1,44 @@
+/**
+ * Insert a vertical line after the element
+ */
+@mixin verticle-line($height: 3rem) {
+  margin-bottom: $height;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 1.5 * $base-spacing-unit;
+    width: 0;
+    height: $height;
+    border-left: em(2) solid #ccc;
+    z-index: -1;
+  }
+}
+
+
+/**
+ * Reply triangular points-out arrow
+ */
+@mixin rtriangle {
+  $triangle-width: em(18);
+  $offset: -$triangle-width / 2 - em(1);
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: em(28);
+    width: $triangle-width;
+    height: $triangle-width;
+    border: em(1.5) solid #dadada;
+    border-right: none;
+    border-bottom: none;
+    @include rotate(45deg);
+  }
+
+  &:before {
+    top: $offset;
+    background: #fff;
+  }
+}

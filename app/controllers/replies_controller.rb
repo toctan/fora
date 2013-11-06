@@ -1,12 +1,11 @@
 class RepliesController < ApplicationController
-  before_filter :authenticate_user!, only: [:create]
+  before_filter :authenticate_user!
+  before_filter :find_topic
 
   def create
-    @topic = Topic.find(params[:topic_id])
-    @reply = @topic.replies.build(reply_params)
-    @reply.user_id = current_user.id
+    reply = @topic.new_reply(current_user.id, reply_params)
+    flash[:error] = reply.errors.full_messages.join("\n") unless reply.valid?
 
-    flash[:notice] = "Reply body can't be blank" unless @reply.save
     redirect_to :back
   end
 
@@ -14,5 +13,9 @@ class RepliesController < ApplicationController
 
   def reply_params
     params.require(:reply).permit(:body)
+  end
+
+  def find_topic
+    @topic = Topic.find(params[:topic_id])
   end
 end

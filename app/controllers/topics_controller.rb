@@ -1,19 +1,16 @@
 class TopicsController < ApplicationController
-
   before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :find_topic, only: [:show, :destroy]
+  before_filter :find_topic,  only: [:show, :destroy]
+  after_filter :update_hits, only: :show
 
   load_and_authorize_resource
 
   def index
-    @topics = Topic.page(params[:page]).includes(:user)
-    @nodes = Node.take(Node.limit)
-
-    @top10 = Topic.top10
+    @topics = TopicList.list 1
   end
 
   def show
-    @replies = @topic.replies.page(params[:page]).includes(:user)
+    @replies = @topic.replies.includes(:user)
   end
 
   def new
@@ -27,7 +24,6 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.build(topic_params)
-    @topic.node = Node.find(params[:node_id])
 
     if @topic.save
       redirect_to @topic
@@ -40,25 +36,17 @@ class TopicsController < ApplicationController
     redirect_to root_url, notice: 'Delete topic successfully' if @topic.destroy
   end
 
-  def star
-    current_user.star_topic(params[:id].to_i)
-
-    redirect_to :back
-  end
-
-  def unstar
-    current_user.unstar_topic(params[:id].to_i)
-
-    redirect_to :back
-  end
-
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :body)
+    params.require(:topic).permit(:title, :body, :node_id)
   end
 
   def find_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def update_hits
+    @topic.update_hits
   end
 end

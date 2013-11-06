@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_devise_params, if: :devise_controller?
-
-  # cancan is not ready for rails4, this hack make it work
   before_filter :can_can_can
 
   protected

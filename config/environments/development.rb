@@ -28,5 +28,17 @@ Fora::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
   Paperclip.options[:command_path] = "/usr/bin/"
+end
+
+Rails::Rack::Logger.class_eval do
+  def call_with_quiet_assets(env)
+    previous_level = Rails.logger.level
+    Rails.logger.level = Logger::ERROR if env['PATH_INFO'].index("/assets/") == 0
+    call_without_quiet_assets(env).tap do
+      Rails.logger.level = previous_level
+    end
+  end
+  alias_method_chain :call, :quiet_assets
 end

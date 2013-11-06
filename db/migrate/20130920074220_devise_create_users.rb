@@ -3,8 +3,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       t.integer :replies_count, default: 0
       t.integer :topics_count,  default: 0
-      t.string  :role,          default: 'user'
-      t.integer :stars, array: true, default: []
+      t.boolean :admin,         default: false, null: false
+      t.integer :bookmarks,     default: [], array: true
+
+      ## Avatar
+      t.attachment :avatar
 
       ## Database authenticatable
       t.string :username,           :null => false, :default => ""
@@ -47,6 +50,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :email,                :unique => true
     add_index :users, :reset_password_token, :unique => true
     add_index :users, :confirmation_token,   :unique => true
+    add_index :users, [:provider, :uid],     :unique => true
     # add_index :users, :unlock_token,         :unique => true
   end
 end

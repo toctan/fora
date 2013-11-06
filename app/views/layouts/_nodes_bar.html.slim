@@ -1,4 +1,0 @@
-ul.inline
-  - @nodes.each do |node|
-    li = link_to node.name, go_path(key: node.key)
-  li.pull-right = link_to "All nodes", nodes_path, class: 'btn btn-success btn-small' if Node.more?

@@ -1,6 +1,16 @@
-.header
-  span = "Make a new reply"
-.content
-  = simple_form_for [@topic, @topic.replies.build] do |f|
-    = f.text_area :body,   class: 'input-block-level', rows: 8
-    = f.button    :submit, class: 'btn-small'
+.reply--form.card.media
+  - if current_user
+    = avatar_tag current_user
+    .media__body
+      = simple_form_for [@topic, @topic.replies.build] do |f|
+        = f.input  :body, label: false, input_html: { rows: 4 }
+        = f.button :submit, class: 'mini float--right'
+  - else
+    .reply--signin
+      h3.reply--signin__title Sign in to reply
+      .ui.small.twitter.button
+        i.twitter.icon
+        | Twitter
+      .ui.small.google.plus.button
+        i.weibo.icon
+        | Weibo

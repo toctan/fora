@@ -1,0 +1,16 @@
+/**
+ * Semantic popup fix.
+ *
+ * Bourbon neat will apply `box-sizing: border-box;` on all elements.
+ * This breaks width of semantic popup.
+ */
+.ui.popup { 
+  @include box-sizing(content-box); 
+}
+
+/**
+ * Semantic UI button looks terrible with Ubuntu-Light
+ */
+.ui.button {
+  font-weight: normal;
+}

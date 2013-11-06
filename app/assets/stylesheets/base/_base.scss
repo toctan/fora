@@ -1,0 +1,51 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-face;
+}
+
+body {
+  background: #f0f0f0 inline-image("bg.gif") repeat;
+  color: #4c4c4c;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.body-text a {
+  color: $blue;
+  border-bottom: .07em solid rgba(#000, 0.1);
+  padding-bottom: .07em;
+
+  &:hover { border-bottom: .07em solid $blue; }
+  &:active {
+    color: #fff;
+    background: $blue;
+    border: none;
+  }
+}
+
+.avatar {
+  display: inline-block;
+  line-height: 1;
+
+  img {
+    display: block;
+    @include border-radius;
+  }
+}
+
+.username {
+  color: inherit!important;
+  font-weight: bold;
+  font-size: 1rem;
+
+  &:hover {
+    border-bottom: .07em solid rgba(#000, 0.1);
+  }
+}
+
+.container {
+  max-width: 60rem;
+  margin: 0 auto;
+}

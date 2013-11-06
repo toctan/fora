@@ -24,9 +24,7 @@ feature 'User edits his profile' do
   scenario 'change password without current password' do
     fill_in_password false
 
-    within '.user_current_password' do
-      expect(page).to have_inline_help "can't be blank"
-    end
+    expect(page).to have_inline_help "can't be blank"
   end
 end
 

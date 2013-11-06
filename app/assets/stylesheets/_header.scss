@@ -1,0 +1,49 @@
+.site-nav {
+  height: 3rem;
+  line-height: 3rem;
+  margin-bottom: 1.5rem;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(#000, 0.2);
+
+  .logo {
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: $brand-color;
+
+    &:hover {
+      background-color: $brand-color;
+    }
+  }
+
+  .avatar {
+    vertical-align: middle;
+
+    img {
+      @include border-radius(3rem);
+    }
+  }
+}
+
+.main-nav > li {
+  margin-right: 1.5rem;
+  position: relative;
+
+  a {
+    padding: 0 $half-spacing-unit;
+
+    &.active:after, &:hover:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0px;
+      border-bottom: 5px solid $brand-color;
+    }
+  }
+}
+
+.profile-link {
+  li {
+    margin-left: 1rem;
+  }
+}

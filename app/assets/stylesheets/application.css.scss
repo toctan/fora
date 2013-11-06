@@ -1,35 +1,44 @@
-// Variable
-@import 'variable';
+/**
+ * Vendor:
+ * caompass    http://compass-style.org
+ * inuit.css   http://inuitcss.com
+ * Semantic UI http://semantic-ui.com/
+ */
+@import "vars";
+@import "compass";
+@import "compass-inuit";
 
-@import 'bootstrap';
+@import "semantic-ui";
 
-// Mixin
-@import 'mixin';
+/* @import "semantic-ui/elements/icon"; */
+/* @import "semantic-ui/elements/label"; */
+/* @import "semantic-ui/elements/button"; */
 
-@mixin footer-style{
-  background: #eeeeee;
-  background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
-  background: -webkit-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: -o-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: -ms-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-  background: linear-gradient(to bottom, #eeeeee 0%, #cccccc 100%);
-  padding: 0 10px 0 10px;
-}
+/* @import "semantic-ui/modules/transition"; */
+/* @import "semantic-ui/modules/popup"; */
+/* @import "semantic-ui/modules/dropdown"; */
 
-// Helper
-@import 'helper';
+/**
+ * Base
+ */
+@import "base/mixin";
+@import "base/function";
+@import "base/object";
+@import "base/base";
 
-// Global
-@import 'global';
+/**
+ * Shared
+ */
+@import "header";
 
+/**
+ * Resources
+ */
+@import "topic";
+@import "reply";
+@import "node";
 
-@import 'topic';
-@import 'notification';
-@import 'node';
-
-@import 'layouts/header_bar';
-@import 'layouts/top10_bar';
-@import 'layouts/tools_bar';
-@import 'layouts/nodes_bar';
-@import 'layouts/pagination';
+/**
+ * Shame: http://csswizardry.com/2013/04/shame-css/
+ */
+@import "shame";

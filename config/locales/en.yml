@@ -22,3 +22,11 @@
 en:
   site:
     name: Fora
+
+  nodes: Nodes
+  topics: Topics
+
+  topic_author: Topic author
+  last_replier: Most recent replier
+  most_replies: Most replies
+  active_replier: Active replier

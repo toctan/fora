@@ -1,7 +1,10 @@
-.row.reply-item
-  .span1 = avatar_tag(reply.user, name: false)
-  .span10
-    p = link_to reply.user.username, user_path(username: reply.user.username),class: "name"
-    p = reply.body_html
-  .span1
-    = font_icon('reply', nil, username: reply.user.username)
+li.reply.media
+  = avatar_tag reply.user
+  .media__body
+    = username_tag reply.username
+    span.reply__meta
+      span.reply__time = time_ago_in_words reply.created_at
+      = link_to semantic_icon('reply mail'), '#', class: 'js-reply', data: { name: reply.username }
+
+    .reply__body.body-text
+      = reply.body_html

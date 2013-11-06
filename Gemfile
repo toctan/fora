@@ -15,8 +15,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'slim-rails'
-
-gem 'bootstrap-sass'
+gem 'compass-rails', '~> 2.0.alpha.0'
+gem 'compass-inuit'
+gem 'flutie'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'auto_html', github: 'toctan/auto_html'
 
 gem 'devise'
@@ -35,21 +37,22 @@ group :test do
 end
 
 group :development do
-  gem 'pry-rails'
-  gem 'awesome_print'
+  gem 'annotate', '>=2.5.0'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'meta_request'
-  gem 'guard-rspec'
   gem 'foreman'
+  gem 'guard-rspec'
+  gem 'guard-livereload', require: false
+  gem 'meta_request'
   gem 'spring'
+  gem "spring-commands-rspec", require: false
 end
 
 group :development, :test do
+  gem 'jazz_hands'
   gem 'ffaker'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'guard-livereload'
   gem 'launchy'
 end
 
