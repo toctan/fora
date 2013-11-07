@@ -1,7 +1,7 @@
 .topic.card
   .topic__header.media.flush
     = avatar_tag @topic.user
-    .topic__node = @topic.node_name
+    = node_tag @topic.node
     .media__body
       h1.topic__title.gamma.flush = @topic.title
       = render partial: 'topic_meta', locals: { topic: @topic }

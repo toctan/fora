@@ -1,7 +1,7 @@
 class CreateTopics < ActiveRecord::Migration
   def change
     create_table :topics do |t|
-      t.string     :title
+      t.string     :title, null: false
       t.text       :body
       t.text       :body_html
       t.integer    :hits,          default: 0

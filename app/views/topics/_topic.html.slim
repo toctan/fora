@@ -1,13 +1,13 @@
 li.topic-item.media.flush
   = avatar_tag topic.user
-  .topic__node = topic.node_name
+  = node_tag topic.node
   .media__body
     .delta = link_to topic.title, topic
     ul.topic__meta.zeta.nav.fade
       li.topic__meta-item = username_tag topic.username
-      li.topic__meta-item #{topic.replies_count} Replies
+      li.topic__meta-item #{topic.replies_count} replies
       li.topic__meta-item = timestamp topic.updated_at
       - if topic.last_replier_username
         li.topic__meta-item
-          | Last reply &nbsp;
+          | last reply &nbsp;
           = username_tag topic.last_replier_username

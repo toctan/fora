@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 20131028115931) do
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "nodes", force: true do |t|
-    t.string   "name"
-    t.string   "key"
+    t.string   "name",                           null: false
+    t.string   "key",                            null: false
+    t.string   "color"
     t.string   "description"
     t.integer  "topics_count",       default: 0
     t.string   "image_file_name"
@@ -60,8 +61,8 @@ ActiveRecord::Schema.define(version: 20131028115931) do
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "replies", force: true do |t|
-    t.text     "body"
-    t.text     "body_html"
+    t.text     "body",       null: false
+    t.text     "body_html",  null: false
     t.integer  "user_id"
     t.integer  "topic_id"
     t.datetime "created_at"
@@ -72,7 +73,7 @@ ActiveRecord::Schema.define(version: 20131028115931) do
   add_index "replies", ["user_id"], name: "index_replies_on_user_id", using: :btree
 
   create_table "topics", force: true do |t|
-    t.string   "title"
+    t.string   "title",                             null: false
     t.text     "body"
     t.text     "body_html"
     t.integer  "hits",                  default: 0
