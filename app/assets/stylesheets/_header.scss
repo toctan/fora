@@ -31,7 +31,7 @@
   a {
     padding: 0 $half-spacing-unit;
 
-    &.active:after, &:hover:after {
+    &.active:after, &:not(.logo):hover:after {
       content: "";
       position: absolute;
       bottom: 0;

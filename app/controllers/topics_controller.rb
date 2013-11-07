@@ -7,6 +7,7 @@ class TopicsController < ApplicationController
 
   def index
     @topics = TopicList.list 1
+    @nodes =  @topics.take(3).map(&:node)
   end
 
   def show

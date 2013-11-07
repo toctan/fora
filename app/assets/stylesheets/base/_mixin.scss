@@ -1,7 +1,7 @@
 /**
  * Insert a vertical line after the element
  */
-@mixin verticle-line($height: 3rem) {
+@mixin verticle-line($height: 1.5rem) {
   margin-bottom: $height;
   position: relative;
 

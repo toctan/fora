@@ -1,5 +1,5 @@
 ul.topic__meta.nav
-  li.topic__meta-item By #{@topic.username}
-  li.topic__meta-item #{time_ago_in_words(@topic.created_at)} ago
-  li.topic__meta-item #{@topic.hits} hits
-  li.topic__meta-item #{semantic_icon('heart')} #{@topic.likes_count} Likes
+  li.topic__meta-item By #{username_tag topic.username}
+  li.topic__meta-item = timestamp(topic.created_at)
+  li.topic__meta-item #{semantic_icon('heart')}#{topic.likes_count} Likes
+  li.topic__meta-item #{topic.hits} hits

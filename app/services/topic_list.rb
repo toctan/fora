@@ -1,7 +1,7 @@
 class TopicList
   # TODO: fetch all the nodes in one query
   def self.list(page)
-    Topic.page(page).tap do |topics|
+    Topic.page(page).includes(:node).tap do |topics|
       users = UsersFetcher.new(topics.map(&:participant_ids))
 
       topics.each do |t|
