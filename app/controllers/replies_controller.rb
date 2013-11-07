@@ -3,7 +3,7 @@ class RepliesController < ApplicationController
   before_filter :find_topic
 
   def create
-    reply = @topic.new_reply(current_user.id, reply_params)
+    reply = @topic.new_reply(current_user, reply_params)
     flash[:error] = reply.errors.full_messages.join("\n") unless reply.valid?
 
     redirect_to :back
