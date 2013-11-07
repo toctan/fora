@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   include LikeSource
   include Bookmark
 
-  attr_accessor :login, :description
+  attr_accessor :login
 
   devise :database_authenticatable,
          :omniauthable,

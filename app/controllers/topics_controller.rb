@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @topics = TopicList.list 1
+    @topics = Topic.page(params[:page]).includes(:node, :user)
     @nodes =  @topics.take(3).map(&:node)
   end
 

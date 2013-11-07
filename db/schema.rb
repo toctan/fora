@@ -75,13 +75,12 @@ ActiveRecord::Schema.define(version: 20131028115931) do
     t.string   "title"
     t.text     "body"
     t.text     "body_html"
-    t.integer  "hits",               default: 0
-    t.integer  "likes_count",        default: 0
-    t.integer  "replies_count",      default: 0
-    t.integer  "last_replier_id"
+    t.integer  "hits",                  default: 0
+    t.integer  "likes_count",           default: 0
+    t.integer  "replies_count",         default: 0
+    t.string   "last_replier_username"
     t.integer  "user_id"
     t.integer  "node_id"
-    t.integer  "active_replier_ids", default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

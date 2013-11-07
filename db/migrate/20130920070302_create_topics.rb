@@ -7,10 +7,9 @@ class CreateTopics < ActiveRecord::Migration
       t.integer    :hits,          default: 0
       t.integer    :likes_count,   default: 0
       t.integer    :replies_count, default: 0
-      t.integer    :last_replier_id
+      t.string     :last_replier_username
       t.references :user, index: true
       t.references :node, index: true
-      t.integer    :active_replier_ids, array: true, default: []
 
       t.timestamps
     end
