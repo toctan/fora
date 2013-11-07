@@ -1,11 +1,10 @@
-.topic--item.card.islet data-replies-count="#{topic.replies_count}"
+li.topic-item.media.flush
+  = avatar_tag topic.user
   .topic__node = topic.node_name
-  .delta = link_to topic.title, topic
-  span.participants
-    - participants = topic.participants
-    = avatar_tag participants.shift
-    - topic.participants.last(4).each do |p|
-      = avatar_tag p, :thumb
-  ul.topic__meta.nav
-    li.topic__meta-item #{time_ago_in_words(topic.created_at)} ago
-    li.topic__meta-item #{semantic_icon('empty heart')} #{topic.likes_count} Likes
+  .media__body
+    .delta = link_to topic.title, topic
+    ul.topic__meta.nav
+      li.topic__meta-item = username_tag topic.username
+      li.topic__meta-item #{semantic_icon('comment outline')}#{topic.replies_count} Replies
+      li.topic__meta-item #{semantic_icon('empty heart')}#{topic.likes_count} Likes
+      li.topic__meta-item = timestamp topic.updated_at

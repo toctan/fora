@@ -1,4 +1,5 @@
-.topics
+ul.topics.card.block-list
   = render @topics
 
-= will_paginate @topics
+- content_for :sidebar do
+  = render @nodes

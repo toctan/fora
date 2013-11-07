@@ -1,38 +1,31 @@
 /**
- * Reply
+ * $REPLY
  */
 .replies {
-  @extend .block-list;
   counter-reset: replies-counter;
   @include verticle-line;
+}
 
-  > .reply {
-    @extend .flush;
-    position: relative;
-    @include rtriangle;
+.reply-item {
+  position: relative;
+  @include rtriangle;
 
-    &:after {
-      content: counter(replies-counter);
-      counter-increment: replies-counter;
-      position: absolute;
-      right: 1rem;
-      bottom: .25rem;
-      font: italic 3rem/3rem $helvetica;
-      color: rgba(#000, .1)
-    }
+  &:after {
+    content: counter(replies-counter);
+    counter-increment: replies-counter;
+    position: absolute;
+    right: 1rem;
+    bottom: .25rem;
+    font: italic 3rem/3rem $helvetica;
+    color: rgba(#000, .1)
+  }
 
-    &:first-child {
-      @include border-top-radius;
-    }
+  &:last-child {
+    border-bottom: none;
+  }
 
-    &:last-child {
-      @include border-bottom-radius;
-      border-bottom: none;
-    }
-
-    &:hover .reply__time {
-      opacity: 1;
-    }
+  &:hover .reply__time {
+    opacity: 1;
   }
 }
 

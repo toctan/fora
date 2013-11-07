@@ -36,12 +36,10 @@ a {
 }
 
 .username {
-  color: inherit!important;
-  font-weight: bold;
-  font-size: 1rem;
+  color: #777;
 
   &:hover {
-    border-bottom: .07em solid rgba(#000, 0.1);
+    text-decoration: underline;
   }
 }
 

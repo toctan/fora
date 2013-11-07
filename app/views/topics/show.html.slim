@@ -4,7 +4,7 @@
     .topic__node = @topic.node_name
     .media__body
       h1.topic__title.gamma.flush = @topic.title
-      = render partial: 'topic_meta'
+      = render partial: 'topic_meta', locals: { topic: @topic }
 
   .topic__body.body-text.islet.flush.hard--bottom
     = @topic.body_html unless @topic.body_html.blank?
@@ -12,7 +12,7 @@
   = render partial: 'topic_footer'
 
 -unless @replies.blank?
-  ul.replies.card = render @replies
+  ul.replies.card.block-list = render @replies
 
 = render 'replies/form'
 
