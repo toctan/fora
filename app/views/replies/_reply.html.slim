@@ -2,7 +2,7 @@ li.reply-item.media.flush
   = avatar_tag reply.user
   .media__body
     = username_tag reply.username
-    span.reply__meta
+    span.reply__meta.zeta.fade
       span.reply__time = timestamp reply.created_at
       = link_to semantic_icon('reply mail'), '#', class: 'js-reply', data: { name: reply.username }
 

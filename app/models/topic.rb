@@ -16,6 +16,7 @@ class Topic < ActiveRecord::Base
   validates :node_id, presence: true
 
   delegate :username, to: :user
+  delegate :name, to: :node, prefix: true
 
   self.per_page = 20
 

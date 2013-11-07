@@ -9,12 +9,6 @@
   border-bottom: em(1) solid #eaeaea;
 }
 
-.topic__meta {
-  @extend .zeta;
-  display: inline-block;
-  color: #888;
-}
-
 .topic__meta-item {
   &:after {
     content: '·';
@@ -27,7 +21,6 @@
 }
 
 .topic__footer {
-  @extend .delta;
 
   .liked {
     color: #ff7e94!important;

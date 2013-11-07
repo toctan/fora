@@ -38,8 +38,6 @@
 }
 
 .reply__time {
-  color: #888;
-  font-size: 0.9rem;
   opacity: 0;
   @include transition (opacity 0.3s ease-in-out);
 }

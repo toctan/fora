@@ -1,4 +1,4 @@
-.topic__footer.text--right.soft-half.hard--top
+.topic__footer.delta.text--right.soft-half.hard--top
   -if current_user
     - like_icon = current_user.likes?(@topic) ? 'liked' : 'empty'
     = link_to like_path(@topic.class, @topic.id), method: :post, id: 'js-like' do
