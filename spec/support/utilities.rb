@@ -7,6 +7,6 @@ end
 
 RSpec::Matchers.define :have_inline_help do |msg|
   match do |page|
-    page.should have_selector('.ui.red.label', text: msg)
+    page.should have_selector('.error', text: msg)
   end
 end

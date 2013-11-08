@@ -1,6 +1,8 @@
-/**
- * $REPLY
- */
+/*------------------------------------*\
+  $REPLY
+\*------------------------------------*/
+
+
 .replies {
   counter-reset: replies-counter;
   @include verticle-line;
@@ -8,6 +10,7 @@
 
 .reply-item {
   position: relative;
+  min-height: 5.25rem;
   @include rtriangle;
 
   &:after {
@@ -44,26 +47,4 @@
 
 .reply--form {
   @include rtriangle;
-
-  .form textarea {
-    min-height: inherit;
-    height: inherit;
-  }
-}
-
-.reply--signin {
-  min-height: 6rem;
-  text-align: center;
-
-  .ui.button {
-    margin-right: 1rem;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-
-.reply--signin__title {
-  margin-top: 1rem;
 }
