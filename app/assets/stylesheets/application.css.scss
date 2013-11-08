@@ -8,15 +8,13 @@
 @import "compass";
 @import "compass-inuit";
 
-@import "semantic-ui";
+@import "semantic-ui/elements/icon";
 
-/* @import "semantic-ui/elements/icon"; */
-/* @import "semantic-ui/elements/label"; */
-/* @import "semantic-ui/elements/button"; */
+@import "semantic-ui/collections/message";
 
-/* @import "semantic-ui/modules/transition"; */
-/* @import "semantic-ui/modules/popup"; */
-/* @import "semantic-ui/modules/dropdown"; */
+@import "semantic-ui/modules/dropdown";
+@import "semantic-ui/modules/popup";
+@import "semantic-ui/modules/transition";
 
 /**
  * Base

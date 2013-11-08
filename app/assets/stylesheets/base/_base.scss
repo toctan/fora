@@ -1,3 +1,8 @@
+/*------------------------------------*\
+  $BASE
+\*------------------------------------*/
+
+
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-face;
 }
@@ -12,16 +17,22 @@ a {
   color: inherit;
 }
 
-.body-text a {
-  color: $blue;
-  border-bottom: .07em solid rgba(#000, 0.1);
-  padding-bottom: .07em;
+.body-text {
+  p:last-child {
+    margin-bottom: 0;
+  }
 
-  &:hover { border-bottom: .07em solid $blue; }
-  &:active {
-    color: #fff;
-    background: $blue;
-    border: none;
+  a {
+    color: $blue;
+    border-bottom: .07em solid rgba(#000, 0.1);
+    padding-bottom: .07em;
+
+    &:hover { border-bottom: .07em solid $blue; }
+    &:active {
+      color: #fff;
+      background: $blue;
+      border: none;
+    }
   }
 }
 

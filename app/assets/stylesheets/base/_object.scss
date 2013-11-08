@@ -1,3 +1,8 @@
+/*------------------------------------*\
+  $OBJECT
+\*------------------------------------*/
+
+
 /**
  * Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
  */
@@ -36,6 +41,7 @@
  * $CARD
  */
 .card {
+  @extend .cf;
   position: relative;
   background: #fff;
   box-shadow: 0 em(1) em(3) rgba(#000, 0.2),

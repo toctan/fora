@@ -20,7 +20,7 @@ feature 'Third party signin' do
     mock_auth(:twitter)
     visit user_omniauth_authorize_url(:twitter)
 
-    expect(page).to have_selector('.form-inputs input', count: 1)
+    expect(page).to have_selector('#new_user .form-field--error', count: 1)
     expect(page).to have_inline_help 'has already been taken'
   end
 

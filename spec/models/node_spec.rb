@@ -7,7 +7,6 @@ describe Node do
   it { should validate_presence_of(:name) }
 
   it { should have_db_index(:key) }
-  it { should validate_uniqueness_of(:key).case_insensitive }
   it { should_not allow_value('@key').for(:key) }
   it { should allow_value('hellow-world').for(:key) }
 
@@ -19,4 +18,10 @@ describe Node do
   it { should validate_attachment_content_type(:image)
                 .allowing('image/png', 'image/jpg', 'image/jpeg')
                 .rejecting('image/gif') }
+
+  it 'validates uniqueness of key' do
+    create(:node)
+
+    should validate_uniqueness_of(:key).case_insensitive
+  end
 end
