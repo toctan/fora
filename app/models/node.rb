@@ -26,8 +26,9 @@ end
 # Table name: nodes
 #
 #  id                 :integer          not null, primary key
-#  name               :string(255)
-#  key                :string(255)
+#  name               :string(255)      not null
+#  key                :string(255)      not null
+#  color              :string(255)
 #  description        :string(255)
 #  topics_count       :integer          default(0)
 #  image_file_name    :string(255)
@@ -41,3 +42,4 @@ end
 #
 #  index_nodes_on_key  (key) UNIQUE
 #
+

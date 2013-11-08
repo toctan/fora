@@ -85,6 +85,7 @@ class User < ActiveRecord::Base
     end
   end
 end
+
 # == Schema Information
 #
 # Table name: users
@@ -94,6 +95,10 @@ end
 #  topics_count           :integer          default(0)
 #  admin                  :boolean          default(FALSE), not null
 #  bookmarks              :integer          default([])
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #  username               :string(255)      default(""), not null
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
@@ -113,15 +118,13 @@ end
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
-#  avatar_file_name       :string(255)
-#  avatar_content_type    :string(255)
-#  avatar_file_size       :integer
-#  avatar_updated_at      :datetime
 #
 # Indexes
 #
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_provider_and_uid      (provider,uid) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_username              (username) UNIQUE
 #
+
