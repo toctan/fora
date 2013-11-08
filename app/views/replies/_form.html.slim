@@ -6,11 +6,11 @@
         = f.input  :body, label: false, input_html: { rows: 4 }
         = f.button :submit, class: 'btn--primary float--right'
   - else
-    .reply--signin
-      h3.reply--signin__title Sign in to reply
-      .ui.small.twitter.button
+    .reply--signin.island.text--center
+      h3.push--bottom Sign in to reply
+      .btn.btn--twitter.push--right
         i.twitter.icon
         | Twitter
-      .ui.small.google.plus.button
+      .btn.btn--weibo
         i.weibo.icon
         | Weibo

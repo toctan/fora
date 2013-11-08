@@ -45,20 +45,3 @@
 .reply--form {
   @include rtriangle;
 }
-
-.reply--signin {
-  min-height: 6rem;
-  text-align: center;
-
-  .ui.button {
-    margin-right: 1rem;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-
-.reply--signin__title {
-  margin-top: 1rem;
-}

@@ -1,0 +1,42 @@
+@mixin button-variant($defalut-color, $hover-color, $active-color) {
+  color: #fff;
+  background-color: $defalut-color;
+
+  &:hover,
+  &:focus {
+    background-color: $hover-color;
+  }
+
+  &:active,
+  &.active {
+    background-color: $active-color;
+  }
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 0;
+  margin: 0;
+  line-height: 2.25;
+  padding: 0 $base-spacing-unit;
+  -webkit-font-smoothing: subpixel-antialiased;
+  @include border-radius;
+  @include transition(0.25s linear);
+  @include button-variant(#bdc3c7, #cacfd2, #a1a6a9);
+
+  &:hover,
+  &:active,
+  &.active,
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+.btn--primary { @include button-variant($brand-color, #48c9b0, #16a085); }
+.btn--twitter { @include button-variant(#3498db, #5dade2, #2c81ba); }
+.btn--weibo   { @include button-variant(#e74c3c, #ec7063, #c44133); }
