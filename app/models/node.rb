@@ -19,6 +19,10 @@ class Node < ActiveRecord::Base
     self.image = URI.parse(url)
     @avatar_remote_url = url
   end
+
+  def to_param
+    key
+  end
 end
 
 # == Schema Information
@@ -31,6 +35,8 @@ end
 #  color              :string(255)
 #  description        :string(255)
 #  topics_count       :integer          default(0)
+#  approved           :boolean          default(FALSE), not null
+#  user_id            :integer
 #  image_file_name    :string(255)
 #  image_content_type :string(255)
 #  image_file_size    :integer
@@ -40,6 +46,8 @@ end
 #
 # Indexes
 #
-#  index_nodes_on_key  (key) UNIQUE
+#  index_nodes_on_approved  (approved)
+#  index_nodes_on_key       (key) UNIQUE
+#  index_nodes_on_user_id   (user_id)
 #
 

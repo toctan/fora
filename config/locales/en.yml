@@ -24,6 +24,10 @@ en:
     name: Fora
 
   nodes: Nodes
+  propose_node_success: Node proposed successfully.
+  create_node_success: Node created successfully.
+  node_not_approved: Be parient. This node is not ready yet.
+
   topics: Topics
 
   topic_author: Topic author
