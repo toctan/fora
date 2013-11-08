@@ -1,6 +1,6 @@
 class Admin::NodesController < Admin::AdminController
   def create
-    @node = Node.new(node_params.merge(approved: true))
+    @node = current_user.nodes.build(node_params.merge(approved: true))
 
     if @node.save
       redirect_to @node, notice: I18n.t('create_node_success')

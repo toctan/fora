@@ -22,7 +22,7 @@ class NodesController < ApplicationController
   end
 
   def create
-    @node =  Node.new(node_params)
+    @node =  current_user.nodes.build(node_params)
 
     if @node.save
       redirect_to root_path, notice: I18n.t('propose_node_success')

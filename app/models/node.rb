@@ -2,16 +2,18 @@ class Node < ActiveRecord::Base
   attr_reader :image_remote_url
 
   has_many :topics, dependent: :destroy
+  belongs_to :user
 
   has_attached_file :image, styles: { medium: '300>' }
 
   validates_attachment :image, content_type: { content_type: /^image\/(jpg|jpeg|png)$/ },
                                size: { less_than: 2.megabytes }
 
-  validates :name, presence: true
-  validates :key,  presence: true,
-                   uniqueness: { case_sensitive: false },
-                   format: { with: /\A[-A-Za-z\d]+\z/ }
+  validates :user_id, presence: true
+  validates :name,    presence: true
+  validates :key,     presence: true,
+                      uniqueness: { case_sensitive: false },
+                      format: { with: /\A[-A-Za-z\d]+\z/ }
 
   validates :description, length: { maximum: 140 }
 
@@ -50,4 +52,3 @@ end
 #  index_nodes_on_key       (key) UNIQUE
 #  index_nodes_on_user_id   (user_id)
 #
-
