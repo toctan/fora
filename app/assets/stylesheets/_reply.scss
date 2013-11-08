@@ -44,11 +44,6 @@
 
 .reply--form {
   @include rtriangle;
-
-  .form textarea {
-    min-height: inherit;
-    height: inherit;
-  }
 }
 
 .reply--signin {

@@ -4,7 +4,7 @@
     .media__body
       = simple_form_for [@topic, @topic.replies.build] do |f|
         = f.input  :body, label: false, input_html: { rows: 4 }
-        = f.button :submit, class: 'mini float--right'
+        = f.button :submit, class: 'btn--primary float--right'
   - else
     .reply--signin
       h3.reply--signin__title Sign in to reply
