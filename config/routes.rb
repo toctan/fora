@@ -9,7 +9,7 @@ Fora::Application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-  get 'go/:key'  => 'nodes#show', as: :go
+  get 'go/:key'  => 'nodes#show', as: :node
   get 'new/:key' => 'topics#new'
 
   post 'like/:type/:id' => 'likes#create_or_destroy',  as: :like
@@ -21,7 +21,7 @@ Fora::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :nodes, only: :index
+  resources :nodes, only: [:index, :new, :create]
 
   resources :topics, except: [:edit, :update] do
     resources :replies, only: :create
@@ -29,6 +29,10 @@ Fora::Application.routes.draw do
 
   resources :notifications, only: [:index, :destroy] do
     post 'clear', on: :collection
+  end
+
+  namespace :admin do
+    resources :nodes, only: :create
   end
 
   # Example resource route with options:

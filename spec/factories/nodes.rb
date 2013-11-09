@@ -1,7 +1,7 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :node do
+    user
+
     sequence(:name) { |n| "node#{n}" }
     key  { "#{name}" }
   end

@@ -29,11 +29,13 @@ ActiveRecord::Schema.define(version: 20131028115931) do
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "nodes", force: true do |t|
-    t.string   "name",                           null: false
-    t.string   "key",                            null: false
+    t.string   "name",                               null: false
+    t.string   "key",                                null: false
     t.string   "color"
     t.string   "description"
     t.integer  "topics_count",       default: 0
+    t.boolean  "approved",           default: false, null: false
+    t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -42,7 +44,9 @@ ActiveRecord::Schema.define(version: 20131028115931) do
     t.datetime "updated_at"
   end
 
+  add_index "nodes", ["approved"], name: "index_nodes_on_approved", using: :btree
   add_index "nodes", ["key"], name: "index_nodes_on_key", unique: true, using: :btree
+  add_index "nodes", ["user_id"], name: "index_nodes_on_user_id", using: :btree
 
   create_table "notifications", force: true do |t|
     t.integer  "user_id"

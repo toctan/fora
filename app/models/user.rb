@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
          :validatable,
          :confirmable
 
+  has_many :nodes,         dependent: :destroy
   has_many :topics,        dependent: :destroy
   has_many :replies,       dependent: :destroy
   has_many :notifications, dependent: :destroy, class_name: 'Notification::Base'
@@ -127,4 +128,3 @@ end
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_username              (username) UNIQUE
 #
-

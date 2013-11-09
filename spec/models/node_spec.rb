@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe Node do
   it { should have_many(:topics).dependent(:destroy) }
+  it { should belong_to(:user) }
 
   it { should validate_presence_of(:key)  }
   it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:user_id) }
 
   it { should have_db_index(:key) }
   it { should_not allow_value('@key').for(:key) }

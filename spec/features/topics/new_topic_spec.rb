@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'New topic' do
   let(:node)  { create(:node) }
-  let(:topic) { create(:topic) }
+  let(:topic) { attributes_for(:topic) }
 
   context 'When user is signed in', :signin do
     before(:each) do
