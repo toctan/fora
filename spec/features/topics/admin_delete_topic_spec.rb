@@ -3,12 +3,9 @@ require 'spec_helper'
 feature 'Delete topic' do
   let(:topic) { create(:topic) }
 
-  before(:each) do
-    login_as create(:admin), scope: :user
+  scenario 'Admin deletes a topic', :admin do
     visit topic_path(topic)
-  end
 
-  scenario 'Admin deletes a topic' do
     expect { click_link 'js-delete-topic' }.to change(Topic, :count).by(-1)
 
     expect(page).to have_flash_message 'Delete topic successfully'

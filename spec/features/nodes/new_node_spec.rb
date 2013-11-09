@@ -13,10 +13,7 @@ feature 'New node' do
     expect(page).to have_flash_message(I18n.t('node_not_approved'), 'error')
   end
 
-  context 'when admin propose a new node' do
-    before(:each) do
-      login_as create(:admin), scope: :user
-    end
+  context 'when admin propose a new node', :admin do
 
     scenario 'node get approved immediately' do
       fill_new_node_form

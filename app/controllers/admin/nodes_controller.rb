@@ -1,4 +1,6 @@
 class Admin::NodesController < Admin::AdminController
+  include NodesConcern
+
   def create
     @node = current_user.nodes.build(node_params.merge(approved: true))
 
@@ -7,11 +9,5 @@ class Admin::NodesController < Admin::AdminController
     else
       render 'new'
     end
-  end
-
-  private
-
-  def node_params
-    params.require(:node).permit(:name, :key)
   end
 end
