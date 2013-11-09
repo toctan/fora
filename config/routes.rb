@@ -23,7 +23,7 @@ Fora::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :nodes, only: [:index, :new, :create]
 
-  resources :topics, except: [:edit, :update] do
+  resources :topics, except: [:edit, :update, :destroy] do
     resources :replies, only: :create
   end
 
@@ -32,7 +32,8 @@ Fora::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :nodes, only: :create
+    resources :nodes,  only: :create
+    resources :topics, only: :destroy
   end
 
   # Example resource route with options:

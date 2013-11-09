@@ -12,5 +12,5 @@
   = semantic_icon('weibo')
 
   - if can? :destroy, @topic
-    = link_to semantic_icon('trash'), @topic, method: :delete,
+    = link_to semantic_icon('trash'), [:admin, @topic], method: :delete,
         id: 'js-delete-topic', data: { confirm: 'Are you sure?' }

@@ -1,9 +1,8 @@
 class TopicsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :find_topic,  only: [:show, :destroy]
-  after_filter :update_hits, only: :show
+  include TopicsConcern
 
-  load_and_authorize_resource
+  before_filter :authenticate_user!, except: [:index, :show]
+  after_filter  :update_hits, only: :show
 
   def index
     @topics = Topic.page(params[:page]).includes(:node, :user)
@@ -33,18 +32,10 @@ class TopicsController < ApplicationController
     end
   end
 
-  def destroy
-    redirect_to root_url, notice: 'Delete topic successfully' if @topic.destroy
-  end
-
   private
 
   def topic_params
     params.require(:topic).permit(:title, :body, :node_id)
-  end
-
-  def find_topic
-    @topic = Topic.find(params[:id])
   end
 
   def update_hits
