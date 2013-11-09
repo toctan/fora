@@ -23,6 +23,9 @@ en:
   site:
     name: Fora
 
+  delete: Delete
+  are_you_sure: Are you sure?
+
   nodes: Nodes
   propose_node_success: Node proposed successfully.
   create_node_success: Node created successfully.

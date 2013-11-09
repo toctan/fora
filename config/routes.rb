@@ -32,8 +32,9 @@ Fora::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :nodes,  only: :create
-    resources :topics, only: :destroy
+    resources :nodes,   only: :create
+    resources :topics,  only: :destroy
+    resources :replies, only: :destroy
   end
 
   # Example resource route with options:

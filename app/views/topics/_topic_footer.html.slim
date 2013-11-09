@@ -13,4 +13,4 @@
 
   - if can? :destroy, @topic
     = link_to semantic_icon('trash'), [:admin, @topic], method: :delete,
-        id: 'js-delete-topic', data: { confirm: 'Are you sure?' }
+        id: 'js-delete-topic', data: { confirm: t('are_you_sure') }

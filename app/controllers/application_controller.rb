@@ -28,6 +28,6 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, error: 'Access denied.'
+    redirect_to root_url, alert: 'Access denied.'
   end
 end
