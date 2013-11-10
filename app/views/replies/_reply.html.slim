@@ -13,7 +13,7 @@ li.reply-item.media.flush
       - if current_user
         li.meta-item = like_tag(reply, text: true)
       li.meta-item = link_to 'Tweet'
-      li.meta-item = timestamp reply.created_at
+      li.meta-item = timeago reply.created_at
       = link_to semantic_icon('reply mail'), '#', class: 'js-reply', data: { name: reply.username }
 
     .reply__body.body-text
