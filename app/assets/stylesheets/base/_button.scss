@@ -31,7 +31,7 @@
   -webkit-font-smoothing: subpixel-antialiased;
   @include border-radius;
   @include transition(0.25s linear);
-  @include button-variant(#bdc3c7, #cacfd2, #a1a6a9);
+  @include button-variant(#afb4b8, #bdc3c7, #a1a6a9);
 
   &:hover,
   &:active,

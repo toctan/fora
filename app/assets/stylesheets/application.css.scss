@@ -1,8 +1,14 @@
+/*------------------------------------*\
+  $APPLICATION
+\*------------------------------------*/
+
+
 /**
  * Vendor:
- * caompass    http://compass-style.org
- * inuit.css   http://inuitcss.com
- * Semantic UI http://semantic-ui.com/
+ * caompass     http://compass-style.org
+ * inuit.css    http://inuitcss.com
+ * Semantic UI  http://semantic-ui.com/
+ * NProgress.js http://ricostacruz.com/nprogress/
  */
 @import "vars";
 @import "compass";
@@ -16,6 +22,9 @@
 @import "semantic-ui/modules/popup";
 @import "semantic-ui/modules/transition";
 
+$nprogress-color: $brand-color;
+@import "nprogress";
+
 /**
  * Base
  */
@@ -26,10 +35,12 @@
 @import "base/button";
 @import "base/base";
 
+
 /**
  * Shared
  */
 @import "header";
+
 
 /**
  * Resources
@@ -37,6 +48,7 @@
 @import "topic";
 @import "reply";
 @import "node";
+
 
 /**
  * Shame: http://csswizardry.com/2013/04/shame-css/

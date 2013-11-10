@@ -4,8 +4,9 @@
 
 
 input[type="text"],
-input[type="password"],
 input[type="email"],
+input[type="password"],
+input[type="url"],
 .text-input,
 textarea {
   @extend .text-input;
