@@ -4,10 +4,10 @@ li.topic-item.media.flush
   .media__body
     .delta = link_to topic.title, topic
     ul.topic__meta.zeta.nav.fade
-      li.topic__meta-item = username_tag topic.username
-      li.topic__meta-item #{topic.replies_count} replies
-      li.topic__meta-item = timestamp topic.updated_at
+      li.meta-item = username_tag topic.username
+      li.meta-item #{topic.replies_count} replies
+      li.meta-item = timestamp topic.updated_at
       - if topic.last_replier_username
-        li.topic__meta-item
+        li.meta-item
           | last reply &nbsp;
           = username_tag topic.last_replier_username

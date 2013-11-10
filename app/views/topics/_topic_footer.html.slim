@@ -1,8 +1,6 @@
 .topic__footer.delta.text--right.soft-half.hard--top
-  -if current_user
-    - like_icon = current_user.likes?(@topic) ? 'liked' : 'empty'
-    = link_to like_path(@topic.class, @topic.id), method: :post, id: 'js-like' do
-      = semantic_icon('heart', like_icon)
+  - if current_user
+    = like_tag @topic
 
     - bookmark_icon = 'empty' unless current_user.bookmarked?(@topic.id)
     = link_to bookmark_path(@topic.id), method: :post, id: 'js-bookmark' do

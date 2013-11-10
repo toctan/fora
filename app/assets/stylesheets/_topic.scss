@@ -11,17 +11,6 @@
   border-bottom: em(1) solid #eaeaea;
 }
 
-.topic__meta-item {
-  &:after {
-    content: '·';
-    padding: 0 em(5);
-  }
-
-  &:last-child:after {
-    content: '';
-  }
-}
-
 .topic__footer {
 
   .liked {
