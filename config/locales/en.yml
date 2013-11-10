@@ -23,6 +23,8 @@ en:
   site:
     name: Fora
 
+  like: Like
+  dislike: Dislike
   delete: Delete
   are_you_sure: Are you sure?
 

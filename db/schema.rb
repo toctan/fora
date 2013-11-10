@@ -65,10 +65,11 @@ ActiveRecord::Schema.define(version: 20131028115931) do
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "replies", force: true do |t|
-    t.text     "body",       null: false
-    t.text     "body_html",  null: false
+    t.text     "body",                    null: false
+    t.text     "body_html",               null: false
     t.integer  "user_id"
     t.integer  "topic_id"
+    t.integer  "likes_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

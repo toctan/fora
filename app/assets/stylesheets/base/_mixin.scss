@@ -47,3 +47,19 @@
     background: #fff;
   }
 }
+
+
+/**
+ * Show on hover
+ */
+@mixin show-on-hover {
+
+  .show-on-hover {
+    opacity: 0;
+    @include transition (opacity 0.15s ease-in-out);
+  }
+
+  &:hover .show-on-hover {
+    opacity: 1;
+  }
+}

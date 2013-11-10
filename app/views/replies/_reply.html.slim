@@ -2,11 +2,18 @@ li.reply-item.media.flush
   = avatar_tag reply.user
   .media__body
     = username_tag reply.username
-    ul.reply__meta.zeta.fade.nav
+    - if reply.likes_count > 0
+      span.reply__likes
+        = semantic_icon('heart')
+        = reply.likes_count
+    ul.reply__meta.zeta.fade.nav.float--right.flush
       - if can? :destroy, reply
-        li.reply__meta-item = link_to t('delete'), [:admin, reply], class: 'js-delete-reply',
+        li.meta-item = link_to t('delete'), [:admin, reply], class: 'js-delete-reply',
           method: :delete, data: { confirm: t('are_you_sure') }
-      li.reply__meta-item.reply__time = timestamp reply.created_at
+      - if current_user
+        li.meta-item = like_tag(reply, text: true)
+      li.meta-item = link_to 'Tweet'
+      li.meta-item = timestamp reply.created_at
       = link_to semantic_icon('reply mail'), '#', class: 'js-reply', data: { name: reply.username }
 
     .reply__body.body-text

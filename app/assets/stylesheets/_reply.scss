@@ -12,6 +12,7 @@
   position: relative;
   min-height: 5.25rem;
   @include rtriangle;
+  @include show-on-hover;
 
   &:after {
     content: counter(replies-counter);
@@ -26,25 +27,18 @@
   &:last-child {
     border-bottom: none;
   }
-
-  &:hover .reply__time {
-    opacity: 1;
-  }
-}
-
-.reply__meta {
-  float: right;
-
-  .icon {
-    margin-left: em(5);
-  }
-}
-
-.reply__time {
-  opacity: 0;
-  @include transition (opacity 0.3s ease-in-out);
 }
 
 .reply--form {
   @include rtriangle;
+}
+
+.reply__likes {
+  color: #999;
+  font-size: em(12);
+  margin-left: .5rem;
+}
+
+.reply__meta .meta-item {
+  @extend .show-on-hover;
 }

@@ -46,15 +46,27 @@ a {
   }
 }
 
+.username {
+  color: #777;
+}
+
 .fade {
   color: #b3b3b3;
 }
 
-.username {
-  color: #777;
+.meta-item {
 
-  &:hover {
+  a:hover {
     text-decoration: underline;
+  }
+
+  &:after {
+    content: '·';
+    padding: 0 em(5);
+  }
+
+  &:last-child:after {
+    content: '';
   }
 }
 

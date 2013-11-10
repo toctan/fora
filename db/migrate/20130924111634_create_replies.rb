@@ -5,6 +5,7 @@ class CreateReplies < ActiveRecord::Migration
       t.text :body_html, null: false
       t.references :user,  index: true
       t.references :topic, index: true
+      t.integer    :likes_count,   default: 0
 
       t.timestamps
     end
