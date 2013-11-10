@@ -25,7 +25,6 @@ a {
   a {
     color: $blue;
     border-bottom: .07em solid rgba(#000, 0.1);
-    padding-bottom: .07em;
 
     &:hover { border-bottom: .07em solid $blue; }
     &:active {

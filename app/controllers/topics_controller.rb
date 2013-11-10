@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @replies = @topic.replies.includes(:user)
+    @replies = @topic.replies.includes(:user, :like_users)
   end
 
   def new

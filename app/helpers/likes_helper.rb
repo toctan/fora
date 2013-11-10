@@ -7,11 +7,11 @@ module LikesHelper
   private
 
   def like_icon(target)
-    klass = current_user.likes?(target) ? 'liked' : 'empty'
+    klass = target.liked_by?(current_user) ? 'liked' : 'empty'
     semantic_icon('heart', klass)
   end
 
   def like_text(target)
-    current_user.likes?(target) ? I18n.t('dislike') : I18n.t('like')
+    target.liked_by?(current_user) ? I18n.t('dislike') : I18n.t('like')
   end
 end

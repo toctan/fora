@@ -1,6 +1,7 @@
 class Topic < ActiveRecord::Base
   include Redis::Objects
   include Mentionable
+  include Likeable
   include Autohtmlable
 
   default_scope -> { order('updated_at DESC') }

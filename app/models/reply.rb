@@ -1,6 +1,9 @@
 class Reply < ActiveRecord::Base
+  include Likeable
   include Mentionable
   include Autohtmlable
+
+  default_scope -> { order('created_at ASC') }
 
   belongs_to :topic, counter_cache: true, touch: true
   belongs_to :user,  counter_cache: true
@@ -46,4 +49,3 @@ end
 #  index_replies_on_topic_id  (topic_id)
 #  index_replies_on_user_id   (user_id)
 #
-
