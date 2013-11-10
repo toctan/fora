@@ -16,18 +16,6 @@ describe Topic do
   it { should have_db_index(:node_id) }
   it { should have_db_index(:user_id) }
 
-  describe '#update_hits' do
-    let(:topic) { build_stubbed(:topic) }
-
-    it 'updates topic hits' do
-      ar_relation = double(update_all: true)
-      allow(Topic).to receive(:where).and_return(ar_relation)
-      expect(ar_relation).to receive(:update_all).with('hits = hits + 1')
-
-      topic.update_hits
-    end
-  end
-
   describe '#new_reply' do
     let(:topic) { create(:topic) }
     let(:user) { User.last }

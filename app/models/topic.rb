@@ -1,4 +1,5 @@
 class Topic < ActiveRecord::Base
+  include Redis::Objects
   include Mentionable
   include Autohtmlable
 
@@ -8,6 +9,8 @@ class Topic < ActiveRecord::Base
   belongs_to :node, counter_cache: true
 
   has_many :replies, dependent: :destroy
+
+  counter :hits
 
   validates :title, presence: true,
                     length: { maximum: 100 }
@@ -24,11 +27,6 @@ class Topic < ActiveRecord::Base
       reply.user_id = replier.id
       update(last_replier_username: replier.username) if reply.save
     end
-  end
-
-  # TODO: It takes about 30ms to finish, maybe using redis counter?
-  def update_hits
-    Topic.where(id: id).update_all 'hits = hits + 1'
   end
 
   def topic

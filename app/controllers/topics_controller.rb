@@ -39,6 +39,6 @@ class TopicsController < ApplicationController
   end
 
   def update_hits
-    @topic.update_hits
+    @topic.hits.incr
   end
 end

@@ -29,6 +29,7 @@ gem 'cancan'
 gem 'simple_form'
 gem 'will_paginate'
 gem 'paperclip', '~> 3.0'
+gem 'redis-objects'
 
 group :test do
   gem 'capybara'

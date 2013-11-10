@@ -10,3 +10,6 @@
 
 $ ->
   $('.js-timeago').timeago()
+
+  $('.message .close.icon').click ->
+    $(@).parent().transition 'slide down'
