@@ -73,3 +73,18 @@ a {
   max-width: 60rem;
   margin: 0 auto;
 }
+
+.pagination {
+  @extend .delta;
+  @extend .body-text;
+  @extend .soft-half;
+  @extend .cf;
+
+  .disabled {
+    display: none;
+  }
+}
+
+.next_page {
+  @extend .float--right;
+}

@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
   end
 
   def index
-    @topics = Topic.find(current_user.bookmarks)
+    @topics = Topic.where(id: current_user.bookmarks).page(params[:page])
     render 'topics/index'
   end
 end
