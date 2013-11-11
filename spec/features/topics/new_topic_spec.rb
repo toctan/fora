@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'New topic' do
-  let(:node)  { create(:node) }
+  let(:node)  { create(:approved_node) }
   let(:topic) { attributes_for(:topic) }
 
   context 'When user is signed in', :signin do

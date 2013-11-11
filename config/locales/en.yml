@@ -29,6 +29,7 @@ en:
   are_you_sure: Are you sure?
 
   nodes: Nodes
+  node_missing: No such node.
   propose_node_success: Node proposed successfully.
   create_node_success: Node created successfully.
   node_not_approved: Be parient. This node is not ready yet.

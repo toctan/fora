@@ -1,6 +1,9 @@
 class Node < ActiveRecord::Base
   attr_reader :image_remote_url
 
+  default_scope    -> { order('updated_at DESC') }
+  scope :approved, -> { where(approved: true) }
+
   has_many :topics, dependent: :destroy
   belongs_to :user
 

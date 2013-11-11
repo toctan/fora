@@ -5,15 +5,17 @@ class NodesController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
 
   def index
-    @nodes = Node.page(params[:page])
+    @nodes = Node.approved.page(params[:page])
   end
 
   def show
     @node = Node.find_by key: params[:key]
-    @node || redirect_to(root_path, alert: 'No such node.') && return
+    @node || redirect_to(root_path, alert: I18n.t('node_missing')) && return
 
     if @node.approved?
       @topics = @node.topics.page(params[:page]).includes(:user)
+      @nodes = [@node]
+      render 'topics/index'
     else
       redirect_to root_path, alert: I18n.t('node_not_approved')
     end

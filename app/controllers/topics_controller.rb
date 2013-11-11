@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.page(params[:page]).includes(:node, :user)
-    @nodes = Node.first(3)
+    @nodes = @topics.map(&:node).uniq.take(3)
   end
 
   def show
@@ -15,10 +15,12 @@ class TopicsController < ApplicationController
 
   def new
     @node = Node.find_by key: params[:key]
-    if @node
+    @node || redirect_to(root_path, alert: I18n.t('node_missing')) && return
+
+    if @node.approved?
       @topic = @node.topics.new
     else
-      redirect_to root_url, alert: 'No such node.'
+      redirect_to root_url, alert: I18n.t('node_not_approved')
     end
   end
 

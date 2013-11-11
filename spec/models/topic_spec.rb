@@ -11,7 +11,7 @@ describe Topic do
 
   it { should have_many(:replies).dependent(:destroy) }
   it { should belong_to(:user).counter_cache }
-  it { should belong_to(:node).counter_cache }
+  it { should belong_to(:node).counter_cache.touch }
 
   it { should have_db_index(:node_id) }
   it { should have_db_index(:user_id) }

@@ -3,6 +3,6 @@ module NodesHelper
     return unless node
     opts[:class] = 'topic__node'
     opts[:style] = "background-color: #{node.color}" if node.color?
-    content_tag(:span, node.name, opts)
+    link_to(node.name, node_path(node), opts)
   end
 end

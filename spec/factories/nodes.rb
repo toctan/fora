@@ -4,5 +4,9 @@ FactoryGirl.define do
 
     sequence(:name) { |n| "node#{n}" }
     key  { "#{name}" }
+
+    factory :approved_node do
+      approved true
+    end
   end
 end
