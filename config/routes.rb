@@ -14,6 +14,7 @@ Fora::Application.routes.draw do
 
   post 'like/:type/:id' => 'likes#create_or_destroy',  as: :like
   post 'bookmark/:id' => 'bookmarks#create_or_destroy', as: :bookmark
+  get 'bookmarks' => 'bookmarks#index', as: :bookmarks
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

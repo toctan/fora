@@ -6,7 +6,6 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.page(params[:page]).includes(:node, :user)
-    @nodes = @topics.map(&:node).uniq.take(3)
   end
 
   def show

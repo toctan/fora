@@ -2,4 +2,4 @@ ul.topics.card.block-list
   = render @topics
 
 - content_for :sidebar do
-  = render @nodes
+  = render @topics.map(&:node).uniq.take(3)

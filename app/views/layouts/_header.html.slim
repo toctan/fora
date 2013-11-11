@@ -10,6 +10,7 @@ nav.site-nav
             = avatar_tag current_user, :thumb
             = semantic_icon 'dropdown'
             .menu
+              = link_to t('bookmarks'), bookmarks_path, class: 'item'
               = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'item'
         - else
           li = link_to semantic_icon('twitter', 'circular inverted blue'),
