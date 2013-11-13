@@ -1,7 +1,20 @@
-.card.islet
-  h3 = "Create new topic"
-  = simple_form_for @topic do |f|
-    = f.input :title, label: false
-    = f.input :body,  label: false, rows: 18
-    = f.input :node_id, as: :hidden
-    = f.button :submit, class: 'float--right'
+/ TODO: node color view duplicatio
+- @node ||= @topic.node
+- style = "background-color: #{@node.color}" if @node.color?
+
+.card
+  .card__header.islet
+    ol.nav.breadcrumb.body-text
+      li = link_to t('site.name'), root_path
+      li = link_to @node.name, @node
+      li = t('new_topic')
+
+  .islet.flush
+    = simple_form_for @topic do |f|
+      = f.input :title, label: false, input_html: { class: 'input--block' }
+      = f.input :body,  label: false, input_html: { rows: 18 }
+      = f.input :node_id, as: :hidden
+      = f.button :submit, class: 'btn--primary float--right', style: style
+
+- content_for :sidebar do
+  = render @node

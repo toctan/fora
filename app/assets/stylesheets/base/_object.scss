@@ -42,9 +42,15 @@
  */
 .card {
   @extend .cf;
+  @extend .push--bottom;
   position: relative;
   background: #fff;
-  box-shadow: 0 em(1) em(3) rgba(#000, 0.2),
-              0 em(1) 0 rgba(#fff, 0.9) inset;
+  box-shadow: 0 em(1) em(3) rgba(#000, 0.2);
   @include border-radius;
 }
+
+.card__header {
+  @extend .flush;
+  border-bottom: em(1) solid #eaeaea;
+}
+

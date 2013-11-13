@@ -1,5 +1,5 @@
 .topic.card
-  .topic__header.media.flush
+  .card__header.media
     = avatar_tag @topic.user
     = node_tag @topic.node
     .media__body
@@ -12,7 +12,7 @@
   = render partial: 'topic_footer'
 
 -unless @replies.blank?
-  ul.replies.card.block-list = render @replies
+  ol.replies.card.block-list#replies = render @replies
 
 = render 'replies/form'
 

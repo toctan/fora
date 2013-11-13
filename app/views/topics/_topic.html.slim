@@ -5,9 +5,9 @@ li.topic-item.media.flush
     .delta = link_to topic.title, topic
     ul.topic__meta.zeta.nav.fade
       li.meta-item = username_tag topic.username
-      li.meta-item #{topic.replies_count} replies
+      li.meta-item = link_to "#{topic.replies_count} replies", "#{topic_path(topic)}#replies"
       li.meta-item = timeago topic.updated_at
       - if topic.last_replier_username
         li.meta-item
-          | last reply &nbsp;
+          | last reply from&nbsp;
           = username_tag topic.last_replier_username

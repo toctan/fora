@@ -1,0 +1,12 @@
+.card__header.media
+  .media__body
+    - style = "background-color: #{@node.color}" if @node.color?
+    = link_to t('new_topic'), new_topic_path(@node),
+        class: 'btn btn--small float--right', style: style
+
+    ol.nav.breadcrumb.body-text
+      li = link_to t('site.name'), root_path
+      li = @node.name
+
+    - if @node.description
+      p.zeta = @node.description

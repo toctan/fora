@@ -20,6 +20,8 @@ class Node < ActiveRecord::Base
 
   validates :description, length: { maximum: 140 }
 
+  delegate :username, to: :user
+
   def image_remote_url=(url)
     self.image = URI.parse(url)
     @avatar_remote_url = url

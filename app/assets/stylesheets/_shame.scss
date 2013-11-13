@@ -12,3 +12,11 @@
 .ui.popup { 
   @include box-sizing(content-box); 
 }
+
+
+/**
+ * Oh, hell, HTML is sensitive with carriage retrun within tags?
+ */
+.breadcrumb > li + li:before {
+    content: "\00A0" "\00BB" "\00A0";
+}

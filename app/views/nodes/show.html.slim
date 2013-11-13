@@ -1,6 +1,7 @@
 ol.topics.card.block-list
+  = render 'nodes/node_header'
   = render @topics
   = will_paginate @topics, page_links: false
 
 - content_for :sidebar do
-  = render @topics.map(&:node).uniq.take(3)
+  = render @node

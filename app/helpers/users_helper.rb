@@ -1,6 +1,6 @@
 module UsersHelper
   def username_tag(username)
-    link_to username, '#', class: 'username'
+    link_to username, '#', class: 'username' if username
   end
 
   def avatar_tag(user, size = :normal, opts = {})

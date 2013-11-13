@@ -24,13 +24,11 @@ a {
 
   a {
     color: $blue;
-    border-bottom: .07em solid rgba(#000, 0.1);
 
-    &:hover { border-bottom: .07em solid $blue; }
+    &:hover,
     &:active {
       color: #fff;
       background: $blue;
-      border: none;
     }
   }
 }
@@ -45,12 +43,12 @@ a {
   }
 }
 
-.username {
-  color: #777;
-}
-
 .fade {
   color: #b3b3b3;
+
+  a {
+    color: #8c8c8c;
+  }
 }
 
 .meta-item {
@@ -88,3 +86,4 @@ a {
 .next_page {
   @extend .float--right;
 }
+

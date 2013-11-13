@@ -10,7 +10,7 @@ Fora::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   get 'go/:key'  => 'nodes#show', as: :node
-  get 'new/:key' => 'topics#new'
+  get 'new/:key' => 'topics#new', as: :new_topic
 
   post 'like/:type/:id' => 'likes#create_or_destroy',  as: :like
   post 'bookmark/:id' => 'bookmarks#create_or_destroy', as: :bookmark
@@ -22,7 +22,7 @@ Fora::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :nodes, only: [:index, :new, :create]
 
-  resources :topics, except: [:edit, :update, :destroy] do
+  resources :topics, except: [:edit, :update, :destroy, :new] do
     resources :replies, only: :create
   end
 

@@ -35,6 +35,7 @@ en:
   node_not_approved: Be parient. This node is not ready yet.
 
   topics: Topics
+  new_topic: 'Start a new topic'
 
   topic_author: Topic author
   last_replier: Most recent replier

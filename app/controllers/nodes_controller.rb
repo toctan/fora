@@ -14,7 +14,6 @@ class NodesController < ApplicationController
 
     if @node.approved?
       @topics = @node.topics.page(params[:page]).includes(:user)
-      render 'topics/index'
     else
       redirect_to root_path, alert: I18n.t('node_not_approved')
     end
