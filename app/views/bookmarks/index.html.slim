@@ -1,0 +1,10 @@
+ol.topics.card.block-list
+  .card__header
+    span.zeta.float--right  #{current_user.bookmarks.length} #{t('bookmarks')}
+
+    = breadcrumbs t('bookmarks')
+  = render @topics
+  = will_paginate @topics, page_links: false
+
+- content_for :sidebar do
+  = render @topics.map(&:node).uniq.take(3)

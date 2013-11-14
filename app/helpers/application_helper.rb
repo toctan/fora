@@ -1,4 +1,16 @@
 module ApplicationHelper
+  # TODO: custom render?
+  def breadcrumbs(*crumbs)
+    content_tag :ol, class: 'nav breadcrumb body-text' do
+      result = []
+      result << content_tag(:li, link_to(t('site.name'), root_path))
+      crumbs.each do |crumb|
+        result << content_tag(:li, crumb)
+      end
+      raw result.join('')
+    end
+  end
+
   def nav_link(key, path)
     klass = 'active' if body_class.include? "#{key}-index"
     link_to t(key), path, class: klass

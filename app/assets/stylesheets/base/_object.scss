@@ -54,6 +54,7 @@
 }
 
 .card__header {
+  @extend .islet;
   @extend .flush;
   border-bottom: em(1) solid #eaeaea;
 }

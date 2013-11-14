@@ -1,13 +1,10 @@
-/ TODO: node color view duplicatio
+/ TODO: node color view duplication
 - @node ||= @topic.node
 - style = "background-color: #{@node.color}" if @node.color?
 
 .card
-  .card__header.islet
-    ol.nav.breadcrumb.body-text
-      li = link_to t('site.name'), root_path
-      li = link_to @node.name, @node
-      li = t('new_topic')
+  .card__header
+    = breadcrumbs link_to(@node.name, @node), t('new_topic')
 
   .islet.flush
     = simple_form_for @topic do |f|
