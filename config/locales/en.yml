@@ -26,6 +26,7 @@ en:
   like: Like
   dislike: Dislike
   delete: Delete
+  clear: Clear
   are_you_sure: Are you sure?
 
   nodes: Nodes
@@ -35,7 +36,7 @@ en:
   node_not_approved: Be parient. This node is not ready yet.
 
   topics: Topics
-  new_topic: 'Start a new topic'
+  new_topic: 'New topic'
 
   topic_author: Topic author
   last_replier: Most recent replier
@@ -43,3 +44,4 @@ en:
   active_replier: Active replier
 
   bookmarks: Bookmarks
+  notifications: Notifications

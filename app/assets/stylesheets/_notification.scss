@@ -1,0 +1,22 @@
+/*------------------------------------*\
+  $NOTIFICATION
+\*------------------------------------*/
+
+.notification-item {
+  position: relative;
+  @include show-on-hover;
+}
+
+.notification__title a {
+  @extend .epsilon;
+}
+
+.notification__body {
+  background: #ffffe5;
+}
+
+.notification__delete-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

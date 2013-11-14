@@ -4,7 +4,7 @@ module UsersHelper
   end
 
   def avatar_tag(user, size = :normal, opts = {})
-    link_to avatar_img(user, size), '#', class: 'avatar'
+    link_to avatar_img(user, size), '#', class: 'avatar', title: user.username
   end
 
   private

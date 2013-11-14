@@ -15,8 +15,17 @@
 
 
 /**
+ * Semantic icon default opacity is 0.75, it looks not nice in the button
+ */
+.btn > i.icon {
+  opacity: 1;
+}
+
+
+/**
  * Oh, hell, HTML is sensitive with carriage retrun within tags?
  */
 .breadcrumb > li + li:before {
     content: "\00A0" "\00BB" "\00A0";
 }
+

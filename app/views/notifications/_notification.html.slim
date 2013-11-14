@@ -1,9 +1,10 @@
-.row.notification-item
-  .span1 = avatar_tag notification.user
-  .span8
-    p = link_to notification.topic.title, topic_path(notification.topic), class: "title"
-    p.mb0 = username_tag notification.username
-    p.indent = notification.body
-  .span3.muted
-    small = time_ago_in_words(notification.created_at)
-    p.hide = link_to 'Delete', notification_path(notification), method: :delete
+li.notification-item.media.zeta
+  = avatar_tag notification.user
+  .media__body
+    .notification__title.fade
+      = username_tag notification.username
+      = link_to notification.topic.title, topic_path(notification.topic)
+      = timeago(notification.created_at, class: 'js-timeago float--right')
+    p.notification__body.soft-half.body-text = notification.body
+  = link_to semantic_icon('close'), notification_path(notification),
+      method: :delete, class: 'notification__delete-icon show-on-hover'

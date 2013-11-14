@@ -36,6 +36,10 @@
   }
 }
 
+.block-list > .media {
+  @extend .flush--bottom;
+}
+
 
 /**
  * $CARD
@@ -53,4 +57,3 @@
   @extend .flush;
   border-bottom: em(1) solid #eaeaea;
 }
-

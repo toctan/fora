@@ -47,16 +47,15 @@ a {
   color: #b3b3b3;
 
   a {
-    color: #8c8c8c;
+    color: #7c7a7f;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 .meta-item {
-
-  a:hover {
-    text-decoration: underline;
-  }
-
   &:after {
     content: '·';
     padding: 0 em(5);

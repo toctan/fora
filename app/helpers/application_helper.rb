@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def timeago(time, options = {})
     return unless time
-    options[:class] ||= "js-timeago"
+    options[:class] ||= 'js-timeago'
     content_tag(:time, time.to_s, options.merge(datetime: time.getutc.iso8601))
   end
 end

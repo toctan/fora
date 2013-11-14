@@ -47,5 +47,6 @@
 }
 
 .btn--primary { @include button-variant($brand-color, #48c9b0, #16a085); }
+.btn--inverse { @include button-variant(#34495e, #415b76, #2c3e50); }
 .btn--twitter { @include button-variant(#3498db, #5dade2, #2c81ba); }
 .btn--weibo   { @include button-variant(#e74c3c, #ec7063, #c44133); }

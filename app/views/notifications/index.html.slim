@@ -1,5 +1,11 @@
-.container-box#notifications
-  #notification-header.header
-    span = "You got " + pluralize(@notifications.length, "notification")
-    = link_to 'Clear All', clear_notifications_path, method: :post, class: 'pull-right btn btn-small'
+ol.notifications.card.block-list
+  .card__header.islet
+    = link_to clear_notifications_path, method: :delete,
+        class: 'btn btn--small btn--inverse float--right' do
+      = semantic_icon('trash')
+      = t('clear')
+
+    ol.nav.breadcrumb.body-text
+      li = link_to t('site.name'), root_path
+      li = t('notifications')
   = render partial: "notification", collection: @notifications
