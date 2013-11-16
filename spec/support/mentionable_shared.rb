@@ -16,7 +16,7 @@ shared_examples_for Mentionable do
       subject.body = mentioned_users.map { |u| "@#{u.username} " }.join
 
       mentioned_users.each do |u|
-        expect(subject.notifications).to receive(:create).once.with(user: u)
+        expect(subject.notifications).to receive(:create).once
       end
     end
   end

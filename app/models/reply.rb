@@ -7,7 +7,8 @@ class Reply < ActiveRecord::Base
   belongs_to :topic, counter_cache: true, touch: true
   belongs_to :user,  counter_cache: true
 
-  has_one :reply_notification, class_name: 'Notification::TopicReply',
+  has_one :reply_notification, -> { where kind: 'reply' },
+                               class_name: 'Notification',
                                dependent: :destroy
 
   validates_presence_of :body, :topic_id, :user_id
@@ -19,15 +20,12 @@ class Reply < ActiveRecord::Base
   private
 
   def send_notification_to_topic_owner
-    create_reply_notification user: topic.user if user != topic.user
+    return if user == topic.user
+    create_reply_notification target: topic.user, source: user, topic: topic
   end
 
   def mentioned_users
     super - [topic.user]
-  end
-
-  def mention_scan_text
-    body
   end
 end
 

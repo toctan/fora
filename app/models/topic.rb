@@ -29,14 +29,10 @@ class Topic < ActiveRecord::Base
     end
   end
 
-  def topic
-    self
-  end
-
   private
 
   def mention_scan_text
-    "#{body} #{title}"
+    "#{title} #{body}"
   end
 end
 

@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :nodes,         dependent: :destroy
   has_many :topics,        dependent: :destroy
   has_many :replies,       dependent: :destroy
-  has_many :notifications, dependent: :destroy, class_name: 'Notification::Base'
+  has_many :notifications, dependent: :destroy, foreign_key: 'target_id'
 
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },

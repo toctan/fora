@@ -18,9 +18,9 @@ describe User do
   it { should_not allow_value('foo;@example.com').for(:email) }
 
   describe 'Notifications' do
-    subject(:user) { build(:user) }
+    subject(:user) { build_stubbed(:user) }
 
-    before { create_list(:notification_mention, 3, user: user) }
+    before { create_list(:notification, 3, target: user) }
 
     it { expect(user.new_notification?).to be_true }
 
