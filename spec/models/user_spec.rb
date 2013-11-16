@@ -22,15 +22,13 @@ describe User do
 
     before { create_list(:notification, 3, target: user) }
 
-    it { expect(user.new_notification?).to be_true }
+    it { expect(user.unread_notifications_count).to eq(3) }
 
     describe '#read_notifications' do
       it 'should mark all new notifications as read' do
         expect { user.read_notifications }.to change {
           user.notifications.unread.count
         }.from(3).to(0)
-
-        expect(user.new_notification?).to be_false
       end
     end
 

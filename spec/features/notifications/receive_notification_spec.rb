@@ -1,26 +1,29 @@
 require 'spec_helper'
 
-feature 'Receive notification when' do
-  let(:user)  { create(:confirmed_user) }
-  let(:topic) { create(:topic, user: user) }
+feature 'Receive notification when', :signin do
+  let(:topic) { create(:topic, user: @current_user) }
 
-  before { login_as user, scope: :user }
+  scenario 'someone replies my topic' do
+    create(:reply, topic: topic)
 
-  after(:each) do
     visit root_path
 
-    expect(page).to have_selector('.notification-indicator')
+    expect(page).to have_selector('//a[@class="notifier"][@data-count="1"]')
   end
 
-  xscenario 'someone replies my topic' do
-    create(:reply, topic: topic)
+  scenario 'mentioned in reply' do
+    reply = create(:reply, body: "@#{@current_user.username}")
+
+    visit notifications_path
+
+    expect(page).to have_content reply.body
   end
 
-  xscenario 'mentioned in reply' do
-    create(:reply, body: "@#{user.username}")
-  end
+  scenario 'mentioned in topic' do
+    topic = create(:topic, body: "@#{@current_user.username}")
 
-  xscenario 'mentioned in topic' do
-    create(:topic, body: "@#{user.username}")
+    visit notifications_path
+
+    expect(page).to have_link topic.title
   end
 end

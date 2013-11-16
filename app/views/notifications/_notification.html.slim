@@ -8,7 +8,7 @@ li.notification-item.media.zeta
       = link_to notification.topic.title, topic_path(notification.topic)
 
     - if notification.body.present?
-      .notification__body.soft-half.body-text
+      .notification__body.soft-half.body-text.js-autohtml
         = notification.body
 
   = link_to icon('close'), notification_path(notification),

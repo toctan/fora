@@ -42,9 +42,12 @@
   }
 
   > li {
+    margin: 0!important;
+
     &:hover {
       background-color: rgba(#000, .02);
     }
+
     &:last-child {
       border-bottom-width: 0;
     }

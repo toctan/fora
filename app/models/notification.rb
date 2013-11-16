@@ -11,6 +11,6 @@ class Notification < ActiveRecord::Base
   scope :unread, -> { where(is_read: false) }
 
   def body
-    reply.try(:body_html) || topic.try(:body_html)
+    reply.try(:body) || topic.try(:body)
   end
 end

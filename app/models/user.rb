@@ -51,8 +51,8 @@ class User < ActiveRecord::Base
     super && !avatar?
   end
 
-  def new_notification?
-    notifications.unread.any?
+  def unread_notifications_count
+    notifications.unread.count
   end
 
   def read_notifications
