@@ -2,6 +2,7 @@
 #= require jquery.turbolinks
 #= require jquery_ujs
 #= require jquery.timeago
+#= require jquery.autosize
 #= require nprogress
 #= require semantic-ui/transition
 #= require semantic-ui/dropdown
@@ -11,6 +12,9 @@
 
 $ ->
   $('.js-timeago').timeago()
+
+  $('textarea').autosize
+    append: "\n"
 
   $('.message .close.icon').click ->
     $(@).parent().transition 'slide down'
