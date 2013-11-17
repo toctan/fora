@@ -4,26 +4,6 @@
 
 
 /**
- * Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
- */
-.nav {
-  list-style: none;
-  margin-left: 0;
-  @extend .cf;
-
-  > li {
-
-    &,
-    > a {
-      display: inline-block;
-      *display: inline;
-      zoom: 1;
-    }
-  }
-}
-
-
-/**
  * $MEDIA
  * Place an image and text-like content side-by-side.
  * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code

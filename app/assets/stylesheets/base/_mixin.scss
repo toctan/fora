@@ -62,22 +62,3 @@
     opacity: 1;
   }
 }
-
-
-/**
- * keyframes and animation mixin
- */
-@mixin keyframes($name) {
-  @-webkit-keyframes $name { @content; }
-     @-moz-keyframes $name { @content; }
-       @-o-keyframes $name { @content; }
-          @keyframes $name { @content; }
-}
-
-@mixin animation($args) {
-  -webkit-animation: $args;
-     -moz-animation: $args;
-       -o-animation: $args;
-          animation: $args;
-}
-

@@ -26,7 +26,7 @@
 
   &:target,
   &:target:before {
-    @include animation(yellow-fade 3s linear);
+    @include vendor(animation, yellow-fade 3s linear);
   }
 
   &:last-child {
@@ -34,7 +34,7 @@
   }
 }
 
-@include keyframes(yellow-fade) {
+@include keyframe(yellow-fade) {
   0%   { background-color: $highlight; }
   100% { background-color: white; }
 }

@@ -39,6 +39,7 @@ textarea {
   width: 100%;
   padding: .4em 0 0 .4em;
   min-height: 120px;
+  @include transition(height .2s)
 }
 
 .form-field {

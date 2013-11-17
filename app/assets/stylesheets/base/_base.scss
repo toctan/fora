@@ -12,10 +12,6 @@ body {
   color: #4c4c4c;
 }
 
-textarea {
-  @include transition(height .2s)
-}
-
 a {
   text-decoration: none;
   color: inherit;
