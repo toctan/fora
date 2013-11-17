@@ -5,7 +5,7 @@ li.notification-item.media.zeta
       = timeago(notification.created_at, class: 'js-timeago float--right')
       = username_tag(notification.source_username)
       = t("notification_types.#{notification.kind}")
-      = link_to notification.topic.title, topic_path(notification.topic)
+      = topic_title_tag notification.topic, notification.reply_id
 
     - if notification.body.present?
       .notification__body.soft-half.body-text.js-autohtml

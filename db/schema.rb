@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20131028115931) do
     t.integer  "source_id"
     t.integer  "topic_id"
     t.integer  "reply_id"
+    t.integer  "like_id"
     t.boolean  "is_read",    default: false
     t.string   "kind",                       null: false
     t.datetime "created_at"
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20131028115931) do
   end
 
   add_index "notifications", ["is_read"], name: "index_notifications_on_is_read", using: :btree
+  add_index "notifications", ["like_id"], name: "index_notifications_on_like_id", using: :btree
   add_index "notifications", ["reply_id"], name: "index_notifications_on_reply_id", using: :btree
   add_index "notifications", ["source_id"], name: "index_notifications_on_source_id", using: :btree
   add_index "notifications", ["target_id"], name: "index_notifications_on_target_id", using: :btree

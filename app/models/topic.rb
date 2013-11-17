@@ -44,7 +44,6 @@ end
 #  title                 :string(255)      not null
 #  body                  :text
 #  body_html             :text
-#  hits                  :integer          default(0)
 #  likes_count           :integer          default(0)
 #  replies_count         :integer          default(0)
 #  last_replier_username :string(255)
@@ -58,3 +57,4 @@ end
 #  index_topics_on_node_id  (node_id)
 #  index_topics_on_user_id  (user_id)
 #
+

@@ -52,3 +52,4 @@ en:
   notification_types:
     reply: " replied to your topic "
     mention: " mentioned you in "
+    like: " liked your post in "

@@ -5,6 +5,7 @@ class CreateNotifications < ActiveRecord::Migration
       t.references :source, index: true
       t.references :topic,  index: true
       t.references :reply,  index: true
+      t.references :like,   index: true
       t.boolean    :is_read, default: false
       t.string     :kind, null: false
 

@@ -33,16 +33,18 @@ end
 #
 # Table name: replies
 #
-#  id         :integer          not null, primary key
-#  body       :text             not null
-#  body_html  :text             not null
-#  user_id    :integer
-#  topic_id   :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  body        :text             not null
+#  body_html   :text             not null
+#  user_id     :integer
+#  topic_id    :integer
+#  likes_count :integer          default(0)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 # Indexes
 #
 #  index_replies_on_topic_id  (topic_id)
 #  index_replies_on_user_id   (user_id)
 #
+
