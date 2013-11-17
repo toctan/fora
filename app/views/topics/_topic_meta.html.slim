@@ -3,3 +3,4 @@ ul.topic__meta.zeta.fade.nav
   li.meta-item = timeago(topic.created_at)
   li.meta-item #{semantic_icon('heart')}#{topic.likes_count} Likes
   li.meta-item #{topic.hits} hits
+  li.meta-item = link_to "#{topic.replies_count} replies", '#replies'

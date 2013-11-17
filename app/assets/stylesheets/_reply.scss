@@ -24,9 +24,23 @@
     color: rgba(#000, .1)
   }
 
+  &:target,
+  &:target:before {
+    @include animation(yellow-fade 3s linear);
+  }
+
   &:last-child {
     border-bottom: none;
   }
+}
+
+@include keyframes(yellow-fade) {
+  0%   { background-color: $highlight; }
+  100% { background-color: white; }
+}
+
+.reply__meta .meta-item {
+  @extend .show-on-hover;
 }
 
 .reply--form {
@@ -37,8 +51,12 @@
   color: #999;
   font-size: em(12);
   margin-left: .5rem;
-}
 
-.reply__meta .meta-item {
-  @extend .show-on-hover;
+  &:after {
+    content: attr(data-count);
+  }
+
+  &[data-count="0"] {
+    display: none;
+  }
 }

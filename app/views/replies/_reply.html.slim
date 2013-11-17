@@ -1,11 +1,9 @@
-li.reply-item.media
+li.reply-item.media id="reply-#{reply.id}"
   = avatar_tag reply.user
   .media__body
     = username_tag reply.username
-    - if reply.likes_count > 0
-      span.reply__likes
-        = semantic_icon('heart')
-        = reply.likes_count
+    span.reply__likes data-count=reply.likes_count
+      = semantic_icon('heart')
     ul.reply__meta.zeta.fade.nav.float--right.flush
       - if can? :destroy, reply
         li.meta-item = link_to t('delete'), [:admin, reply], class: 'js-delete-reply',
