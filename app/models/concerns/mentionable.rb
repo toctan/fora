@@ -2,7 +2,8 @@ module Mentionable
   extend ActiveSupport::Concern
 
   included do
-    has_many :notifications, -> { where kind: 'mention' },
+    has_many :mention_notifications, -> { where kind: 'mention' },
+                             class_name: 'Notification',
                              dependent: :destroy
 
     after_create :send_notifications
@@ -14,7 +15,7 @@ module Mentionable
 
   def send_notifications
     mentioned_users.each do |u|
-      notifications.create target: u, source: user, topic: try(:topic) || self
+      mention_notifications.create target: u, source: user, topic: try(:topic) || self
     end
   end
 

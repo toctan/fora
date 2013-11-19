@@ -30,7 +30,7 @@ describe Reply do
         before { reply.body = "@#{reply.topic.username}" }
 
         it 'should not send mention notification' do
-          expect(subject.notifications).not_to receive(:create)
+          expect(subject.mention_notifications).not_to receive(:create)
         end
       end
     end

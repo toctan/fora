@@ -15,7 +15,7 @@ class Like < ActiveRecord::Base
   private
 
   def send_like_notification
-    return if likeable && user == likeable.user
+    return if user == likeable.try(:user)
 
     create_like_notification(
       target: likeable.user,
