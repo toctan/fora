@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
-#ruby-gemset=fora
-
 gem 'rails', '4.0.0'
 
 gem 'pg'
@@ -20,7 +17,6 @@ gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'compass-inuit'
 gem 'flutie'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
-gem 'auto_html', github: 'toctan/auto_html'
 
 gem 'devise'
 gem 'omniauth-twitter'

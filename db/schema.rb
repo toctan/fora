@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20131028115931) do
 
   create_table "replies", force: true do |t|
     t.text     "body",                    null: false
-    t.text     "body_html",               null: false
     t.integer  "user_id"
     t.integer  "topic_id"
     t.integer  "likes_count", default: 0
@@ -80,7 +79,6 @@ ActiveRecord::Schema.define(version: 20131028115931) do
   create_table "topics", force: true do |t|
     t.string   "title",                             null: false
     t.text     "body"
-    t.text     "body_html"
     t.integer  "likes_count",           default: 0
     t.integer  "replies_count",         default: 0
     t.string   "last_replier_username"

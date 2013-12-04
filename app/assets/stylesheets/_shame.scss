@@ -26,6 +26,26 @@
  * Oh, hell, HTML is sensitive with carriage retrun within tags?
  */
 .breadcrumb > li + li:before {
-    content: "\00A0" "\00BB" "\00A0";
+  content: "\00A0" "\00BB" "\00A0";
 }
 
+
+/**
+ * gist should be embedded in an iframe
+ */
+.gist {
+  a {
+    color: inherit;
+
+    &:hover,
+    &:active {
+      color: inherit;
+      background: inherit;
+    }
+  }
+
+  table {
+    @extend .zeta;
+    margin: 0;
+  }
+}

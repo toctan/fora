@@ -1,7 +1,6 @@
 class Reply < ActiveRecord::Base
   include Likeable
   include Mentionable
-  include Autohtmlable
 
   default_scope -> { order('created_at ASC') }
 

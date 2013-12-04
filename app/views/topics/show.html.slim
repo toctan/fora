@@ -6,8 +6,8 @@
       h1.topic__title.gamma.flush = @topic.title
       = render partial: 'topic_meta', locals: { topic: @topic }
 
-  .topic__body.body-text.islet.flush.hard--bottom
-    = @topic.body_html unless @topic.body_html.blank?
+  .topic__body.body-text.islet.flush.hard--bottom.js-autohtml
+    = @topic.body
 
   = render partial: 'topic_footer'
 
