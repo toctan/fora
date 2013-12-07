@@ -49,20 +49,23 @@ ActiveRecord::Schema.define(version: 20131028115931) do
   add_index "nodes", ["user_id"], name: "index_nodes_on_user_id", using: :btree
 
   create_table "notifications", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "target_id"
+    t.integer  "source_id"
+    t.integer  "topic_id"
     t.integer  "reply_id"
-    t.boolean  "is_read",          default: false
-    t.integer  "mentionable_id"
-    t.string   "mentionable_type"
-    t.string   "type"
+    t.integer  "like_id"
+    t.boolean  "is_read",    default: false
+    t.string   "kind",                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "notifications", ["is_read"], name: "index_notifications_on_is_read", using: :btree
-  add_index "notifications", ["mentionable_id", "mentionable_type"], name: "index_notifications_on_mentionable_id_and_mentionable_type", using: :btree
+  add_index "notifications", ["like_id"], name: "index_notifications_on_like_id", using: :btree
   add_index "notifications", ["reply_id"], name: "index_notifications_on_reply_id", using: :btree
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  add_index "notifications", ["source_id"], name: "index_notifications_on_source_id", using: :btree
+  add_index "notifications", ["target_id"], name: "index_notifications_on_target_id", using: :btree
+  add_index "notifications", ["topic_id"], name: "index_notifications_on_topic_id", using: :btree
 
   create_table "replies", force: true do |t|
     t.text     "body",                    null: false

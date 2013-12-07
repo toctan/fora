@@ -1,29 +1,20 @@
 require 'spec_helper'
 
-feature 'Signed in user' do
-  let(:user) { create(:confirmed_user) }
-
+feature 'Signed in user', :signin do
   before do
-    create_list(:notification_mention, 3, user: user)
-    login_as user, scope: :user
+    create_list(:notification, 3, target: @current_user)
     visit notifications_path
   end
 
   scenario 'deletes single notification' do
-    pending
-    expect {
-      within '#notifications' do
-        first('.notification-item').click_link 'Delete'
-      end
-    }.to change(Notification::Base, :count).by(-1)
+    first('.js-delete-notification').click
+
+    expect(page).to have_selector('.notification-item', count: 2)
   end
 
   scenario 'deletes all the notifications' do
-    pending
-    expect {
-      within '#notifications' do
-        click_link 'Clear'
-      end
-    }.to change(Notification::Base, :count).to(0)
+    click_link 'js-clear-notification'
+
+    expect(page).not_to have_selector('.notification-item')
   end
 end

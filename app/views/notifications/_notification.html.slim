@@ -1,10 +1,15 @@
 li.notification-item.media.zeta
-  = avatar_tag notification.user
+  = avatar_tag notification.source
   .media__body
     .notification__title.fade
-      = username_tag notification.username
-      = link_to notification.topic.title, topic_path(notification.topic)
       = timeago(notification.created_at, class: 'js-timeago float--right')
-    p.notification__body.soft-half.body-text = notification.body
+      = username_tag(notification.source_username)
+      = t("notification_types.#{notification.kind}")
+      = topic_title_tag notification.topic, notification.reply_id
+
+    - if notification.body.present?
+      .notification__body.soft-half.body-text.js-autohtml
+        = notification.body
+
   = link_to icon('close'), notification_path(notification),
-      method: :delete, class: 'notification__delete-icon show-on-hover'
+      method: :delete, class: 'show-on-hover notification__delete-icon js-delete-notification'

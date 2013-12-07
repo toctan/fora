@@ -18,21 +18,19 @@ describe Reply do
 
   describe '#after_create' do
     subject(:reply) { build :reply }
-    after(:each) { reply.save }
 
     context 'when the replier is not the topic starter' do
+      after(:each) { reply.save }
 
       it 'should send notification to topic starter' do
-        expect(reply).to receive(:create_reply_notification)
-          .once.with(user: reply.topic.user)
+        expect(reply).to receive(:create_reply_notification).once
       end
 
       context 'when the replier mentions the topic starter in reply' do
         before { reply.body = "@#{reply.topic.username}" }
 
         it 'should not send mention notification' do
-          expect(subject.notifications).not_to receive(:create)
-            .with(user: reply.topic.user)
+          expect(subject.mention_notifications).not_to receive(:create)
         end
       end
     end
@@ -41,7 +39,7 @@ describe Reply do
       before { reply.user = reply.topic.user }
 
       it 'should not send the notification' do
-        expect(Notification::TopicReply).not_to receive(:create)
+        expect { reply.save }.not_to change(Notification, :count)
       end
     end
   end

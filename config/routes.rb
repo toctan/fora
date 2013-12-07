@@ -27,7 +27,7 @@ Fora::Application.routes.draw do
   end
 
   resources :notifications, only: [:index, :destroy] do
-    post 'clear', on: :collection
+    delete 'clear', on: :collection
   end
 
   namespace :admin do

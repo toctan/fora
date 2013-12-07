@@ -2,7 +2,6 @@ class User
   module Avatar
     extend ActiveSupport::Concern
 
-    # TODO: duplication with node image logic
     included do
       attr_reader :avatar_remote_url
 

@@ -47,4 +47,9 @@ en:
   active_replier: Active replier
 
   bookmarks: Bookmarks
+
   notifications: Notifications
+  notification_types:
+    reply: " replied to your topic "
+    mention: " mentioned you in "
+    like: " liked your post in "
