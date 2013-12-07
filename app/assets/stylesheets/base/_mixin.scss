@@ -3,6 +3,14 @@
 \*------------------------------------*/
 
 /**
+ * border-radius
+ */
+@mixin border-radius {
+  border-radius: $brand-round;
+}
+
+
+/**
  * Insert a vertical line after the element
  */
 @mixin verticle-line($height: 1.5rem) {
@@ -38,7 +46,7 @@
     border: em(1.5) solid #dadada;
     border-right: none;
     border-bottom: none;
-    @include rotate(45deg);
+    @include transform(rotate(45deg));
   }
 
   &:before {

@@ -32,6 +32,5 @@
   padding: 0 $half-spacing-unit;
   color: #fff;
   background-color: $brand-color;
-  @include border-left-radius;
+  @include border-left-radius($brand-round);
 }
-

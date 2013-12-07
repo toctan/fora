@@ -38,7 +38,7 @@
     height: .5em;
     background: #fff;
     box-shadow: -1px -1px 0 1px rgba(#000, .05);
-    @include rotate(45deg);
+    @include transform(rotate(45deg));
   }
 
   > li {
