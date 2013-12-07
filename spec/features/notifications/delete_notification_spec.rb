@@ -10,6 +10,7 @@ feature 'Signed in user' do
   end
 
   scenario 'deletes single notification' do
+    pending
     expect {
       within '#notifications' do
         first('.notification-item').click_link 'Delete'
@@ -18,6 +19,7 @@ feature 'Signed in user' do
   end
 
   scenario 'deletes all the notifications' do
+    pending
     expect {
       within '#notifications' do
         click_link 'Clear'

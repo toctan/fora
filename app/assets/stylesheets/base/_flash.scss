@@ -1,0 +1,19 @@
+/*------------------------------------*\
+  $FLASH
+\*------------------------------------*/
+
+
+.flash {
+  @extend .islet;
+  @extend .card;
+}
+
+.flash--notice {
+  background-color: #defcd5;
+  color: #52a954;
+}
+
+.flash--alert {
+  background-color: #f1d7d7;
+  color: #a95252;
+}

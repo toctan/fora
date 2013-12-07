@@ -4,17 +4,6 @@
 
 
 /**
- * Semantic popup fix.
- *
- * Bourbon neat will apply `box-sizing: border-box;` on all elements.
- * This breaks width of semantic popup.
- */
-.ui.popup { 
-  @include box-sizing(content-box); 
-}
-
-
-/**
  * Semantic icon default opacity is 0.75, it looks not nice in the button
  */
 .btn > i.icon {

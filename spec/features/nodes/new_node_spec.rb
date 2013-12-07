@@ -10,7 +10,7 @@ feature 'New node' do
 
     visit node_path(node)
 
-    expect(page).to have_flash_message(I18n.t('node_not_approved'), 'error')
+    expect(page).to have_flash_message(I18n.t('node_not_approved'), 'alert')
   end
 
   context 'when admin propose a new node', :admin do

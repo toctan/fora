@@ -2,10 +2,10 @@ FactoryGirl.define do
   factory :topic do
     node
     user
-    title { Faker::Lorem.sentence }
+    title 'wat'
 
     factory :topic_with_body do
-      body { Faker::Lorem.paragraph }
+      body 'wat body'
     end
   end
 end

@@ -15,19 +15,6 @@ feature 'New topic' do
       expect(page).to have_content topic[:title]
     end
 
-    scenario 'Posts a new topic with a youtube video', :js do
-      pending 'fuck GFW'
-      fill_new_topic_form('http://www.youtube.com/watch?v=eIZTMVNBjc4')
-
-      expect(page).to have_selector('//iframe[@src="//www.youtube.com/embed/eIZTMVNBjc4"]')
-    end
-
-    scenario 'Posts a new topic with a youku video' do
-      fill_new_topic_form('http://v.youku.com/v_show/id_XNDk0MTU1OTIw')
-
-      expect(page).to have_selector('//embed[@src="http://player.youku.com/player.php/sid/XNDk0MTU1OTIw/v.swf"]')
-    end
-
     context 'when the user forgets to fill the title' do
       before { click_button 'Create Topic' }
 
@@ -42,7 +29,7 @@ feature 'New topic' do
   scenario 'Unsigned user tries to visit new topic page' do
     visit "/new/#{node.key}"
 
-    expect(page).to have_flash_message('You need to sign in', 'error')
+    expect(page).to have_flash_message('You need to sign in', 'alert')
   end
 end
 

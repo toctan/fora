@@ -5,6 +5,6 @@ FactoryGirl.define do
     user
     topic
 
-    body { Faker::Lorem.sentence }
+    body 'wat'
   end
 end

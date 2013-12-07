@@ -7,20 +7,11 @@
  * Vendor:
  * caompass     http://compass-style.org
  * inuit.css    http://inuitcss.com
- * Semantic UI  http://semantic-ui.com/
  * NProgress.js http://ricostacruz.com/nprogress/
  */
 @import "vars";
 @import "compass";
 @import "compass-inuit";
-
-@import "semantic-ui/elements/icon";
-
-@import "semantic-ui/collections/message";
-
-@import "semantic-ui/modules/dropdown";
-@import "semantic-ui/modules/popup";
-@import "semantic-ui/modules/transition";
 
 $nprogress-color: $brand-color;
 @import "nprogress";
@@ -34,6 +25,7 @@ $nprogress-color: $brand-color;
 @import "base/object";
 @import "base/form";
 @import "base/button";
+@import "base/flash";
 @import "base/base";
 
 
