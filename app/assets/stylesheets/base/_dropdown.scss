@@ -1,0 +1,52 @@
+/**
+ * $DROPDOWN
+ */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+  @include show-on-hover;
+
+  .icon {
+    width: auto;
+    margin-left: 1em;
+    margin-right: 0;
+  }
+}
+
+.dropdown-list {
+  @extend .block-list;
+  @extend .show-on-hover;
+  line-height: 1!important;
+  position: absolute;
+  top: 100%;
+  z-index: 2;
+  margin-top: .5em;
+  cursor: auto;
+  background-color: #fff;
+  font-size: .875em;
+  box-shadow: 0 0 1px 1px rgba(#000, 0.1);
+  @include border-radius;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -.25em;
+    left: 50%;
+    margin-left: -.25em;
+    width: .5em;
+    height: .5em;
+    background: #fff;
+    box-shadow: -1px -1px 0 1px rgba(#000, .05);
+    @include rotate(45deg);
+  }
+
+  > li {
+    &:hover {
+      background-color: rgba(#000, .02);
+    }
+    &:last-child {
+      border-bottom-width: 0;
+    }
+  }
+}

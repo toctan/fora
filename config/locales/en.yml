@@ -23,6 +23,9 @@ en:
   site:
     name: Fora
 
+  twitter_sign_in: Sign in via twitter
+  weibo_sign_in: Sign in via weibo
+
   like: Like
   dislike: Dislike
   delete: Delete

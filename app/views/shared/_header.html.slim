@@ -9,16 +9,14 @@ nav.site-nav
       .grid__item.one-whole.desk-one-third
         ul.nav.float--right.profile-link
           - if current_user
-            li.ui.pointing.dropdown
+            li.dropdown
               = avatar_tag current_user, :thumb
-              = semantic_icon 'dropdown'
-              .menu
-                = link_to t('bookmarks'), bookmarks_path, class: 'item'
-                = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'item'
+              = icon 'down-dir'
+              ul.dropdown-list
+                li = link_to t('bookmarks'), bookmarks_path
+                li = link_to 'Sign out', destroy_user_session_path, method: :delete
           - else
-            li = link_to semantic_icon('twitter', 'circular inverted blue'),
-                user_omniauth_authorize_path(:twitter), class: 'popup',
-                  title: 'Sign in via twitter'
-            li = link_to semantic_icon('weibo', 'circular inverted red'),
-                user_omniauth_authorize_path(:weibo), class: 'popup',
-                  title: 'Sign in via weibo'
+            li = link_to icon('twitter icon--circular'),
+              user_omniauth_authorize_path(:twitter), title: t('twitter_sign_in')
+            li = link_to icon('weibo icon--circular'),
+              user_omniauth_authorize_path(:weibo), title: t('weibo_sign_in')
