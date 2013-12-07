@@ -2,13 +2,14 @@
   $BASE
 \*------------------------------------*/
 
+@import 'background';
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-face;
 }
 
 body {
-  background: #f0f0f0 inline-image("bg.gif") repeat;
+  background: #f0f0f0 $background repeat;
   color: #4c4c4c;
 }
 
@@ -85,4 +86,3 @@ a {
 .next_page {
   @extend .float--right;
 }
-

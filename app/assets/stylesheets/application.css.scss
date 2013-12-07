@@ -5,13 +5,13 @@
 
 /**
  * Vendor:
- * caompass     http://compass-style.org
  * inuit.css    http://inuitcss.com
+ * bourbon      http://bourbon.io/
  * NProgress.js http://ricostacruz.com/nprogress/
  */
 @import "vars";
-@import "compass";
-@import "compass-inuit";
+@import "inuit.css/inuit";
+@import "bourbon";
 
 $nprogress-color: $brand-color;
 @import "nprogress";
@@ -21,7 +21,6 @@ $nprogress-color: $brand-color;
  * Base
  */
 @import "base/mixin";
-@import "base/function";
 @import "base/icon";
 @import "base/object";
 @import "base/form";
