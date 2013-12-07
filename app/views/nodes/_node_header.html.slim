@@ -3,7 +3,7 @@
     - style = "background-color: #{@node.color}" if @node.color?
     = link_to new_topic_path(@node), class: 'btn btn--small float--right',
         style: style do
-      = semantic_icon('plus')
+      = icon('plus')
       = t('new_topic')
 
     = breadcrumbs @node.name

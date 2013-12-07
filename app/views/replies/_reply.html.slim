@@ -3,7 +3,7 @@ li.reply-item.media id="reply-#{reply.id}"
   .media__body
     = username_tag reply.username
     span.reply__likes data-count=reply.likes_count
-      = semantic_icon('heart')
+      = icon('heart')
     ul.reply__meta.zeta.fade.nav.float--right.flush
       - if can? :destroy, reply
         li.meta-item = link_to t('delete'), [:admin, reply], class: 'js-delete-reply',
@@ -12,7 +12,7 @@ li.reply-item.media id="reply-#{reply.id}"
         li.meta-item = like_tag(reply, text: true)
       li.meta-item = link_to 'Tweet'
       li.meta-item = timeago reply.created_at
-      = link_to semantic_icon('reply mail'), '#', class: 'js-reply', data: { name: reply.username }
+      = link_to icon('reply'), '#', class: 'js-reply', data: { name: reply.username }
 
     .reply__body.body-text.js-autohtml
       = reply.body

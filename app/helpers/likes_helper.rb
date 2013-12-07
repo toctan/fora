@@ -7,8 +7,7 @@ module LikesHelper
   private
 
   def like_icon(target)
-    klass = target.liked_by?(current_user) ? 'liked' : 'empty'
-    semantic_icon('heart', klass)
+    icon target.liked_by?(current_user) ? 'heart' : 'heart-empty'
   end
 
   def like_text(target)
