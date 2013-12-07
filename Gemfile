@@ -16,8 +16,6 @@ gem 'slim-rails'
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'compass-inuit'
 gem 'flutie'
-gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
-
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'omniauth-weibo-oauth2'
@@ -48,13 +46,7 @@ end
 
 group :development, :test do
   gem 'jazz_hands'
-  gem 'ffaker'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'launchy'
-end
-
-group :production do
-  gem 'rails_12factor'
-  gem 'passenger'
 end

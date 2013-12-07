@@ -8,13 +8,12 @@ before_script:
   - rake db:migrate
   - export RUBY_GC_MALLOC_LIMIT=50000000
 
-bundler_args: --without development production
+bundler_args: --without development
 
 script: xvfb-run rake
 
 notifications:
   email: false
 
-addons:
-  code_climate:
-    repo_token: 85d9258a24758e9dd5ed205063cf141c06e9af368194afcfd719440794ab227b
+services:
+  - redis-server

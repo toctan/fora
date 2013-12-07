@@ -5,9 +5,6 @@
 #= require jquery.autosize
 #= require jquery.autohtml
 #= require nprogress
-#= require semantic-ui/transition
-#= require semantic-ui/dropdown
-#= require semantic-ui/popup
 #= require turbolinks
 
 $ ->
@@ -17,15 +14,6 @@ $ ->
 
   $('textarea').autosize
     append: "\n"
-
-  $('.message .close.icon').click ->
-    $(@).parent().transition 'slide down'
-
-  $('.ui.dropdown').dropdown
-    on: 'hover'
-
-  $('.site-nav .popup').popup
-    position : 'bottom center'
 
 $(document).on 'page:fetch',   -> NProgress.start()
 $(document).on 'page:change',  -> NProgress.done()

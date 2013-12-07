@@ -4,7 +4,7 @@ class RepliesController < ApplicationController
 
   def create
     reply = @topic.new_reply(current_user, reply_params)
-    flash[:error] = reply.errors.full_messages.join("\n") unless reply.valid?
+    flash[:alert] = reply.errors.full_messages.join("\n") unless reply.valid?
 
     redirect_to :back
   end

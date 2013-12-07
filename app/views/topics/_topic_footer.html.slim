@@ -2,13 +2,12 @@
   - if current_user
     = like_tag @topic
 
-    - bookmark_icon = 'empty' unless current_user.bookmarked?(@topic.id)
     = link_to bookmark_path(@topic.id), method: :post, id: 'js-bookmark' do
-      = semantic_icon('bookmark', bookmark_icon)
+      = icon current_user.bookmarked?(@topic.id) ? 'bookmark' : 'bookmark-empty'
 
-  = semantic_icon('twitter')
-  = semantic_icon('weibo')
+  = icon('twitter')
+  = icon('weibo')
 
   - if can? :destroy, @topic
-    = link_to semantic_icon('trash'), [:admin, @topic], method: :delete,
+    = link_to icon('trash'), [:admin, @topic], method: :delete,
         id: 'js-delete-topic', data: { confirm: t('are_you_sure') }

@@ -19,9 +19,9 @@ RSpec.configure do |config|
 end
 
 RSpec::Matchers.define :have_flash_message do |message, kind|
-  kind ||= 'success'
+  kind ||= 'notice'
   match do |page|
-    page.should have_selector(".ui.message.#{kind}", text: message)
+    page.should have_selector(".flash.flash--#{kind}", text: message)
   end
 end
 

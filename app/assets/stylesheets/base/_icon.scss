@@ -1,0 +1,51 @@
+/*------------------------------------*\
+  $ICON
+\*------------------------------------*/
+
+
+@import "font";
+
+.icon {
+  font-family: "Icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1.25em;
+  margin-right: .25em;
+  text-align: center;
+  opacity: .8;
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+}
+
+.icon--circular {
+  width: 2em;
+  height: 2em;
+  padding: .5em .35em;
+  color: #fff;
+  border-radius: 500em;
+
+  &.icon-twitter { background-color: #3498db; }
+  &.icon-weibo { background-color: #e74c3c; }
+}
+
+.icon.icon-bookmark:before       { content: '\e805'; }
+.icon.icon-down-dir:before       { content: '\e808'; }
+.icon.icon-twitter:before        { content: '\e80b'; }
+.icon.icon-weibo:before          { content: '\e800'; }
+.icon.icon-heart:before          { content: '\e806'; }
+.icon.icon-heart-empty:before    { content: '\e807'; }
+.icon.icon-bookmark-empty:before { content: '\e804'; }
+.icon.icon-plus:before           { content: '\e80a'; }
+.icon.icon-reply:before          { content: '\e801'; }
+.icon.icon-pencil:before         { content: '\e803'; }
+.icon.icon-trash:before          { content: '\e802'; }
+.icon.icon-close:before          { content: '\e809'; }
