@@ -1,9 +1,0 @@
-.card.islet
-  = simple_form_for(resource, as: resource_name,
-                              url: registration_path(resource_name)) do |f|
-    h4 Sign up
-    = f.error_notification
-    = f.input :username, required: true, autofocus: true
-    = f.input :email,    required: true if f.object.email_required?
-    = f.input :password, required: true if f.object.password_required?
-    = f.button :submit, "Sign up"

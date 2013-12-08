@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :require_login
 
   def create_or_destroy
     current_user.bookmark_or_unbookmark params[:id].to_i

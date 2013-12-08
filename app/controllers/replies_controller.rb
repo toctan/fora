@@ -1,5 +1,5 @@
 class RepliesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :require_login
   before_filter :find_topic
 
   def create

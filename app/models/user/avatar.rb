@@ -12,6 +12,7 @@ class User
     end
 
     def avatar_remote_url=(url)
+      return if url.nil?
       self.avatar = URI.parse(url)
       @avatar_remote_url = url
     end

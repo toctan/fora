@@ -2,7 +2,7 @@ class NodesController < ApplicationController
   include NodesConcern
 
   before_filter :custom_layout, only: :index
-  before_filter :authenticate_user!, only: [:new, :create]
+  before_filter :require_login, only: [:new, :create]
 
   def index
     @nodes = Node.approved.page(params[:page])

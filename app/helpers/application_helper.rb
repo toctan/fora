@@ -1,5 +1,4 @@
 module ApplicationHelper
-  # TODO: custom render?
   def breadcrumbs(*crumbs)
     content_tag :ol, class: 'nav breadcrumb body-text' do
       result = []

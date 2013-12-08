@@ -14,7 +14,6 @@ gem 'jquery-turbolinks'
 gem 'slim-rails'
 gem 'bourbon'
 gem 'flutie'
-gem 'devise'
 gem 'omniauth-twitter'
 gem 'omniauth-weibo-oauth2'
 gem 'cancan'
@@ -31,7 +30,7 @@ group :test do
 end
 
 group :development do
-  gem 'annotate', '~> 2.6.0.beta2'
+  gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'foreman'

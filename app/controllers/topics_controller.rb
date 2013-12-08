@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   include TopicsConcern
 
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :require_login, except: [:index, :show]
   after_filter  :update_hits, only: :show
 
   def index
