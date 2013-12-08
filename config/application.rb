@@ -13,18 +13,6 @@ Bundler.require(:default, Rails.env)
 
 module Fora
   class Application < Rails::Application
-
-    config.generators do |g|
-      g.view_specs       false
-      g.helper_specs     false
-      g.routing_specs    false
-      g.controller_specs false
-      g.stylesheets    = false
-      g.javascripts    = false
-      g.helper         = false
-      g.jbuilder       = false
-    end
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -33,8 +21,18 @@ module Fora
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
+    config.i18n.enforce_available_locales = true
+
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.generators do |generate|
+      generate.view_specs       false
+      generate.helper_specs     false
+      generate.controller_specs false
+      generate.assets           false
+      generate.helper           false
+    end
   end
 end
