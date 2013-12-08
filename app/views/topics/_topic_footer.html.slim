@@ -8,6 +8,6 @@
   = icon('twitter')
   = icon('weibo')
 
-  - if can? :destroy, @topic
+  - if current_user.try(:admin?)
     = link_to icon('trash'), [:admin, @topic], method: :delete,
         id: 'js-delete-topic', data: { confirm: t('are_you_sure') }
