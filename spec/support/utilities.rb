@@ -1,7 +1,9 @@
 RSpec.configure do |config|
   config.before(:each, signin: true) do
-    @current_user ||= create(:confirmed_user)
-    login_as @current_user, scope: :user
+    @current_user ||= create(:user,
+      provider: 'twitter',
+      uid: '1')
+    visit '/auth/twitter'
   end
 
   config.after(:each, signin: true) do
@@ -9,8 +11,10 @@ RSpec.configure do |config|
   end
 
   config.before(:each, admin: true) do
-    @current_user ||= create(:admin)
-    login_as @current_user, scope: :user
+    @current_user ||= create(:admin,
+      provider: 'twitter',
+      uid: '1')
+    visit '/auth/twitter'
   end
 
   config.after(:each, admin: true) do

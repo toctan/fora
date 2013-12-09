@@ -16,7 +16,6 @@ RSpec.configure do |config|
   config.include ActionDispatch::TestProcess
   config.include FactoryGirl::Syntax::Methods
   config.include Paperclip::Shoulda::Matchers
-  config.include Devise::TestHelpers, type: :controller
 
   config.treat_symbols_as_metadata_keys_with_true_values = true
 

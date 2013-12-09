@@ -15,9 +15,9 @@ nav.site-nav
             ul.dropdown-list
               li = link_to t('notifications'), notifications_path
               li = link_to t('bookmarks'), bookmarks_path
-              li = link_to 'Sign out', destroy_user_session_path, method: :delete
+              li = link_to t('sign_out'), sign_out_path, method: :delete
         - else
           li = link_to icon('twitter icon--circular'),
-            user_omniauth_authorize_path(:twitter), title: t('twitter_sign_in')
+            '/auth/twitter', title: t('twitter_sign_in')
           li = link_to icon('weibo icon--circular'),
-            user_omniauth_authorize_path(:weibo), title: t('weibo_sign_in')
+            '/auth/weibo', title: t('weibo_sign_in')

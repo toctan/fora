@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :require_login
   before_filter :find_likeable
 
   def create_or_destroy

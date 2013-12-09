@@ -5,10 +5,10 @@ li.reply-item.media id="reply-#{reply.id}"
     span.reply__likes data-count=reply.likes_count
       = icon('heart')
     ul.reply__meta.zeta.fade.nav.float--right.flush
-      - if can? :destroy, reply
-        li.meta-item = link_to t('delete'), [:admin, reply], class: 'js-delete-reply',
-          method: :delete, data: { confirm: t('are_you_sure') }
       - if current_user
+        - if current_user.admin?
+          li.meta-item = link_to t('delete'), [:admin, reply], class: 'js-delete-reply',
+            method: :delete, data: { confirm: t('are_you_sure') }
         li.meta-item = like_tag(reply, text: true)
       li.meta-item = link_to 'Tweet'
       li.meta-item = timeago reply.created_at

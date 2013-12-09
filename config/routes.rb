@@ -1,20 +1,17 @@
 Fora::Application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root 'topics#index'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  delete 'sign_out' => 'sessions#destroy', as: :sign_out
+
+  match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
+  match 'auth/failure' => 'sessions#failure', via: :get
 
   get 'go/:key'  => 'nodes#show', as: :node
   get 'new/:key' => 'topics#new', as: :new_topic
 
-  post 'like/:type/:id' => 'likes#create_or_destroy',  as: :like
-  post 'bookmark/:id' => 'bookmarks#create_or_destroy', as: :bookmark
-  get 'bookmarks' => 'bookmarks#index', as: :bookmarks
+  post 'like/:type/:id' => 'likes#create_or_destroy',     as: :like
+  post 'bookmark/:id'   => 'bookmarks#create_or_destroy', as: :bookmark
+  get  'bookmarks'       => 'bookmarks#index',            as: :bookmarks
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
