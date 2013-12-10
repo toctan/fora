@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_create(
       provider:          auth.provider,
       uid:               auth.uid,
-      username:          auth.info.nickname,
+      username:          auth.info.nickname || auth.info.namenod,
       avatar_remote_url: auth.info.image,
       )
   end

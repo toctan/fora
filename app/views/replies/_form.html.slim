@@ -8,9 +8,5 @@
   - else
     .reply--signin.island.text--center
       h3.push--bottom Sign in to reply
-      .btn.btn--twitter.push--right
-        = icon 'twitter'
-        | Twitter
-      .btn.btn--weibo
-        = icon 'weibo'
-        | Weibo
+      a.btn.btn--twitter.push--right href='/auth/twitter' #{icon('twitter')} Twitter
+      a.btn.btn--weibo href='/auth/weibo' #{icon('weibo')} Weibo

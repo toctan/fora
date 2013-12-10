@@ -1,8 +1,6 @@
 .card__header.media
   .media__body
-    - style = "background-color: #{@node.color}" if @node.color?
-    = link_to new_topic_path(@node), class: 'btn btn--small float--right',
-        style: style do
+    = link_to new_topic_path(@node), class: 'btn btn--small float--right' do
       = icon('plus')
       = t('new_topic')
 

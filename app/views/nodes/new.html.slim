@@ -1,5 +1,6 @@
+- admin = :admin if current_user.admin?
+
 .card.islet
-  - admin = :admin if current_user.admin?
   = simple_form_for [admin, @node] do |f|
     = f.input :key
     = f.input :name

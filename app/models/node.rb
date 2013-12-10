@@ -27,6 +27,14 @@ class Node < ActiveRecord::Base
     @avatar_remote_url = url
   end
 
+  def style(opts = {})
+    if image?
+      "background-image: url(#{image.url(:medium)})"
+    elsif color?
+      "background-color: #{color}"
+    end
+  end
+
   def to_param
     key
   end

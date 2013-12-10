@@ -1,7 +1,5 @@
-- style = "background-color: #{node.color}" if node.color?
-- style = "background-image: url(#{node.image.url(:medium)})" if node.image?
-= link_to node_path(node), class: 'node-item' do
-  .node.card style=style
+= link_to node, class: 'node-item' do
+  .node.card style=node.style
     .node__body.soft-half
       h3.node__name.flush = node.name
       ul.node__meta.nav.flush

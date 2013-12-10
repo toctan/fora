@@ -2,12 +2,12 @@ li.topic-item.media
   = avatar_tag topic.user
   = node_tag topic.node
   .media__body
-    .delta = link_to topic.title, topic
+    = link_to topic.title, topic, class: 'delta'
     ul.topic__meta.zeta.nav.fade
       li.meta-item = username_tag topic.username
       li.meta-item = link_to "#{topic.replies_count} replies", "#{topic_path(topic)}#replies"
       li.meta-item = timeago topic.updated_at
       - if topic.last_replier_username
         li.meta-item
-          | last reply from&nbsp;
+          ' last reply from
           = username_tag topic.last_replier_username

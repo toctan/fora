@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       redirect_to auth_origin || root_url
     else
-      binding.pry
+      # TODO: when third-party sign in fails
     end
   end
 

@@ -11,10 +11,10 @@
 
   = render partial: 'topic_footer'
 
--unless @replies.blank?
+- if @replies.any?
   ol.replies.card.block-list#replies = render @replies
 
 = render 'replies/form'
 
 - content_for :sidebar do
-  = render 'nodes/node', node: @topic.node
+  = render @topic.node

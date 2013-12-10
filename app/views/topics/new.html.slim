@@ -1,6 +1,4 @@
-/ TODO: node color view duplication
 - @node ||= @topic.node
-- style = "background-color: #{@node.color}" if @node.color?
 
 .card
   .card__header
@@ -11,7 +9,7 @@
       = f.input :title, label: false, input_html: { class: 'input--block' }
       = f.input :body,  label: false, input_html: { rows: 18 }
       = f.input :node_id, as: :hidden
-      = f.button :submit, class: 'btn--primary float--right', style: style
+      = f.button :submit, class: 'btn--primary float--right'
 
 - content_for :sidebar do
   = render @node
