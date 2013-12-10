@@ -36,8 +36,6 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-livereload', require: false
   gem 'meta_request'
-  gem 'spring'
-  gem "spring-commands-rspec", require: false
 end
 
 group :development, :test do
