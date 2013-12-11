@@ -19,6 +19,7 @@ gem 'omniauth-weibo-oauth2'
 gem 'simple_form'
 gem 'will_paginate'
 gem 'paperclip', '~> 3.0'
+gem 'aws-sdk'
 gem 'redis-objects'
 
 group :test do
