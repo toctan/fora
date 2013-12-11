@@ -11,8 +11,8 @@
 # if you're sharing your code publicly.
 
 Fora::Application.config.secret_key_base =
-  if Rails.env.development? or Rails.env.test?
-    '305026b3e3f1aa6ee03d9d930a05f815bc7fd30859eca3ee4d82cf36255fb08e9dc8fe267c'
-  else
+  if Rails.env.production?
     ENV['SECRET_TOKEN']
+  else
+    '305026b3e3f1aa6ee03d9d930a05f815bc7fd30859eca3ee4d82cf36255fb08e9dc8fe267c'
   end
