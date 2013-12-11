@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
   def create
     user = User.from_omniauth auth_hash
-    if user.persisted?
+    if user.save
       self.current_user = user
       redirect_to auth_origin || root_url
     else
-      # TODO: when third-party sign in fails
+      session[:omniauth] = auth_hash
+      redirect_to new_user_path
     end
   end
 
@@ -21,7 +22,9 @@ class SessionsController < ApplicationController
   private
 
   def auth_hash
-    request.env['omniauth.auth']
+    request.env['omniauth.auth'].except('extra').tap do |auth|
+      auth.uid = auth.uid.to_s
+    end
   end
 
   def auth_origin

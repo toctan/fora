@@ -14,21 +14,16 @@ class User < ActiveRecord::Base
                        length: { maximum: 17 }
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create(
-      provider:          auth.provider,
-      uid:               auth.uid,
-      username:          auth.info.nickname || auth.info.namenod,
-      avatar_remote_url: auth.info.image,
-      )
+    where(auth.slice(:provider, :uid)).first || new_with_auth_hash(auth)
   end
 
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if session['devise.user_attributes']
-        user.attributes = session['devise.user_attributes']
-        user.valid?
-      end
-    end
+  def self.new_with_auth_hash(auth)
+    new(
+      provider:          auth.provider,
+      uid:               auth.uid,
+      username:          auth.info.nickname || auth.info.name,
+      avatar_remote_url: auth.info.image,
+      )
   end
 
   def unread_notifications_count

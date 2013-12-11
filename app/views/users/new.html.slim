@@ -1,0 +1,4 @@
+.card.islet
+  = simple_form_for @user do |f|
+    = f.input :username, label: false, autofocus: true
+    = f.button :submit, t('sign_up'), class: 'btn--primary'

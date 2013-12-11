@@ -12,18 +12,11 @@ class ApplicationController < ActionController::Base
 
   def current_user=(user)
     @current_user = user
+    session[:omniauth] = nil
     session[:user_id] = user.try(:id)
   end
 
   def require_login
     redirect_to root_url, alert: I18n.t('need_sign_in') unless current_user
-  end
-
-  private
-
-  def can_can_can
-    resource = controller_name.singularize.to_sym
-    method = "#{resource}_params"
-    params[resource] &&= send(method) if respond_to?(method, true)
   end
 end

@@ -4,16 +4,19 @@ feature 'Third party signin' do
   scenario 'via twitter' do
     visit '/auth/twitter'
 
-    expect(page).to have_link I18n.t('sign_out')
+    expect(page).to have_link I18n.t('sign_out'), href: sign_out_path
   end
 
   scenario 'when the username has been taken' do
-    pending
     create(:user, username: 'nick')
     visit '/auth/twitter'
 
-    expect(page).to have_selector('#new_user .form-field--error', count: 1)
     expect(page).to have_inline_help 'has already been taken'
+
+    fill_in 'user_username', with: 'nikk'
+    click_button 'Sign up'
+
+    expect(page).to have_link I18n.t('sign_out'), href: sign_out_path
   end
 
   scenario 'authrozation failed' do

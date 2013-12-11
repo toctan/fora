@@ -26,6 +26,7 @@ en:
   twitter_sign_in: Sign in via twitter
   weibo_sign_in: Sign in via weibo
   need_sign_in: You need to sign in to continue.
+  sign_up: Sign up
   sign_out: Sign out
   signed_out: Signed out successfully.
 
