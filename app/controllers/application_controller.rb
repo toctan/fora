@@ -6,14 +6,18 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if cookies[:remember_token]
+      @current_user ||= User.find_by remember_token: cookies[:remember_token]
+    end
+
+    @current_user
   end
   helper_method :current_user
 
   def current_user=(user)
     @current_user = user
     session[:omniauth] = nil
-    session[:user_id] = user.try(:id)
+    cookies.permanent[:remember_token] = user && user.remember_token
   end
 
   def require_login
