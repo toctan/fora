@@ -1,6 +1,8 @@
 ul.topic__meta.zeta.fade.nav
   li.meta-item By #{username_tag topic.username}
   li.meta-item = timeago(topic.created_at)
-  li.meta-item #{icon('heart')}#{topic.likes_count} Likes
+  li.meta-item
+    = icon('heart')
+    span.topic__likes.js-likes-count data-count=topic.likes_count Likes
   li.meta-item #{topic.hits} hits
   li.meta-item = link_to "#{topic.replies_count} replies", '#replies'

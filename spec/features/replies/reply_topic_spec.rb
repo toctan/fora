@@ -13,7 +13,7 @@ feature 'Reply a topic', :signin do
     click_button 'Create Reply'
 
     within '.replies' do
-      expect(page).to have_selector('.reply-item:last-child', text: reply[:body])
+      expect(page).to have_selector('.reply:last-child', text: reply[:body])
     end
   end
 

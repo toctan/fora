@@ -4,7 +4,11 @@ class LikesController < ApplicationController
 
   def create_or_destroy
     current_user.like_or_dislike @likeable
-    redirect_to :back
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   private

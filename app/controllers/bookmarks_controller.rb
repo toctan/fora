@@ -3,7 +3,11 @@ class BookmarksController < ApplicationController
 
   def create_or_destroy
     current_user.bookmark_or_unbookmark params[:id].to_i
-    redirect_to :back
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   def index

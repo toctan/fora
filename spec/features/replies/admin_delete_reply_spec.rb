@@ -9,6 +9,6 @@ feature 'Admin' do
   scenario 'delete spam reply', :admin do
     find('.js-delete-reply').click
 
-    expect(page).to have_selector('.reply-item', count: 0)
+    expect(page).to have_selector('.reply', count: 0)
   end
 end

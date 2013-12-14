@@ -1,21 +1,26 @@
-li.reply-item.media id="reply-#{reply.id}"
+= content_tag_for :li, reply, class: 'media' do
   = avatar_tag reply.user
   .media__body
     = username_tag reply.username
-    span.reply__likes data-count=reply.likes_count
+    span.reply__likes.js-likes-count data-count=reply.likes_count
       = icon('heart')
     ul.reply__meta.zeta.fade.nav.float--right.flush
       - if current_user
         - if current_user.admin?
           li.meta-item = link_to t('delete'), [:admin, reply], class: 'js-delete-reply',
             method: :delete, data: { confirm: t('are_you_sure') }
-        li.meta-item = like_tag(reply, text: true)
+
+        li.meta-item = link_to like_path(reply.class, reply.id),
+          method: :post, class: 'js-like', remote: true do
+            = reply.liked_by?(current_user) ? t('dislike') : t('like')
+
       li.meta-item = link_to 'Tweet', nil, class: 'js-share',
         data: { network: 'twitter', text_selector: '.reply__body' }
       li.meta-item = link_to 'Weibo', nil, class: 'js-share',
         data: { network: 'weibo', text_selector: '.reply__body' }
+
       li.meta-item = timeago reply.created_at
-      = link_to icon('reply'), '#', class: 'js-reply', data: { name: reply.username }
+      = link_to icon('reply', 'delta'), '#', class: 'js-reply', data: { name: reply.username }
 
     .reply__body.body-text.js-autohtml
       = reply.body

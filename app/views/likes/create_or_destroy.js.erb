@@ -1,0 +1,12 @@
+var $likeable = $('#<%= dom_id @likeable %>');
+
+$likeable.find('.js-likes-count').attr('data-count',
+                                       <%= @likeable.reload.likes_count %>);
+
+<% if @likeable.is_a? Topic %>
+  $likeable.find('.js-like .icon').toggleClass('icon-heart')
+    .toggleClass('icon-heart-empty');
+<% else %>
+  $likeable.find('.js-like').text("<%= @likeable.liked_by?(current_user) ?
+t('dislike') : t('like') %>");
+<% end %>
