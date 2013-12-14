@@ -5,18 +5,12 @@
 #= require jquery.autosize
 #= require jquery.autohtml
 #= require share
+#= require topic
 #= require nprogress
 #= require turbolinks
 
 $ ->
   $('.js-timeago').timeago()
-
-  $('.js-autohtml').autohtml()
-
-  $('.js-share').share()
-
-  $('textarea').autosize
-    append: "\n"
 
 $(document).on 'page:fetch',   -> NProgress.start()
 $(document).on 'page:change',  -> NProgress.done()

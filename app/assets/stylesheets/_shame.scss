@@ -20,6 +20,14 @@
 
 
 /**
+ * icon within ancnor should not be underline decorated
+ */
+a > .icon {
+  text-decoration: none;
+}
+
+
+/**
  * gist should be embedded in an iframe
  */
 .gist {
