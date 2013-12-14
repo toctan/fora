@@ -5,8 +5,10 @@
     = link_to bookmark_path(@topic.id), method: :post, id: 'js-bookmark' do
       = icon current_user.bookmarked?(@topic.id) ? 'bookmark' : 'bookmark-empty'
 
-  = icon('twitter')
-  = icon('weibo')
+  = link_to icon('twitter'), nil, class: 'js-share',
+  data: { network: 'twitter', text_selector: '.topic__title' }
+  = link_to icon('weibo'), nil, class: 'js-share',
+  data: { network: 'weibo', text_selector: '.topic__title' }
 
   - if current_user.try(:admin?)
     = link_to icon('trash'), [:admin, @topic], method: :delete,

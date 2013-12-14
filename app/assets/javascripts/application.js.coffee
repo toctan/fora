@@ -4,6 +4,7 @@
 #= require jquery.timeago
 #= require jquery.autosize
 #= require jquery.autohtml
+#= require share
 #= require nprogress
 #= require turbolinks
 
@@ -11,6 +12,8 @@ $ ->
   $('.js-timeago').timeago()
 
   $('.js-autohtml').autohtml()
+
+  $('.js-share').share()
 
   $('textarea').autosize
     append: "\n"
