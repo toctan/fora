@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20131028115931) do
     t.string   "uid"
     t.string   "username"
     t.string   "provider"
+    t.string   "remember_token"
     t.boolean  "admin",               default: false, null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(version: 20131028115931) do
   end
 
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

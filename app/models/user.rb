@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :replies,       dependent: :destroy
   has_many :notifications, dependent: :destroy, foreign_key: 'target_id'
 
+  before_create :generate_remember_token
+
   validates :username, presence: true,
                        uniqueness: { case_sensitive: false },
                        format: { with: /\A[A-Za-z_\d]+\z/ },
@@ -36,6 +38,12 @@ class User < ActiveRecord::Base
 
   def clear_notifications
     notifications.delete_all
+  end
+
+  private
+
+  def generate_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
   end
 end
 
