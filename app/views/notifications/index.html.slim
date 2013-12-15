@@ -1,6 +1,7 @@
 ol.notifications.card.block-list
   .card__header
-    = link_to clear_notifications_path, method: :delete, id: 'js-clear-notification',
+    = link_to clear_notifications_path, method: :delete,
+    id: 'js-clear-notification', remote: true,
         class: 'btn btn--small btn--inverse float--right' do
       = icon('trash')
       = t('clear')

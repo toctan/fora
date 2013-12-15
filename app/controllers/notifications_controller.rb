@@ -10,11 +10,19 @@ class NotificationsController < ApplicationController
   def destroy
     @notification = current_user.notifications.find(params[:id])
     @notification.destroy if @notification
-    redirect_to :back
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   def clear
     current_user.clear_notifications
-    redirect_to :back
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 end

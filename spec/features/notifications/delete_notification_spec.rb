@@ -6,15 +6,15 @@ feature 'Signed in user', :signin do
     visit notifications_path
   end
 
-  scenario 'deletes single notification' do
+  scenario 'deletes single notification', :js do
     first('.js-delete-notification').click
 
-    expect(page).to have_selector('.notification-item', count: 2)
+    expect(page).to have_selector('.notification', count: 2)
   end
 
-  scenario 'deletes all the notifications' do
+  scenario 'deletes all the notifications', :js do
     click_link 'js-clear-notification'
 
-    expect(page).not_to have_selector('.notification-item')
+    expect(page).not_to have_selector('.notification')
   end
 end

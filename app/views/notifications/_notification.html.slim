@@ -1,4 +1,4 @@
-li.notification-item.media.zeta
+= content_tag_for :li, notification, class: 'media zeta' do
   = avatar_tag notification.source
   .media__body
     .notification__title.fade
@@ -11,5 +11,5 @@ li.notification-item.media.zeta
       .notification__body.soft-half.body-text.js-autohtml
         = notification.body
 
-  = link_to icon('close'), notification_path(notification),
+  = link_to icon('close'), notification_path(notification), remote: true,
       method: :delete, class: 'show-on-hover notification__delete-icon js-delete-notification'
