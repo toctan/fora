@@ -2,19 +2,18 @@ require 'spec_helper'
 
 feature 'Reply a topic', :signin do
   let(:topic) { create(:topic) }
-  let(:reply) { attributes_for(:reply) }
 
   before(:each) do
+    create(:reply, topic: topic, user: User.first)
     visit topic_path(topic)
   end
 
-  scenario 'with simple body' do
-    fill_in 'reply_body', with: reply[:body]
+  scenario 'with simple body', :js do
+    fill_in 'reply_body', with: 'hey'
     click_button 'Create Reply'
 
-    within '.replies' do
-      expect(page).to have_selector('.reply:last-child', text: reply[:body])
-    end
+    expect(page).to have_selector('.reply', text: 'hey')
+    expect(find('#reply_body').value).to eq ''
   end
 
   scenario 'with blank body' do

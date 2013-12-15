@@ -26,17 +26,12 @@
 
   &:target,
   &:target:before {
-    @include vendor(animation, yellow-fade 3s linear);
+    @extend .yellow-fade;
   }
 
   &:last-child {
     border-bottom: none;
   }
-}
-
-@include keyframe(yellow-fade) {
-  0%   { background-color: $highlight; }
-  100% { background-color: white; }
 }
 
 .reply__meta .meta-item {

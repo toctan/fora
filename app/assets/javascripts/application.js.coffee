@@ -2,9 +2,6 @@
 #= require jquery.turbolinks
 #= require jquery_ujs
 #= require jquery.timeago
-#= require jquery.autosize
-#= require jquery.autohtml
-#= require share
 #= require topic
 #= require nprogress
 #= require turbolinks
