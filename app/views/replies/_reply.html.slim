@@ -8,7 +8,7 @@
       - if current_user
         - if current_user.admin?
           li.meta-item = link_to t('delete'), [:admin, reply], class: 'js-delete-reply',
-            method: :delete, data: { confirm: t('are_you_sure') }
+            method: :delete, remote: true, data: { confirm: t('are_you_sure') }
 
         li.meta-item = link_to like_path(reply.class, reply.id),
           method: :post, class: 'js-like', remote: true do
