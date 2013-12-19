@@ -1,12 +1,17 @@
 .topic__footer.delta.text--right.soft-half.hard--top
   - if current_user
-    = like_tag @topic
+    = link_to like_path(@topic.class, @topic.id), method: :post,
+    class: 'js-like', remote: true do
+      = icon @topic.liked_by?(current_user) ? 'heart' : 'heart-empty'
 
-    = link_to bookmark_path(@topic.id), method: :post, id: 'js-bookmark' do
+    = link_to bookmark_path(@topic.id), method: :post,
+    id: 'js-bookmark', remote: true do
       = icon current_user.bookmarked?(@topic.id) ? 'bookmark' : 'bookmark-empty'
 
-  = icon('twitter')
-  = icon('weibo')
+  = link_to icon('twitter'), nil, class: 'js-share',
+  data: { network: 'twitter', text_selector: '.topic__title' }
+  = link_to icon('weibo'), nil, class: 'js-share',
+  data: { network: 'weibo', text_selector: '.topic__title' }
 
   - if current_user.try(:admin?)
     = link_to icon('trash'), [:admin, @topic], method: :delete,

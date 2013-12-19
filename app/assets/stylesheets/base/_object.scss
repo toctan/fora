@@ -22,7 +22,21 @@
 
 
 /**
- * $VIDEO WRAPPER
+ * $YELLOW-FADE
+ */
+
+@include keyframe(yellow-fade) {
+  0%   { background-color: #ff9; }
+  100% { background-color: white; }
+}
+
+.yellow-fade {
+  @include vendor(animation, yellow-fade 1s linear);
+}
+
+
+/**
+ * $VIDEO-WRAPPER
  * http://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php
  */
 .video-wrapper {

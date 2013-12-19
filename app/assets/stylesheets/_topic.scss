@@ -7,20 +7,22 @@
   @include verticle-line;
 }
 
+.topic__likes:before {
+  content: attr(data-count) "\00A0";
+}
+
 .topic__footer {
-
-  .liked {
-    color: #ff7e94!important;
-  }
-
-  .icon {
-    cursor: pointer;
+  a {
     color: #999;
 
     &:hover {
       color: inherit;
     }
   }
+
+  .icon-heart { color: #ff7e94!important; }
+  .icon-bookmark { color: #000!important; }
+
 }
 
 .topic__node {

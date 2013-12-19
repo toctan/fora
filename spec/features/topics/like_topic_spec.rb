@@ -4,12 +4,12 @@ feature 'Likes', :signin do
   let(:user) { @current_user }
   let(:topic) { create(:topic, user: user) }
 
-  before { visit topic_path(topic) }
+  scenario 'A user likes a topic', :js do
+    visit topic_path(topic)
 
-  scenario 'A user likes a topic' do
-    click_link 'js-like'
+    find('.js-like').click
 
-    expect(page).to have_content '1 Likes'
+    expect(page).to have_selector '.js-likes-count[data-count="1"]'
   end
 
   context 'When user has liked the topic' do
@@ -17,10 +17,12 @@ feature 'Likes', :signin do
       user.likes.create(likeable: topic)
     end
 
-    scenario 'A user dislikes a topic' do
-      click_link 'js-like'
+    scenario 'A user dislikes a topic', :js do
+      visit topic_path(topic)
 
-      expect(page).to have_content '0 Likes'
+      find('.js-like').click
+
+      expect(page).to have_selector '.js-likes-count[data-count="0"]'
     end
   end
 end

@@ -18,7 +18,7 @@ Fora::Application.routes.draw do
   resources :nodes, only: [:index, :new, :create]
 
   resources :topics, except: [:edit, :update, :destroy, :new] do
-    resources :replies, only: :create
+    resources :replies, only: [:create, :index]
   end
 
   resources :notifications, only: [:index, :destroy] do

@@ -21,7 +21,7 @@ module ApplicationHelper
     content_tag(:time, time.to_s, options.merge(datetime: time.getutc.iso8601))
   end
 
-  def icon(name)
-    content_tag :i, nil, class: "icon icon-#{name}"
+  def icon(name, *klass)
+    content_tag :i, nil, class: "icon icon-#{name} #{klass.join(' ')}"
   end
 end
